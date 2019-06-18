@@ -199,10 +199,10 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 [git_book__submodules]: https://git-scm.com/book/en/v2/Git-Tools-Submodules
 
 
-[relative_link__issues]: issues
-[relative_link__members]: network/members
-[source_link__render-vendor-prefixes]: lib/render-vendor-prefixes.scss
-[source_link__map-vendor-prefixes]: lib/map-vendor-prefixes.scss
+[relative_link__issues]: ../issues
+[relative_link__members]: ../network/members
+[source_link__render-vendor-prefixes]: ../lib/render-vendor-prefixes.scss
+[source_link__map-vendor-prefixes]: ../lib/map-vendor-prefixes.scss
 [source_link__calc]: calc.scss
 
 
