@@ -1,0 +1,33 @@
+// ---
+// notice: Support for `digits` as of 2019 is very limited
+// example_input: >-
+//   .some-class {
+//     @include text-combine-upright($value: digits 4);
+//   }
+//
+// example_output: >-
+//   .some-class {
+//     -webkit-text-combine-upright: digits 4;
+//         -ms-text-combine-upright: digits 4;
+//             text-combine-upright: digits 4;
+//   }
+//
+// available_values:
+//   - none
+//     all
+//     _number_
+//
+// info_links:
+//   - https://developer.mozilla.org/en-US/docs/Web/CSS/text-combine-upright
+// ---
+@mixin text-combine-upright($value) {
+  @include render-vendor-prefixes(
+    $property: text-combine-upright,
+    $value: $value,
+    $vendor-list: (
+      -webkit,    // Chrome 48.0, Opera 34.0, Safari
+      -ms,        // Edge 11.0
+    ),
+    $prefix: property,
+  );
+}

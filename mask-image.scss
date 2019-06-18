@@ -1,0 +1,29 @@
+// ---
+// notice: Firefox and MS support as of 2019 is questionable
+// example_input: >-
+//   .some-class {
+//     @include mask-image($value: alpha);
+//   }
+//
+// example_output: >-
+//   .some-class {
+//     -webkit-mask-image: alpha;
+//        -moz-mask-image: alpha;
+//         -ms-mask-image: alpha;
+//             mask-image: alpha;
+//   }
+//
+// available_values: see https://developer.mozilla.org/en-US/docs/Web/CSS/mask-image
+// ---
+@mixin mask-image($value) {
+  @include render-vendor-prefixes(
+    $property: mask-image,
+    $value: $value,
+    $vendor-list: (
+      -webkit,    // Android, Chrome 4.0, Opera 15.0, Safari 4.0
+      -moz,       // More research needed
+      -ms,        // More research needed
+    ),
+    $prefix: property,
+  );
+}

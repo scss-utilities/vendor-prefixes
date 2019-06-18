@@ -1,0 +1,33 @@
+// ---
+// example_input: >-
+//   .some-class {
+//     @include animation-play-state($value: paused);
+//   }
+//
+// example_output: >-
+//   .some-class {
+//     -webkit-animation-play-state: paused;
+//        -moz-animation-play-state: paused;
+//          -o-animation-play-state: paused;
+//             animation-play-state: paused;
+//   }
+//
+// available_values:
+//   - paused
+//     running
+//     initial
+//     inherit
+//     unset
+// ---
+@mixin animation-play-state($value) {
+  @include render-vendor-prefixes(
+    $property: animation-play-state,
+    $value: $value,
+    $vendor-list: (
+      -webkit,  // Chrome 43.0/4.0, Opera 30.0/15.0, Safari 9.0/4.0
+      -moz,     // Firefox 16.0/5.0
+      -o,       // Opera 12.0
+    ),
+    $prefix: property,
+  );
+}

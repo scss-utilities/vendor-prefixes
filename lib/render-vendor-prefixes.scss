@@ -1,0 +1,44 @@
+// ---
+// description: Outputs property:value SCSS maps prefixing either property or value
+// example_input: >-
+//   .example-element-class {
+//     $mapped-vendors: map-vendor-prefixes(
+//       $property: text-stroke-color,
+//       $value: white,
+//       $vendor-list: (-webkit, -o),
+//       $prefix: property
+//     );
+//   }
+// example_output: >-
+//   (
+//    -webkit-text-stroke-color: white,
+//    -o-text-stroke-color: white,
+//    text-stroke-color: white
+//   )
+// ---
+@mixin render-vendor-prefixes(
+  $property: false,
+  $value: false,
+  $vendor-list: false,
+  $prefix: property,
+){
+  // Obtain formatted map of supplied input
+  $vendor-prefixes: map-vendor-prefixes(
+    $property: $property,
+    $value: $value,
+    $vendor-list: $vendor-list,
+    $prefix: $prefix,
+  );
+  @if $prefix == 'property' {
+    @each $p, $v in $vendor-prefixes {
+      #{$p}: $v;
+    }
+  } @else if $prefix == 'value' {
+    @each $v in map-get($vendor-prefixes, $property) {
+      #{$property}: #{$v};
+    }
+  } @else {
+    @warn "Help, I have been force fead bad input!";
+    @error "Try '$prefix: property' or '$prefix: value' next time.";
+  }
+}

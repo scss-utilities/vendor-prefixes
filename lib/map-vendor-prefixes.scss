@@ -1,0 +1,60 @@
+// ---
+// description: Returns map of values or mapped list of vendor prefixed properties or values
+// prefix: property or value
+// example_input: >-
+//   $mapped-vendors: map-vendor-prefixes(
+//     $property: text-stroke-color,
+//     $value: white,
+//     $vendor-list: (-webkit, -o),
+//     $prefix: property
+//   );
+// example_output: >-
+//   (
+//    -webkit-text-stroke-color: white,
+//    -o-text-stroke-color: white,
+//    text-stroke-color: white
+//   )
+// notes: >-
+//   Looping over resulting maps is easily accomplished via an `@each` loop
+//   ```scss
+//   @each $k, $v in $mapped-vendors {
+//     @debug "$k: $v -> #{$k}: #{$v}";
+//   }
+//   ```
+// ---
+// https://www.w3.org/TR/CSS21/syndata.html#vendor-keyword-history
+// https://stackoverflow.com/questions/5411026/list-of-css-vendor-prefixes
+
+$vendor-id-list: (webkit, moz, ms, o);
+@function map-vendor-prefixes(
+  $property: false,
+  $value: false,
+  $vendor-list: $vendor-id-list,
+  $prefix: property,
+) {
+  $vendor-map: ();
+  $property-list: ();
+  @each $vendor in $vendor-list {
+    @if $prefix == 'property' {
+      $vendor-map: map-merge($vendor-map, (#{$vendor}-#{$property}: #{$value}));
+    } @else if $prefix == 'value' {
+      $property-list: append($property-list, #{$vendor}-#{$value}, comma);
+      $vendor-map: map-merge($vendor-map, ($property: $property-list));
+    } @else {
+      @warn "$prefix was neither 'property' or 'value'";
+      @error "$property: $value -> #{$property}: #{$value}";
+    }
+  }
+
+  // Append un-prefixed '$property: $value' pare to the end of map
+  @if $prefix == 'property' {
+    $vendor-map: map-merge($vendor-map, ($property: $value));
+  } @else if $prefix == 'value' {
+    $property-list: append($property-list, $value, comma);
+    $vendor-map: map-merge($vendor-map, ($property: $property-list));
+  } @else {
+    @error "How did we get here?";
+  }
+
+  @return $vendor-map;
+}

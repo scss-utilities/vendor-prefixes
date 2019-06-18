@@ -1,0 +1,35 @@
+// ---
+// notice: set `$fallback` for unsuported browsers
+// example_input: >-
+//   .some-class {
+//     @include calc(
+//       $property: width,
+//       $value: 100% - 40px,
+//       $fallback: 85%
+//     );
+//   }
+//
+// example_output: >-
+//   .some-class {
+//     width: 85%;
+//     width: -webkit-calc(100% - 40px);
+//     width: -moz-calc(100% - 40px);
+//     width: calc(100% - 40px);
+//   }
+// ---
+@mixin calc($property, $value, $fallback: false) {
+  @if $fallback {
+    #{$property}: #{$fallback};
+  } @else {
+    @warn "Consider setting a fallback for #{$property}";
+  }
+  @include render-vendor-prefixes(
+    $property: $property,
+    $value: calc(#{$value}),
+    $vendor-list: (
+      -webkit, // Old - Chrome 19-25, Safari 6
+      -moz     // Old - Firefox 4-15
+    ),
+    $prefix: value,
+  );
+}

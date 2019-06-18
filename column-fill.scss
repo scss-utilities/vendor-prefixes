@@ -1,0 +1,30 @@
+// ---
+// example_input: >-
+//   .some-class {
+//     @include column-fill($value: balance);
+//   }
+//
+// example_output: >-
+//   .some-class {
+//     -webkit-column-fill: balance;
+//        -moz-column-fill: balance;
+//             column-fill: balance;
+//   }
+//
+// available_values:
+//   - balance
+//     auto
+//     initial
+//     inherit
+// ---
+@mixin column-fill($value) {
+  @include render-vendor-prefixes(
+    $property: column-fill,
+    $value: $value,
+    $vendor-list: (
+      -webkit,    // Safari 10.0/7.0
+      -moz,       // Firefox 52.0/13.0
+    ),
+    $prefix: property,
+  );
+}

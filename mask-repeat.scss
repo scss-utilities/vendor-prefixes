@@ -1,0 +1,29 @@
+// ---
+// notice: Firefox and MS support as of 2019 is questionable
+// example_input: >-
+//   .some-class {
+//     @include mask-repeat($values: repeat-x, repeat-y);
+//   }
+//
+// example_output: >-
+//   .some-class {
+//     -webkit-mask-repeat: repeat-x, repeat-y;
+//        -moz-mask-repeat: repeat-x, repeat-y;
+//         -ms-mask-repeat: repeat-x, repeat-y;
+//             mask-repeat: repeat-x, repeat-y;
+//   }
+//
+// available_values: see https://developer.mozilla.org/en-US/docs/Web/CSS/mask-repeat
+// ---
+@mixin mask-repeat($values...) {
+  @include render-vendor-prefixes(
+    $property: mask-repeat,
+    $value: $values,
+    $vendor-list: (
+      -webkit,    // Android 2.0, Chrome 1.0, Opera 15.0, Safari 3.2
+      -moz,       // More research needed
+      -ms,        // More research needed
+    ),
+    $prefix: property,
+  );
+}

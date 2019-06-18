@@ -1,0 +1,26 @@
+// ---
+// notice: `-moz-box-flex: 1` maybe needed on container
+//
+// example_input: >-
+//   .some-class {
+//     @include display-flexbox();
+//   }
+//
+// example_output: >-
+//   .some-class {
+//     display: -webkit-box;
+//     display: -webkit-flex;
+//     display: -moz-box;
+//     display: -ms-flexbox;
+//     display: flex;
+//   }
+//
+// available_values: https://css-tricks.com/using-flexbox/
+// ---
+@mixin display-flexbox() {
+  display: -webkit-box;  // iOS 6, Safari 3.1-6
+  display: -webkit-flex; // Chrome
+  display: -moz-box;     // Firefox 19-
+  display: -ms-flexbox;  // IE 10
+  display: flex;         // Spec - Opera 12.1, Firefox 20+
+}

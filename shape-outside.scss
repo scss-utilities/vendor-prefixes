@@ -1,0 +1,24 @@
+// ---
+// example_input: >-
+//   .some-class {
+//     @include shape-outside($value: circle(50%));
+//   }
+//
+// example_output: >-
+//   .some-class {
+//     -webkit-shape-outside: circle(50%);
+//             shape-outside: circle(50%);
+//   }
+//
+// available_values: see https://developer.mozilla.org/en-US/docs/Web/CSS/shape-outside
+// ---
+@mixin shape-outside($value) {
+  @include render-vendor-prefixes(
+    $property: shape-outside,
+    $value: $value,
+    $vendor-list: (
+      -webkit,
+    ),
+    $prefix: property,
+  );
+}

@@ -1,0 +1,35 @@
+// ---
+// notice: This mixin takes a `SCSS` list of `($values)`
+//
+// example_input: >-
+//   .some-class {
+//     @include image-set(
+//       $property: background-image,
+//       $values: ("cat.png" 1px, "cat-2x.png" 2x, "cat-print.png" 600dpi),
+//     );
+//   }
+//
+// example_output: >-
+//   .some-class {
+//     background-image: -webkit-image-set("cat.png" 1px, "cat-2x.png" 2x, "cat-print.png" 600dpi);
+//     background-image: -moz-image-set("cat.png" 1px, "cat-2x.png" 2x, "cat-print.png" 600dpi);
+//     background-image: -ms-image-set("cat.png" 1px, "cat-2x.png" 2x, "cat-print.png" 600dpi);
+//     background-image: -o-image-set("cat.png" 1px, "cat-2x.png" 2x, "cat-print.png" 600dpi);
+//     background-image: image-set("cat.png" 1px, "cat-2x.png" 2x, "cat-print.png" 600dpi);
+//   }
+//
+// available_values: see https://developer.mozilla.org/en-US/docs/Web/CSS/image-set
+// ---
+@mixin image-set($property, $values) {
+  @include render-vendor-prefixes(
+    $property: $property,
+    $value: image-set($values),
+    $vendor-list: (
+      -webkit,
+      -moz,
+      -ms,
+      -o,
+    ),
+    $prefix: value,
+  );
+}

@@ -1,0 +1,28 @@
+// ---
+// example_input: >-
+//   .some-class {
+//     @include column-span($value: inherit);
+//   }
+//
+// example_output: >-
+//   .some-class {
+//     -webkit-column-span: inherit;
+//             column-span: inherit;
+//   }
+//
+// available_values:
+//   - none
+//     all
+//     initial
+//     inherit
+// ---
+@mixin column-span($value) {
+  @include render-vendor-prefixes(
+    $property: column-span,
+    $value: $value,
+    $vendor-list: (
+      -webkit,    // Chrome 50.0/4.0, Opera 37.0/15.0, Safari 9.0/3.1
+    ),
+    $prefix: property,
+  );
+}

@@ -1,0 +1,30 @@
+// ---
+// notice: No MS support as of 2019
+// example_input: >-
+//   .some-class {
+//     @include box-decoration-break($value: slice);
+//   }
+//
+// example_output: >-
+//   .some-class {
+//     -webkit-box-decoration-break: slice;
+//             box-decoration-break: slice;
+//   }
+//
+// available_values:
+//   - slice
+//     clone
+//     initial
+//     inherit
+//     unset
+// ---
+@mixin box-decoration-break($value) {
+  @include render-vendor-prefixes(
+    $property: box-decoration-break,
+    $value: $value,
+    $vendor-list: (
+      -webkit,    // Chrome 22.0, Opera 11.5, Safari 6.1
+    ),
+    $prefix: property,
+  );
+}

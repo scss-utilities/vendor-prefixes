@@ -1,0 +1,30 @@
+// ---
+// example_input: >-
+//   .some-class {
+//     @include border-bottom-left-radius($value: 42px);
+//   }
+//
+// example_output: >-
+//   .some-class {
+//     -webkit-border-bottom-left-radius: 42px;
+//        -moz-border-bottom-left-radius: 42px;
+//             border-bottom-left-radius: 42px;
+//   }
+//
+// available_values:
+//   - _length_
+//     _percentage_
+//     initial
+//     inherit
+// ---
+@mixin border-bottom-left-radius($value) {
+  @include render-vendor-prefixes(
+    $property: border-bottom-left-radius,
+    $value: $value,
+    $vendor-list: (
+      -webkit,    // Chrome 5.0/4.0, Safari 5.0/3.1
+      -moz,       // Firefox 4.0/3.0
+    ),
+    $prefix: property,
+  );
+}

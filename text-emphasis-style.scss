@@ -1,0 +1,26 @@
+// ---
+// notice: No MS support as of 2019
+//
+// example_input: >-
+//   .some-class {
+//     @include text-emphasis-style($value: 100px);
+//   }
+//
+// example_output: >-
+//   .some-class {
+//     -webkit-text-emphasis-style: 100px;
+//             text-emphasis-style: 100px;
+//   }
+//
+// available_values: see https://developer.mozilla.org/en-US/docs/Web/CSS/text-emphasis-style
+// ---
+@mixin text-emphasis-style($value) {
+  @include render-vendor-prefixes(
+    $property: text-emphasis-style,
+    $value: $value,
+    $vendor-list: (
+      -webkit,    // Android 4.4, Chrome 25.0, Opera 15.0, Safari 6.1
+    ),
+    $prefix: property,
+  );
+}

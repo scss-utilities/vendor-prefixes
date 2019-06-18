@@ -1,0 +1,39 @@
+// ---
+// notice: Setting a fallback is a good idea because of limited support.
+//
+// example_input: >-
+//   .some-class {
+//     @include text-align-last($value: auto);
+//   }
+//
+// example_output: >-
+//   .some-class {
+//     -webkit-text-align-last: auto;
+//        -moz-text-align-last: auto;
+//         -ms-text-align-last: auto;
+//             text-align-last: auto;
+//   }
+//
+// available_values:
+//   - auto
+//     left
+//     right
+//     center
+//     justify
+//     start
+//     end
+//     initial
+//     inherit
+// ---
+@mixin text-align-last($value) {
+  @include render-vendor-prefixes(
+    $property: text-align-last,
+    $value: $value,
+    $vendor-list: (
+      -moz,    // Firefox 49.0/12.0
+      -ms,     // IE 10 and 11 'start' and 'end' values are not supported
+      -o,      // Opera, not enabled by default
+    ),
+    $prefix: property,
+  );
+}

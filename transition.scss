@@ -1,0 +1,31 @@
+// ---
+// example_input: >-
+//   .some-class {
+//     @include transition($value: width 5s initial 2s);
+//   }
+//
+// example_output: >-
+//   .some-class {
+//     -webkit-transition: width 5s initial 2s;
+//        -moz-transition: width 5s initial 2s;
+//          -o-transition: width 5s initial 2s;
+//             transition: width 5s initial 2s;
+//   }
+//
+// available_values:
+//   - property duration timing-function delay
+//     initial
+//     inherit
+// ---
+@mixin transition($value) {
+  @include render-vendor-prefixes(
+    $property: transition,
+    $value: $value,
+    $vendor-list: (
+      -webkit,    // Chrome 26.0/4.0, Safari 6.1/3.1
+      -moz,       // Firefox 16.0/4.0
+      -o,         // Opera 12.1/10.5
+    ),
+    $prefix: property,
+  );
+}

@@ -1,0 +1,34 @@
+// ---
+// notice: MS not supported as of 2019
+//
+// example_input: >-
+//   .some-class {
+//     @include text-decoration-style($value: underline overline);
+//   }
+//
+// example_output: >-
+//   .some-class {
+//     -webkit-text-decoration-style: underline overline;
+//        -moz-text-decoration-style: underline overline;
+//             text-decoration-style: underline overline;
+//   }
+//
+// available_values:
+//   - none
+//     underline
+//     overline
+//     line-through
+//     initial
+//     inherit
+// ---
+@mixin text-decoration-line($value) {
+  @include render-vendor-prefixes(
+    $property: text-decoration-line,
+    $value: $value,
+    $vendor-list: (
+      -webkit,    // Safari 7.1
+      -moz,       // Firefox 36.0/6.0
+    ),
+    $prefix: property,
+  );
+}

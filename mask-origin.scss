@@ -1,0 +1,25 @@
+// ---
+// notice: No MS support as of 2019
+// example_input: >-
+//   .some-class {
+//     @include mask-origin($value: border-box);
+//   }
+//
+// example_output: >-
+//   .some-class {
+//     -webkit-mask-origin: border-box;
+//             mask-origin: border-box;
+//   }
+//
+// available_values: see https://developer.mozilla.org/en-US/docs/Web/CSS/mask-origin
+// ---
+@mixin mask-origin($value) {
+  @include render-vendor-prefixes(
+    $property: mask-origin,
+    $value: $value,
+    $vendor-list: (
+      -webkit,    // Android, Chrome, Opera, Safari 4.0
+    ),
+    $prefix: property,
+  );
+}

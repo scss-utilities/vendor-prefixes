@@ -1,0 +1,28 @@
+// ---
+// notice: No Opera support as of 2019
+// example_input: >-
+//   .some-class {
+//     @include font-kerning($value: auto);
+//   }
+//
+// example_output: >-
+//   .some-class {
+//     -webkit-font-kerning: auto;
+//             font-kerning: auto;
+//   }
+//
+// available_values:
+//   - auto
+//     normal
+//     none
+// ---
+@mixin font-kerning($value) {
+  @include render-vendor-prefixes(
+    $property: font-kerning,
+    $value: $value,
+    $vendor-list: (
+      -webkit,    // Chrome 32.0
+    ),
+    $prefix: property,
+  );
+}

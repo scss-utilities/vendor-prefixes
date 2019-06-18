@@ -1,0 +1,60 @@
+// ---
+// notice: Experimental and no MS support as of 2019
+//
+// example_input: >-
+//   .some-class {
+//     @include image-rendering($value: crisp-edges);
+//   }
+//
+// example_output: >-
+//   .some-class {
+//     image-rendering: -webkit-optimize-contrast;
+//     -ms-interpolation-mode: bicubic;
+//     image-rendering: -moz-crisp-edges;
+//     image-rendering: -o-crisp-edges;
+//     image-rendering: crisp-edges;
+//   }
+//
+// available_values:
+//   - auto:            UA dependent
+//     smooth:          scale image with algorithm similar to bilinear interpolation
+//     high-quality:    prioritized when resources are constrained, otherwise identical to smooth
+//     crisp-edges:     preserve contrast during image scaling
+//     pixelated:       scale using nearest neighbor algorithm
+//     optimizeQuality: use smooth
+//     optimizeSpeed:   use pixelated
+//
+// info_links:
+//   - https://drafts.csswg.org/css-images-3/#the-image-rendering
+//     https://developer.mozilla.org/en-US/docs/Web/CSS/image-rendering
+//     https://drafts.csswg.org/css-images-3/#the-image-rendering
+//     https://github.com/postcss/autoprefixer/issues/449
+//     https://stackoverflow.com/questions/3900436/image-scaling-by-css-is-there-a-webkit-alternative-for-moz-crisp-edges
+// ---
+@mixin image-rendering($value) {
+  @if $value == crisp-edges {
+    image-rendering: -webkit-optimize-contrast;  // Android, Chrome, Safari
+    -ms-interpolation-mode: bicubic;             // IE 8-
+    @include render-vendor-prefixes(
+      $property: image-rendering,
+      $value: $value,
+      $vendor-list: (
+        -moz,       // Firefox
+        -o,         // Opera
+      ),
+      $prefix: value,
+    );
+  }
+  @else if $value == pixelated {
+    image-rendering: optimizeSpeed;              // Lagacy perposal fallback
+    -ms-interpolation-mode: nearest-neighbor;    // IE 8-
+    image-rendering: #{$value};
+  }
+  @else if $value == smooth {
+    image-rendering: optimizeQuality;            // Lagacy perposal fallback
+    image-rendering: #{$value};
+  }
+  @else {
+    image-rendering: #{$value};
+  }
+}

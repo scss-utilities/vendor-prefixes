@@ -1,0 +1,31 @@
+// ---
+// notice: No MS support as of 2019
+//
+// example_input: >-
+//   .some-class {
+//     @include text-emphasis-color($value: blue);
+//   }
+//
+// example_output: >-
+//   .some-class {
+//     -webkit-text-emphasis-color: blue;
+//             text-emphasis-color: blue;
+//   }
+//
+// available_values:
+//   - _color_
+//     transparent
+//     unset
+//     initial
+//     inherit
+// ---
+@mixin text-emphasis-color($value) {
+  @include render-vendor-prefixes(
+    $property: text-emphasis-color,
+    $value: $value,
+    $vendor-list: (
+      -webkit,    // Android 4.4, Chrome 25.0, Opera 15.0, Safari 6.1
+    ),
+    $prefix: property,
+  );
+}

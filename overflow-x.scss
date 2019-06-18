@@ -1,0 +1,30 @@
+// ---
+// example_input: >-
+//   .some-class {
+//     @include overflow-x($value: scroll);
+//   }
+//
+// example_output: >-
+//   .some-class {
+//     -ms-overflow-x: scroll;
+//         overflow-x: scroll;
+//   }
+//
+// available_values:
+//   - visible
+//     hidden
+//     scroll
+//     auto
+//     initial
+//     inherit
+// ---
+@mixin overflow-x($value) {
+  @include render-vendor-prefixes(
+    $property: overflow-x,
+    $value: $value,
+    $vendor-list: (
+      -ms,        // IE/Edge 9.0/8.0
+    ),
+    $prefix: property,
+  );
+}

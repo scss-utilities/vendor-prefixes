@@ -1,0 +1,31 @@
+// ---
+// example_input: >-
+//   .some-class {
+//     @include align-items($value: inherit);
+//   }
+//
+// example_output: >-
+//   .some-class {
+//     -webkit-align-items: inherit;
+//             align-items: inherit;
+//   }
+//
+// available_values:
+//  stretch       - Default, items stretch to take up space
+//  center        - Items are _center-positioned_ within flex container
+//  flex-start    - Items are _start-positioned_ within flex container
+//  flex-end      - Items are _end-positioned_ within flex container
+//  baseline      - Items are positions at baseline within flex container
+//  inital
+//  inherit
+// ---
+@mixin align-items($value) {
+  @include render-vendor-prefixes(
+    $property: align-items,
+    $value: $value,
+    $vendor-list: (
+      -webkit, // Safari 9.0/7.0
+    ),
+    $prefix: property
+  );
+}

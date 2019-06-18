@@ -1,0 +1,25 @@
+// ---
+// notice: No IE support
+// example_input: >-
+//   .some-class {
+//     @include mask-position($value: top right);
+//   }
+//
+// example_output: >-
+//   .some-class {
+//     -webkit-mask-position: top right;
+//             mask-position: top right;
+//   }
+//
+// available_values: see https://developer.mozilla.org/en-US/docs/Web/CSS/mask-position
+// ---
+@mixin mask-position($value) {
+  @include render-vendor-prefixes(
+    $property: mask-position,
+    $value: $value,
+    $vendor-list: (
+      -webkit,    // Android 37.0, Chrome 1.0, Opera 15.0, Safari 4.0
+    ),
+    $prefix: property,
+  );
+}

@@ -1,0 +1,26 @@
+// ---
+// notice: no MS support as of 2019
+// example_input: >-
+//   .some-class {
+//     @include shape-image-threshold($value: 0.5);
+//   }
+//
+// example_output: >-
+//   .some-class {
+//     -webkit-shape-image-threshold: 0.5;
+//             shape-image-threshold: 0.5;
+//   }
+//
+// available_values:
+//   - _float_ 0-1
+// ---
+@mixin shape-image-threshold($value) {
+  @include render-vendor-prefixes(
+    $property: shape-image-threshold,
+    $value: $value,
+    $vendor-list: (
+      -webkit,
+    ),
+    $prefix: property,
+  );
+}

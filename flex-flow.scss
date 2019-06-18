@@ -1,0 +1,29 @@
+// ---
+// example_input: >-
+//   .some-class {
+//     @include flex-flow($value: inherit);
+//   }
+//
+// example_output: >-
+//   .some-class {
+//     -webkit-flex-flow: inherit;
+//        -moz-flex-flow: inherit;
+//             flex-flow: inherit;
+//   }
+//
+// available_values:
+//   - flex-direction flex-wrap
+//     initial
+//     inherit
+// ---
+@mixin flex-flow($value) {
+  @include render-vendor-prefixes(
+    $property: flex-flow,
+    $value: $value,
+    $vendor-list: (
+      -webkit,    // Chrome 29.0/21.0, Opera 37.0/15.0, Safari 9.0/6.1
+      -moz,       // Firefox 28.0/18.0
+    ),
+    $prefix: property,
+  );
+}

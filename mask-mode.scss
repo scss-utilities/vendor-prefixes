@@ -1,0 +1,29 @@
+// ---
+// notice: Firefox and MS support as of 2019 is questionable
+// example_input: >-
+//   .some-class {
+//     @include mask-mode($value: none);
+//   }
+//
+// example_output: >-
+//   .some-class {
+//     -webkit-mask-mode: none;
+//        -moz-mask-mode: none;
+//         -ms-mask-mode: none;
+//             mask-mode: none;
+//   }
+//
+// available_values: see https://developer.mozilla.org/en-US/docs/Web/CSS/mask-mode
+// ---
+@mixin mask-mode($value) {
+  @include render-vendor-prefixes(
+    $property: mask-mode,
+    $value: $value,
+    $vendor-list: (
+      -webkit,    // More research needed
+      -moz,       // Firefox 53.0
+      -ms,        // More research needed
+    ),
+    $prefix: property,
+  );
+}

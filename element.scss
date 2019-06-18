@@ -1,0 +1,26 @@
+// ---
+// notice: Experimental/Draft see, https://drafts.csswg.org/css-images-4/#funcdef-element
+//
+// example_input: >-
+//   .some-class {
+//     @include element($property: background, $value: #some-id);
+//   }
+//
+// example_output: >-
+//   .some-class {
+//     background: -moz-element(#some-id);
+//     background:      element(#some-id);
+//   }
+//
+// available_values: see https://drafts.csswg.org/css-images-4/#funcdef-element
+// ---
+@mixin element($property, $value) {
+  @include render-vendor-prefixes(
+    $property: $property,
+    $value: element(#{$value}),
+    $vendor-list: (
+      -moz,
+    ),
+    $prefix: value,
+  );
+}

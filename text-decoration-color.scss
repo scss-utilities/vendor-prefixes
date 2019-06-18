@@ -1,0 +1,31 @@
+// ---
+// notice: MS not supported as of 2019
+//
+// example_input: >-
+//   .some-class {
+//     @include text-decoration-style($value: blue);
+//   }
+//
+// example_output: >-
+//   .some-class {
+//     -webkit-text-decoration-style: blue;
+//        -moz-text-decoration-style: blue;
+//             text-decoration-style: blue;
+//   }
+//
+// available_values:
+//   - _color_
+//     initial
+//     inherit
+// ---
+@mixin text-decoration-color($value) {
+  @include render-vendor-prefixes(
+    $property: text-decoration-color,
+    $value: $value,
+    $vendor-list: (
+      -webkit,    // Safari 7.1
+      -moz,       // Firefox 36.0/6.0
+    ),
+    $prefix: property,
+  );
+}

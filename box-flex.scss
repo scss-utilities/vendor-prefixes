@@ -1,0 +1,26 @@
+// ---
+// notice: depricated, see https://developer.mozilla.org/en-US/docs/Web/CSS/box-flex
+//
+// example_input: >-
+//   .some-class {
+//     @include box-flex($value: 0);
+//   }
+//
+// example_output: >-
+//   .some-class {
+//     -webkit-box-flex: 0;
+//         -webkit-flex: 0;
+//        -moz-box-flex: 0;
+//         -ms-box-flex: 0;
+//             box-flex: 0;
+//   }
+//
+// available_values: _number_
+// ---
+@mixin flex($value) {
+  -webkit-box-flex: $value; // Old - iOS 6-, Safari 3.1-6
+      -webkit-flex: $value; // Chrome
+     -moz-box-flex: $value; // Old - Firefox 19-
+          -ms-flex: $value; // IE 10
+          box-flex: $value; // Old spec - Opera 12.1, Firefox 20+
+}

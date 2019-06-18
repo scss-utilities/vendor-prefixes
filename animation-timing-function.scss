@@ -1,0 +1,39 @@
+// ---
+// example_input: >-
+//   .some-class {
+//     @include animation-timing-function($value: ease-in);
+//   }
+//
+// example_output: >-
+//   .some-class {
+//     -webkit-animation-timing-function: ease-in;
+//        -moz-animation-timing-function: ease-in;
+//          -o-animation-timing-function: ease-in;
+//             animation-timing-function: ease-in;
+//   }
+//
+// available_values:
+//   - linear:                    No speed differance between start and finish
+//     ease:                      Default, slow start to fast mid ans slow end
+//     ease-in:                   Slow start
+//     ease-out:                  Slow end
+//     ease-in-out:               Equivalent to ease-in + ease-out
+//     step-start:                Equivalent to steps(1, start)
+//     steps-end:                 Equivalent to steps(1, end)
+//     steps(step, start, end):   Much like Python range()
+//     cubic-bezier(n, n, n, n):  `n` maybe floats between 1 and 0
+//     inital
+//     inherit
+// ---
+@mixin animation-timing-function($value) {
+  @include render-vendor-prefixes(
+    $property: animation-timing-function,
+    $value: $value,
+    $vendor-list: (
+      -webkit,  // Chrome 43.0/4.0, Opera 30.0/15.0, Safari 9.0/4.0
+      -moz,     // Firefox 16.0/5.0
+      -o,       // Opera 12.0
+    ),
+    $prefix: property,
+  );
+}

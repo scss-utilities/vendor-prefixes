@@ -1,0 +1,30 @@
+// ---
+// example_input: >-
+//   .some-class {
+//     @include column-gap($value: 42px);
+//   }
+//
+// example_output: >-
+//   .some-class {
+//     -webkit-column-gap: 42px;
+//        -moz-column-gap: 42px;
+//             column-gap: 42px;
+//   }
+//
+// available_values:
+//   - _length_
+//     normal
+//     initial
+//     inherit
+// ---
+@mixin column-gap($value) {
+  @include render-vendor-prefixes(
+    $property: column-gap,
+    $value: $value,
+    $vendor-list: (
+      -webkit,    // Chrome 50.0/4.0, Opera 37.0/15.0, Safari 9.0/3.1
+      -moz,       // Firefox 52.0/2.0
+    ),
+    $prefix: property,
+  );
+}

@@ -1,0 +1,30 @@
+// ---
+// example_input: >-
+//   .some-class {
+//     @include column-count($value: 2);
+//   }
+//
+// example_output: >-
+//   .some-class {
+//     -webkit-column-count: 2;
+//        -moz-column-count: 2;
+//             column-count: 2;
+//   }
+//
+// available_values:
+//   - _number_
+//     auto
+//     initial
+//     inherit
+// ---
+@mixin column-count($value) {
+  @include render-vendor-prefixes(
+    $property: column-count,
+    $value: $value,
+    $vendor-list: (
+      -webkit,    // Chrome 50.0/4.0, Opera 37.0/15.0, Safari 9.0/3.1
+      -moz,       // Firefox 52.0/2.0
+    ),
+    $prefix: property,
+  );
+}

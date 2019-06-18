@@ -1,0 +1,32 @@
+// ---
+// example_input: >-
+//   .some-class {
+//     @include perspective($value: 100px);
+//   }
+//
+// example_output: >-
+//   .some-class {
+//     -webkit-perspective: 100px;
+//        -moz-perspective: 100px;
+//         -ms-perspective: 100px;
+//             perspective: 100px;
+//   }
+//
+// available_values:
+//   - _length_
+//     none
+//     initial
+//     inherit
+// ---
+@mixin perspective($value) {
+  @include render-vendor-prefixes(
+    $property: perspective,
+    $value: $value,
+    $vendor-list: (
+      -webkit,    // Chrome 36.0/12.0, Opera 23.0/15.0, Safari 9.0/4.0.3
+      -moz,       // Firefox 16.0/10.0
+      -ms,        // ... more research needed..
+    ),
+    $prefix: property,
+  );
+}

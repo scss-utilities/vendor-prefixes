@@ -1,0 +1,29 @@
+// ---
+// example_input: >-
+//   .some-class {
+//     @include flex-grow($value: inherit);
+//   }
+//
+// example_output: >-
+//   .some-class {
+//     -webkit-flex-grow: inherit;
+//        -moz-flex-grow: inherit;
+//             flex-grow: inherit;
+//   }
+//
+// available_values:
+//   - _number_
+//     initial
+//     inherit
+// ---
+@mixin flex-grow($value) {
+  @include render-vendor-prefixes(
+    $property: flex-grow,
+    $value: $value,
+    $vendor-list: (
+      -webkit,    // Chrome 29.0/21.0, Opera 37.0/15.0, Safari 9.0/6.1
+      -moz,       // Firefox 28.0/18.0
+    ),
+    $prefix: property,
+  );
+}

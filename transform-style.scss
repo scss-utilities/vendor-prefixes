@@ -1,0 +1,30 @@
+// ---
+// example_input: >-
+//   .some-class {
+//     @include transform-style($value: flat);
+//   }
+//
+// example_output: >-
+//   .some-class {
+//     -webkit-transform-style: flat;
+//        -moz-transform-style: flat;
+//             transform-style: flat;
+//   }
+//
+// available_values:
+//   - flat
+//     perspective-3d
+//     initial
+//     inherit
+// ---
+@mixin transform-style($value) {
+  @include render-vendor-prefixes(
+    $property: transform-style,
+    $value: $value,
+    $vendor-list: (
+      -webkit,    // Chrome 36.0/12.0, Opera 23.0/15, Safari 9.0/4.0
+      -moz,       // Firefox 16.0/10.
+    ),
+    $prefix: property,
+  );
+}

@@ -1,0 +1,25 @@
+// ---
+// example_input: >-
+//   .some-class {
+//     @include opacity($value: 0.5);
+//   }
+//
+// example_output: >-
+//   .some-class {
+//     opacity: 0.5;
+//     filter: alpha(opacity=50);
+//   }
+//
+// available_values:
+//   - _float_ 0-1
+//     initial
+//     inherit
+// ---
+@mixin opacity($value) {
+  opacity: $value;
+  $ie-value: $value;
+  @if type-of($value) == number {
+    $ie-value: max(round($value * 100), 100);
+  }
+  filter: alpha(opacity=$ie-value);  // IE 5-8
+}

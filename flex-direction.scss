@@ -1,0 +1,32 @@
+// ---
+// example_input: >-
+//   .some-class {
+//     @include flex-direction($value: row);
+//   }
+//
+// example_output: >-
+//   .some-class {
+//     -webkit-flex-direction: row;
+//        -moz-flex-direction: row;
+//             flex-direction: row;
+//   }
+//
+// available_values:
+//   - row
+//     row-reverse
+//     column
+//     column-reverse
+//     initial
+//     inherit
+// ---
+@mixin flex-direction($value) {
+  @include render-vendor-prefixes(
+    $property: flex-direction,
+    $value: $value,
+    $vendor-list: (
+      -webkit,    // Chrome 29.0/21.0, Opera 37.0/15.0, Safari 9.0/6.1
+      -moz,       // Firefox 28.0/18.0
+    ),
+    $prefix: property,
+  );
+}

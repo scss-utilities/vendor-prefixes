@@ -1,0 +1,34 @@
+// ---
+// example_input: >-
+//   .some-class {
+//     @include user-select($value: auto);
+//   }
+//
+// example_output: >-
+//   .some-class {
+//     -webkit-user-select: auto;
+//        -moz-user-select: auto;
+//         -ms-user-select: auto;
+//          -o-user-select: auto;
+//             user-select: auto;
+//   }
+//
+// available_values:
+//   - auto
+//     none
+//     text
+//     all
+// ---
+@mixin user-select($value) {
+  @include render-vendor-prefixes(
+    $property: user-select,
+    $value: $value,
+    $vendor-list: (
+      -webkit,    // Chrome 54.0/6.0, Opera 41.0/15.0, Savari 3.1-
+      -moz,       // Firefox 39-
+      -ms,        // IE/Edge 10.0
+      -o          // Opera 15-
+    ),
+    $prefix: property,
+  );
+}

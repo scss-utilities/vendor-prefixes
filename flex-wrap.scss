@@ -1,0 +1,31 @@
+// ---
+// example_input: >-
+//   .some-class {
+//     @include flex-wrap($value: wrap-reverse);
+//   }
+//
+// example_output: >-
+//   .some-class {
+//     -webkit-flex-wrap: wrap-reverse;
+//        -moz-flex-wrap: wrap-reverse;
+//             flex-wrap: wrap-reverse;
+//   }
+//
+// available_values:
+//   - nowrap
+//     wrap
+//     wrap-reverse
+//     initial
+//     inherit
+// ---
+@mixin flex-wrap($value) {
+  @include render-vendor-prefixes(
+    $property: flex-wrap,
+    $value: $value,
+    $vendor-list: (
+      -webkit,    // Chrome 29.0/21.0, Opera 37.0/15.0, Safari 9.0/6.1
+      -moz,       // Firefox 28.0/18.0
+    ),
+    $prefix: property,
+  );
+}

@@ -1,0 +1,31 @@
+// ---
+// notice: No MS support as of 2019
+//
+// example_input: >-
+//   .some-class {
+//     @include text-emphasis-position($value: over right);
+//   }
+//
+// example_output: >-
+//   .some-class {
+//     -webkit-text-emphasis-position: over right;
+//             text-emphasis-position: over right;
+//   }
+//
+// available_values:
+//   - over  [ left | right ]
+//     under [ left | right ]
+//     unset
+//     initial
+//     inherit
+// ---
+@mixin text-emphasis-position($value) {
+  @include render-vendor-prefixes(
+    $property: text-emphasis-position,
+    $value: $value,
+    $vendor-list: (
+      -webkit,    // Android 4.4, Chrome 25.0, Opera 15.0, Safari 6.1
+    ),
+    $prefix: property,
+  );
+}

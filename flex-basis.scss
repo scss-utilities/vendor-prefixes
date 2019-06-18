@@ -1,0 +1,30 @@
+// ---
+// example_input: >-
+//   .some-class {
+//     @include flex-basis($value: inherit);
+//   }
+//
+// example_output: >-
+//   .some-class {
+//     -webkit-flex-basis: inherit;
+//        -moz-flex-basis: inherit;
+//             flex-basis: inherit;
+//   }
+//
+// available_values:
+//   - _number_
+//     auto
+//     initial
+//     inherit
+// ---
+@mixin flex-basis($value) {
+  @include render-vendor-prefixes(
+    $property: flex-basis,
+    $value: $value,
+    $vendor-list: (
+      -webkit,    // Chrome 29.0/21.0, Opera 37.0/15.0, Safari 9.0/6.1
+      -moz,       // Firefox 28.0/18.0
+    ),
+    $prefix: property,
+  );
+}

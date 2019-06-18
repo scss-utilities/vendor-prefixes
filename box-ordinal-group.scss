@@ -1,0 +1,32 @@
+// ---
+// notice: Depricated, see https://developer.mozilla.org/en-US/docs/Web/CSS/-moz-box-ordinal-group
+//
+// example_input: >-
+//   .some-class {
+//     @include ordinal-group-order($value: 1);
+//   }
+//
+// example_output: >-
+//   .some-class {
+//     -webkit-box-ordinal-group: 1;
+//        -moz-box-ordinal-group: 1;
+//             box-ordinal-group: 1;
+//   }
+//
+// available_values:
+//   - _number_
+//     inherit
+//     initial
+//     unset
+// ---
+@mixin box-ordinal-group($value) {
+  @include render-vendor-prefixes(
+    $property: box-ordinal-group,
+    $value: $value,
+    $vendor-list: (
+      -webkit,    // iOS 6-, Safari 3.1-6
+      -moz,       // Firefox 19-
+    ),
+    $prefix: property,
+  );
+}

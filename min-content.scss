@@ -1,0 +1,26 @@
+// ---
+// example_input: >-
+//   .some-class {
+//     @import min-content($property: width);
+//   }
+//
+// example_output: >-
+//   .some-class {
+//     width: -webkit-min-content;
+//     width: -moz-min-content;
+//     width: min-content;
+//   }
+//
+// available_values: see https://www.w3.org/TR/css-sizing-3/#min-content
+// ---
+@mixin min-content($property) {
+  @include render-vendor-prefixes(
+    $property: $property,
+    $value: min-content,
+    $vendor-list: (
+      -webkit,
+      -moz,
+    ),
+    $prefix: value,
+  );
+}

@@ -1,0 +1,30 @@
+// ---
+// notice: For _flexable_ elements
+// example_input: >-
+//   .some-class {
+//     @include order($value: initial);
+//   }
+//
+// example_output: >-
+//   .some-class {
+//     -webkit-order: initial;
+//         moz-order: initial;
+//             order: initial;
+//   }
+//
+// available_values:
+//   - _number_
+//     initial
+//     inherit
+// ---
+@mixin order($value) {
+  @include render-vendor-prefixes(
+    $property: order,
+    $value: $value,
+    $vendor-list: (
+      -webkit,    // Chrome 29.0/21.0, Safari 9.0/6.1
+      -moz,       // Firefox 28.0/18.0
+    ),
+    $prefix: property,
+  );
+}

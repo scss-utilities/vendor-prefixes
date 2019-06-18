@@ -1,0 +1,32 @@
+// ---
+// example_input: >-
+//   .some-class {
+//     @include animation-duration($value: 5s);
+//   }
+//
+// example_output: >-
+//   .some-class {
+//     -webkit-animation-duration: 5s;
+//        -moz-animation-duration: 5s;
+//          -o-animation-duration: 5s;
+//             animation-duration: 5s;
+//   }
+//
+// available_values:
+//   - _time_
+//     initial
+//     inherit
+//     unset
+// ---
+@mixin animation-duration($value) {
+  @include render-vendor-prefixes(
+    $property: animation-duration,
+    $value: $value,
+    $vendor-list: (
+      -webkit,  // Chrome 43.0/4.0, Opera 30.0/15.0, Safari 9.0/4.0
+      -moz,     // Firefox 16.0/5.0
+      -o,       // Opera 12.0
+    ),
+    $prefix: property,
+  );
+}

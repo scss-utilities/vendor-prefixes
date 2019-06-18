@@ -1,0 +1,27 @@
+// ---
+// notice: for compatibilaty see https://caniuse.com/#search=max-content
+// example_input: >-
+//   .some-class {
+//     @import max-content($property: width);
+//   }
+//
+// example_output: >-
+//   .some-class {
+//     width: -webkit-max-content;
+//     width: -moz-max-content;
+//     width: max-content;
+//   }
+//
+// available_values: see https://www.w3.org/TR/css-sizing-3/#max-content
+// ---
+@mixin max-content($property) {
+  @include render-vendor-prefixes(
+    $property: $property,
+    $value: max-content,
+    $vendor-list: (
+      -webkit,
+      -moz,
+    ),
+    $prefix: value,
+  );
+}

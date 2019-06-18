@@ -1,0 +1,50 @@
+// ---
+// example_input: >-
+//   @include keyframes(fade-out) {
+//       0% { opacity: 1; }
+//     100% { opacity: 0; }
+//   }
+//
+// example_output: >-
+//   @-webkit-keyframes fade-out {
+//       0% { opacity: 1; }
+//     100% { opacity: 0; }
+//   }
+//   @-moz-keyframes fade-out {
+//       0% { opacity: 1; }
+//     100% { opacity: 0; }
+//   }
+//   @-ms-keyframes fade-out {
+//       0% { opacity: 1; }
+//     100% { opacity: 0; }
+//   }
+//   @-o-keyframes fade-out {
+//       0% { opacity: 1; }
+//     100% { opacity: 0; }
+//   }
+//   @keyframes fade-out {
+//       0% { opacity: 1; }
+//     100% { opacity: 0; }
+//   }
+//
+// available_values: see https://developer.mozilla.org/en-US/docs/Web/CSS/@keyframes
+//
+// info_links: https://medium.com/@justinbrazeau/10-useful-sass-mixins-for-automation-833cdee9d69b
+// ---
+@mixin keyframes($animation-name) {
+  @-webkit-keyframes #{$animation-name} {   // Chrome 43.0/4.0, Opera 30.0/15.0, Safari 9.0/4.0
+    @content;
+  }
+  @-moz-keyframes #{$animation-name} {      // Firefox 16.0/4.0
+    @content;
+  }
+  @-ms-keyframes #{$animation-name} {
+    @content;
+  }
+  @-o-keyframes #{$animation-name} {        // Opera 12.0
+    @content;
+  }
+  @keyframes #{$animation-name} {
+    @content;
+  }
+}

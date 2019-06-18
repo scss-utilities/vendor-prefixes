@@ -1,0 +1,33 @@
+// ---
+// example_input: >-
+//   .some-class {
+//     @include animation-name($value: inherit);
+//   }
+//
+// example_output: >-
+//   .some-class {
+//     -webkit-animation-name: inherit;
+//        -moz-animation-name: inherit;
+//          -o-animation-name: inherit;
+//             animation-name: inherit;
+//   }
+//
+// available_values:
+//   - _keyframe-name_
+//     none
+//     initial
+//     inherit
+//     unset
+// ---
+@mixin animation-name($value) {
+  @include render-vendor-prefixes(
+    $property: animation-name,
+    $value: $value,
+    $vendor-list: (
+      -webkit,  // Chrome 43.0/4.0, Opera 30.0/15.0, Safari 9.0/4.0
+      -moz,     // Firefox 16.0/5.0
+      -o,       // Opera 12.0
+    ),
+    $prefix: property,
+  );
+}

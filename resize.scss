@@ -1,0 +1,31 @@
+// ---
+// notice: No MS support as of 2019
+// example_input: >-
+//   .some-class {
+//     @include resize($value: both);
+//   }
+//
+// example_output: >-
+//   .some-class {
+//     -moz-resize: both;
+//          resize: both;
+//   }
+//
+// available_values:
+//   - none
+//     both
+//     horizontal
+//     vertical
+//     initial
+//     inherit
+// ---
+@mixin resize($value) {
+  @include render-vendor-prefixes(
+    $property: resize,
+    $value: $value,
+    $vendor-list: (
+      -moz,       // Firefox 5.0/4.0
+    ),
+    $prefix: property,
+  );
+}

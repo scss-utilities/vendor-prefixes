@@ -1,0 +1,35 @@
+// ---
+// example_input: >-
+//   .some-class {
+//     @include animation-direction($value: reverse);
+//   }
+//
+// example_output: >-
+//   .some-class {
+//     -webkit-animation-direction: reverse;
+//        -moz-animation-direction: reverse;
+//          -o-animation-direction: reverse;
+//             animation-direction: reverse;
+//   }
+//
+// available_values:
+//   - normal
+//     reverse
+//     alternate
+//     alternate-reverse
+//     initial
+//     inherit
+//     unset
+// ---
+@mixin animation-direction($value) {
+  @include render-vendor-prefixes(
+    $property: animation-direction,
+    $value: $value,
+    $vendor-list: (
+      -webkit,  // Chrome 43/4.0, Opera 30.0/15
+      -moz,     // Firefox 16.0/5.0
+      -o,       // Opera 12.0
+    ),
+    $prefix: property,
+  );
+}

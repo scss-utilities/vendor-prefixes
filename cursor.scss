@@ -1,0 +1,31 @@
+// ---
+// example_input: >-
+//   .some-class {
+//     @include cursor($value: auto);
+//   }
+//
+// example_output: >-
+//   .some-class {
+//     -webkit-cursor: auto;
+//        -moz-cursor: auto;
+//          -o-cursor: auto;
+//             cursor: auto;
+//   }
+//
+// available_values: see https://developer.mozilla.org/en-US/docs/Web/CSS/cursor
+// info_links:
+//   - https://www.w3.org/TR/css-ui-3/#cursor
+//     https://www.w3schools.com/cssref/pr_class_cursor.asp
+// ---
+@mixin cursor($value) {
+  @include render-vendor-prefixes(
+    $property: cursor,
+    $value: $value,
+    $vendor-list: (
+      -webkit,    // Chrome 18.0/1.0, Opera 15.0/14.0, Safari 4.0/3.0
+      -moz,       // Firefox 1.5/1.0
+      -o          // ... more research needed...
+    ),
+    $prefix: value,
+  );
+}

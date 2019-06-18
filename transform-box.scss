@@ -1,0 +1,32 @@
+// ---
+// example_input: >-
+//   .some-class {
+//     @include transform-box($value: flat);
+//   }
+//
+// example_output: >-
+//   .some-class {
+//     -webkit-transform-box: flat;
+//        -moz-transform-box: flat;
+//             transform-box: flat;
+//   }
+//
+// available_values:
+//   - border-box
+//     fill-box
+//     view-box
+//     initial
+//     inherit
+//     unset
+// ---
+@mixin transform-box($value) {
+  @include render-vendor-prefixes(
+    $property: transform-box,
+    $value: $value,
+    $vendor-list: (
+      -webkit,    // Chrome 36.0/12.0, Opera 23.0/15, Safari 9.0/4.0
+      -moz,       // Firefox 16.0/10.
+    ),
+    $prefix: property,
+  );
+}

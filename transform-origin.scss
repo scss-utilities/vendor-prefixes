@@ -1,0 +1,45 @@
+// ---
+// example_input: >-
+//   .some-class {
+//     @include text-stroke-width($value: thin);
+//   }
+//
+// example_output: >-
+//   .some-class {
+//     -webkit-text-stroke-width: thin;
+//          -o-text-stroke-width: thin;
+//             text-stroke-width: thin;
+//   }
+//
+// available_values:
+//     x-axis y-axis z-axis
+//     inital
+//     inherit
+// ---
+@mixin transform-origin($value) {
+  @if length($values) <=2 {
+    @include render-vendor-prefixes(
+      $property: transform-origin,
+      $value: $value,
+      $vendor-list: (
+        -webkit,  // Chrome 36.0/4.0, Opera 23.0/15.0, Safari 9.0/3.2
+        -moz,     // Firefox 16.0/3.5
+        -ms,      // IE/Edge 10.0/9.0
+        -o,       // Opera 10.5
+      ),
+      $prefix: property,
+    );
+  }
+  @else {
+    @include render-vendor-prefixes(
+      $property: transform-origin,
+      $value: $values,
+      $vendor-list: (
+        -webkit,  // Chrome 36.0/12.0, Opera 23.0/15.0, Safari 9.0/4.0
+        -moz,     // Firefox 10.0
+      ),
+      $prefix: property,
+    );
+  }
+
+}

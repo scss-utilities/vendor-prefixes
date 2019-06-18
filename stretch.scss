@@ -1,0 +1,37 @@
+// ---
+// example_input: >-
+//   .some-class {
+//     @include stretch($property: width);
+//   }
+//
+// example_output: >-
+//   .some-class {
+//     width: webkit-stretch;
+//     width: -moz-stretch;
+//     width: stretch;
+//   }
+//
+// available_values:
+//   - ultra-condensed
+//     extra-condensed
+//     condensed
+//     semi-condensed
+//     normal
+//     semi-expanded
+//     expanded
+//     extra-expanded
+//     ultra-expanded
+//     initial
+//     inherit
+// ---
+@mixin stretch($property) {
+  @include render-vendor-prefixes(
+    $property: $property,
+    $value: stretch,
+    $vendor-list: (
+      -webkit,
+      -moz,
+    ),
+    $prefix: value,
+  );
+}

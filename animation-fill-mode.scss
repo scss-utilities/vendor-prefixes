@@ -1,0 +1,35 @@
+// ---
+// example_input: >-
+//   .some-class {
+//     @include animation-fill-mode($value: forwards);
+//   }
+//
+// example_output: >-
+//   .some-class {
+//     -webkit-animation-fill-mode: forwards;
+//        -moz-animation-fill-mode: forwards;
+//          -o-animation-fill-mode: forwards;
+//             animation-fill-mode: forwards;
+//   }
+//
+// available_values:
+//   - none
+//     forwards
+//     backwards
+//     both
+//     initial
+//     inherit
+//     unset
+// ---
+@mixin animation-fill-mode($value) {
+  @include render-vendor-prefixes(
+    $property: animation-fill-mode,
+    $value: $value,
+    $vendor-list: (
+      -webkit,  // Chrome 43.0/4.0, Opera 30.0/15.0, Safari 9.0/4.0
+      -moz,     // Firefox 16.0/5.0
+      -o,       // Opera 12.0
+    ),
+    $prefix: property,
+  );
+}

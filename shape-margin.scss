@@ -1,0 +1,29 @@
+// ---
+// notice: no MS support as of 2019
+// example_input: >-
+//   .some-class {
+//     @include shape-margin($value: 42px);
+//   }
+//
+// example_output: >-
+//   .some-class {
+//     -webkit-shape-margin: 42px;
+//             shape-margin: 42px;
+//   }
+//
+// available_values:
+//   - _length-percentage_
+//     unset
+//     initial
+//     inherit
+// ---
+@mixin shape-margin($value) {
+  @include render-vendor-prefixes(
+    $property: shape-margin,
+    $value: $value,
+    $vendor-list: (
+      -webkit,
+    ),
+    $prefix: property,
+  );
+}

@@ -1,0 +1,32 @@
+// ---
+// notice: This mixin takes a `SCSS` list of `$values...`
+//
+// example_input: >-
+//   .some-class {
+//     @include font-feature-settings("c2sc", "smcp");
+//   }
+//
+// example_output: >-
+//   .some-class {
+//     -webkit-font-feature-settings: "c2sc", "smcp";
+//        -moz-font-feature-settings: "c2sc", "smcp";
+//         -ms-font-feature-settings: "c2sc", "smcp";
+//          -o-font-feature-settings: "c2sc", "smcp";
+//             font-feature-settings: "c2sc", "smcp";
+//   }
+//
+// available_values: see https://developer.mozilla.org/en-US/docs/Web/CSS/font-feature-settings
+// ---
+@mixin font-feature-settings($values...) {
+  @include render-vendor-prefixes(
+    $property: font-feature-settings,
+    $value: $values,
+    $vendor-list: (
+      -webkit,    // Chrome 45.0/21.0
+      -moz,       // Firefox 35.0/15.0
+      -ms,        // Maybe rumer
+      -o,         // Opera 29.0/15.0
+    ),
+    $prefix: property,
+  );
+}

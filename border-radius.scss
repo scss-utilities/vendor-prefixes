@@ -1,0 +1,31 @@
+// ---
+// example_input: >-
+//   .some-class {
+//     @include border-radius($value: 10% 30% 50% 70%);
+//   }
+//
+// example_output: >-
+//   .some-class {
+//     -webkit-border-radius: 10% 30% 50% 70%;
+//        -moz-border-radius: 10% 30% 50% 70%;
+//             border-radius: 10% 30% 50% 70%;
+//   }
+//
+// available_values:
+//   - 1-4 _length_
+//     1-4 _percentage_
+//     _percentage_
+//     initial
+//     inherit
+// ---
+@mixin border-radius($value) {
+  @include render-vendor-prefixes(
+    $property: border-radius,
+    $value: $value,
+    $vendor-list: (
+      -webkit,    // Android 2.1, Chrome 5.0/4.0, iOS 3.2-, Safari 5.0/3.1,
+      -moz,       // Firefox 4.0/3.0
+    ),
+    $prefix: property,
+  );
+}

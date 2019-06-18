@@ -1,0 +1,22 @@
+// ---
+// example_input: >-
+//   .some-class {
+//     @include position-sticky();
+//   }
+//
+// example_output: >-
+//   .some-class {
+//     position: -webkit-sticky;
+//     position: sticky;
+//   }
+// ---
+@mixin position-sticky() {
+  @include render-vendor-prefixes(
+    $property: position,
+    $value: sticky,
+    $vendor-list: (
+      -webkit,    // Safari 8.0/6.3
+    ),
+    $prefix: value,
+  );
+}

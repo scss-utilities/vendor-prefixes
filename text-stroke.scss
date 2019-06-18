@@ -1,0 +1,31 @@
+// ---
+// notice: Not standered
+//
+// example_input: >-
+//   .some-class {
+//     @include text-stroke(4px blue);
+//   }
+//
+// example_output: >-
+//   .some-class {
+//     -webkit-text-stroke: 4px blue;
+//          -o-text-stroke: 4px blue;
+//             text-stroke: 4px blue;
+//   }
+//
+// available_values:
+//     inital
+//     inherit
+//     unset
+// ---
+@mixin text-stroke($values...) {
+  @include render-vendor-prefixes(
+    $property: text-stroke,
+    $value: $values,
+    $vendor-list: (
+      -webkit,    // Chrome 4-45, Safari 7.1-, Blackberry 7 and 10
+      -o,         // Opera 15-29
+    ),
+    $prefix: property,
+  );
+}

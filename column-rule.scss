@@ -1,0 +1,29 @@
+// ---
+// example_input: >-
+//   .some-class {
+//     @include border-image($value: inherit);
+//   }
+//
+// example_output: >-
+//   .some-class {
+//     -webkit-border-image: inherit;
+//        -moz-border-image: inherit;
+//             border-image: inherit;
+//   }
+//
+// available_values:
+//   - column-rule-width column-rule-style column-rule-color
+//     initial
+//     inherit
+// ---
+@mixin column-rule($value) {
+  @include render-vendor-prefixes(
+    $property: column-rule,
+    $value: $value,
+    $vendor-list: (
+      -webkit,    // Chrome 50.0/4.0, Opera 37.0/15.0, Safari 9.0/3.1
+      -moz,       // Firefox 52.0/2.0
+    ),
+    $prefix: property,
+  );
+}

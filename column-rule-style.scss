@@ -1,0 +1,38 @@
+// ---
+// example_input: >-
+//   .some-class {
+//     @include column-rule-style($value: solid);
+//   }
+//
+// example_output: >-
+//   .some-class {
+//     -webkit-column-rule-style: solid;
+//        -moz-column-rule-style: solid;
+//             column-rule-style: solid;
+//   }
+//
+// available_values:
+//   - none
+//     hidden
+//     dotted
+//     dashed
+//     solid
+//     double
+//     groove
+//     ridge
+//     inset
+//     outset
+//     initial
+//     inherit
+// ---
+@mixin column-rule-style($value) {
+  @include render-vendor-prefixes(
+    $property: column-rule-style,
+    $value: $value,
+    $vendor-list: (
+      -webkit,    // Chrome 50.0/4.0, Opera 37.0/15.0, Safari 9.0/3.1
+      -moz,       // Firefox 52.0/2.0
+    ),
+    $prefix: property,
+  );
+}

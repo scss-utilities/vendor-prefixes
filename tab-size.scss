@@ -1,0 +1,31 @@
+// ---
+// notice: No MS support as of 2019
+// example_input: >-
+//   .some-class {
+//     @include tab-size($value: 16);
+//   }
+//
+// example_output: >-
+//   .some-class {
+//     -moz-tab-size: 16;
+//       -o-tab-size: 16;
+//          tab-size: 16;
+//   }
+//
+// available_values:
+//   - _number_
+//     _length_
+//     initial
+//     inherit
+// ---
+@mixin tab-size($value) {
+  @include render-vendor-prefixes(
+    $property: tab-size,
+    $value: $value,
+    $vendor-list: (
+      -moz,       // Firefox 4.0
+      -o,         // Opera 15.0/10.6
+    ),
+    $prefix: property,
+  );
+}

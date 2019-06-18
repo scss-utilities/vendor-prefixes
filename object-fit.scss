@@ -1,0 +1,24 @@
+// ---
+// example_input: >-
+//   .some-class {
+//     @include object-fit($value: contain);
+//   }
+//
+// example_output: >-
+//   .some-class {
+//     -o-object-fit: contains;
+//        object-fit: contains;
+//   }
+//
+// available_values: see https://developer.mozilla.org/en-US/docs/Web/CSS/object-fit
+// ---
+@mixin object-fit($value) {
+  @include render-vendor-prefixes(
+    $property: object-fit,
+    $value: $value,
+    $vendor-list: (
+      -o,         // Opera 12.0/11.0
+    ),
+    $prefix: property,
+  );
+}

@@ -1,0 +1,29 @@
+// ---
+// example_input: >-
+//   .some-class {
+//     @include text-overflow($value: ellipse);
+//   }
+//
+// example_output: >-
+//   .some-class {
+//     -o-text-overflow: ellipse;
+//        text-overflow: ellipse;
+//   }
+//
+// available_values:
+//   - clip
+//     ellipsis
+//     string
+//     initial
+//     inherit
+// ---
+@mixin text-overflow($value) {
+  @include render-vendor-prefixes(
+    $property: text-overflow,
+    $value: $value,
+    $vendor-list: (
+      -o,    // Opera 11.0/9.0
+    ),
+    $prefix: property,
+  );
+}

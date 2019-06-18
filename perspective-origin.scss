@@ -1,0 +1,32 @@
+// ---
+// example_input: >-
+//   .some-class {
+//     @include perspective-origin($value: initial);
+//   }
+//
+// example_output: >-
+//   .some-class {
+//     -webkit-perspective-origin: initial;
+//        -moz-perspective-origin: initial;
+//         -ms-perspective-origin: initial;
+//             perspective-origin: initial;
+//   }
+//
+// available_values:
+//   - x-axis y-axis
+//     initial
+//     inherit
+// info_links: https://www.w3schools.com/cssref/css3_pr_perspective-origin.asp
+// ---
+@mixin perspective-origin($value) {
+  @include render-vendor-prefixes(
+    $property: perspective-origin,
+    $value: $value,
+    $vendor-list: (
+      -webkit,    // Chrome 36.0/12.0, Opera 23.0/15.0, Safari 9.0/4.0.3
+      -moz,       // Firefox 16.0/10.0
+      -ms,        // ... more research needed..
+    ),
+    $prefix: property,
+  );
+}

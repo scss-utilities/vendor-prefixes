@@ -1,0 +1,25 @@
+// ---
+// notice: No MS support before 10.0, current support is questionable too
+// example_input: >-
+//   .some-class {
+//     @include font-variant-ligatures($value: normal);
+//   }
+//
+// example_output: >-
+//   .some-class {
+//     -webkit-font-variant-ligatures: normal;
+//             font-variant-ligatures: normal;
+//   }
+//
+// available_values: see https://developer.mozilla.org/en-US/docs/Web/CSS/font-variant-ligatures
+// ---
+@mixin font-variant-ligatures($value) {
+  @include render-vendor-prefixes(
+    $property: font-variant-ligatures,
+    $value: $value,
+    $vendor-list: (
+      -webkit,    // Opera 19.0, Safari 7.0
+    ),
+    $prefix: property,
+  );
+}

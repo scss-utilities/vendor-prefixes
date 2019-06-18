@@ -1,0 +1,30 @@
+// ---
+// example_input: >-
+//   .some-class {
+//     @include column-width($value: inherit);
+//   }
+//
+// example_output: >-
+//   .some-class {
+//     -webkit-column-width: inherit;
+//        -moz-column-width: inherit;
+//             column-width: inherit;
+//   }
+//
+// available_values:
+//   - auto
+//     _length_
+//     initial
+//     inherit
+// ---
+@mixin column-width($value) {
+  @include render-vendor-prefixes(
+    $property: column-width,
+    $value: $value,
+    $vendor-list: (
+      -webkit,    // Chrome 50.0/4.0, Opera 37.0/15.0, Safari 9.0/3.1
+      -moz,       // Firefox 52.0/2.0
+    ),
+    $prefix: property,
+  );
+}
