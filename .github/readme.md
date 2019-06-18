@@ -199,11 +199,11 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 [git_book__submodules]: https://git-scm.com/book/en/v2/Git-Tools-Submodules
 
 
-[relative_link__issues]: ../issues
-[relative_link__members]: ../network/members
-[source_link__render-vendor-prefixes]: ../lib/render-vendor-prefixes.scss
-[source_link__map-vendor-prefixes]: ../lib/map-vendor-prefixes.scss
-[source_link__calc]: calc.scss
+[relative_link__issues]: https://github.com/scss-utilities/vendor-prefixes/issues
+[relative_link__members]: https://github.com/scss-utilities/vendor-prefixes/network/members
+[source_link__render-vendor-prefixes]: https://github.com/scss-utilities/vendor-prefixes/blob/master/lib/render-vendor-prefixes.scss
+[source_link__map-vendor-prefixes]: https://github.com/scss-utilities/vendor-prefixes/blob/master/lib/map-vendor-prefixes.scss
+[source_link__calc]: https://github.com/scss-utilities/vendor-prefixes/blob/master/calc.scss
 
 
 [badge__issues]: https://img.shields.io/github/issues/scss-utilities/vendor-prefixes.svg
