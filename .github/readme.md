@@ -83,6 +83,7 @@ Within the _`main.scss`_ file for your site, import the [`lib/render-vendor-pref
 
 
 ```scss
+@import '_scss/modules/vendor-prefixes/lib/map-vendor-prefixes.scss';
 @import '_scss/modules/vendor-prefixes/lib/render-vendor-prefixes.scss';
 
 @import '_scss/modules/vendor-prefixes/cursor.scss';
@@ -131,6 +132,7 @@ Some of the available vendor prefixes may have additional arguments that may be 
 
 
 ```scss
+@import '_scss/modules/vendor-prefixes/lib/map-vendor-prefixes.scss';
 @import '_scss/modules/vendor-prefixes/lib/render-vendor-prefixes.scss';
 
 @import '_scss/modules/vendor-prefixes/calc.scss';
