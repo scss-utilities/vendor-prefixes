@@ -1,7 +1,12 @@
 ## SCSS Vendor Prefixes
-
+[heading__title]:
+  #scss-vendor-prefixes
+  "&#x2B06; Top of ReadMe File"
 
 SCSS Mixins for CSS Vendor Prefixes is a `git submodule` that _should_ be compatible with GitHub's Pages
+
+
+## [![Byte size of vendor-prefixes][badge__master__vendor_prefixes__source_code]][vendor_prefixes__master__source_code] [![Open Issues][badge__issues__vendor_prefixes]][issues__vendor_prefixes] [![Open Pull Requests][badge__pull_requests__vendor_prefixes]][pull_requests__vendor_prefixes] [![Latest commits][badge__commits__vendor_prefixes__master]][commits__vendor_prefixes__master]
 
 
 ------
@@ -10,17 +15,25 @@ SCSS Mixins for CSS Vendor Prefixes is a `git submodule` that _should_ be compat
 #### Table of Contents
 
 
-- [Requirements](#requirements)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Support](#support)
-- [License](#license)
+- [:arrow_up: Top of ReadMe File][heading__title]
+
+- [:building_construction: Requirements][heading__requirements]
+
+- [:zap: Quick Start][heading__quick_start]
+
+- [:shell: Utilize Vendor Prefixes][heading__utilize]
+
+- [:balance_scale: License][heading__license]
 
 
 ------
 
 
+
 ## Requirements
+[heading__requirements]:
+  #requirements
+  "&#x1F3D7; "
 
 
 - `SCSS` to `CSS` compiler, see notice from [Ruby SCSS](https://sass-lang.com/ruby-sass) team for available migration options
@@ -28,10 +41,16 @@ SCSS Mixins for CSS Vendor Prefixes is a `git submodule` that _should_ be compat
 - Declaring which should be prefixed, there's roughly `100` available
 
 
-## Installation
+___
 
 
-Add the code within this repository to your own as a `submodule` with `git`...
+## Quick Start
+[heading__quick_start]:
+  #quick-start
+  "&#9889; Perhaps as easy as one, 2.0,..."
+
+
+Add the code within this repository to your own as a `submodule` via `git`...
 
 
 ```bash
@@ -50,7 +69,7 @@ git submodule add -b master "${_git_url}" "${_destination}"
 ```bash
 git status
 
-git commit -m 'Added GitHub hosted submodule scss-utilities/vendor-prefixes'
+git commit -m ':heavy_plus_sign: Adds submodule scss-utilities/vendor-prefixes#1'
 
 git push <remote> <branch>
 ```
@@ -68,15 +87,20 @@ git clone --recurse-submodules <your-repositorys-url>
 
 
 ```bash
-git submodule update --init --recursive
-git submodule update --merge
+git submodule update --init --recursive --merge
 ```
 
 
 ... to _sync up_ with the additional tracking information.
 
 
-## Usage
+___
+
+
+## Utilize Vendor Prefixes
+[heading__utilize]:
+  #utilize-vendor-prefixes
+  "&#x1F41A; How to make use of this project within other repositories"
 
 
 Within the _`main.scss`_ file for your site, import the [`lib/render-vendor-prefixes.scss`][source_link__render-vendor-prefixes] and [`lib/map-vendor-prefixes.scss`][source_link__map-vendor-prefixes] file and then any other `vendor-prefixes` contained in this repository.
@@ -159,25 +183,20 @@ Some of the available vendor prefixes may have additional arguments that may be 
 ```
 
 
-## Support
-
-
-Open a new _`Issue`_ (or up-vote currently opened <sub>[![Issues][badge__issues]][relative_link__issues]</sub> if similar) to report bugs and/or make feature requests a higher priority for project maintainers. Submit _`Pull Requests`_ after _`Forking`_ this repository to add features or fix bugs, and be counted among this project's <sub>[![Members][badge__contributors]][relative_link__members]</sub>
-
-
-> See GitHub's documentation on [Forking][help_fork] and issuing [Pull Requests][help_pull_request] if these are new terms.
->
-> And check the chapter regarding [submodules][git_book__submodules] from the Git book prior to opening issues regarding submodule _trouble-shooting_
-
-
-Supporting projects like this one through <sub>[![Liberapay][badge__liberapay]][liberapay_donate]</sub> or via Bitcoin <sub>[![BTC][badge__bitcoin]][btc]</sub> is most welcomed.
+___
 
 
 ## License
+[heading__license]:
+  #license
+  "&#x2696; Legal bits of Open Source software"
+
+
+Legal bits of Open Source software
 
 
 ```
-Bash Argument Parser, a submodule for other Bash scripts tracked by Git
+SCSS Vendor Prefixes documentation of a GitHub Pages compatible submodule
 Copyright (C) 2019  S0AndS0
 
 This program is free software: you can redistribute it and/or modify
@@ -195,28 +214,9 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 
 
-[help_fork]: https://help.github.com/en/articles/fork-a-repo
-[help_pull_request]: https://help.github.com/en/articles/about-pull-requests
-
-[git_book__submodules]: https://git-scm.com/book/en/v2/Git-Tools-Submodules
-
-
-[relative_link__issues]: https://github.com/scss-utilities/vendor-prefixes/issues
-[relative_link__members]: https://github.com/scss-utilities/vendor-prefixes/network/members
 [source_link__render-vendor-prefixes]: https://github.com/scss-utilities/vendor-prefixes/blob/master/lib/render-vendor-prefixes.scss
 [source_link__map-vendor-prefixes]: https://github.com/scss-utilities/vendor-prefixes/blob/master/lib/map-vendor-prefixes.scss
 [source_link__calc]: https://github.com/scss-utilities/vendor-prefixes/blob/master/calc.scss
-
-
-[badge__issues]: https://img.shields.io/github/issues/scss-utilities/vendor-prefixes.svg
-[badge__contributors]: https://img.shields.io/github/forks/scss-utilities/vendor-prefixes.svg?color=005571&label=Contributors
-
-[badge__liberapay]: https://img.shields.io/badge/Liberapay-gray.svg?logo=liberapay
-[badge__bitcoin]: https://img.shields.io/badge/1Dr9KYZz9jkUea5xTxeGyScu7AwC4MwR5c-gray.svg?logo=bitcoin
-
-
-[liberapay_donate]: https://liberapay.com/scss-utilities/donate
-[btc]: https://www.blockchain.com/btc/address/1Dr9KYZz9jkUea5xTxeGyScu7AwC4MwR5c
 
 
 [w3__css_ui_3]: https://www.w3.org/TR/css-ui-3/
@@ -228,3 +228,40 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 [csslint__require_compatible_vendor_prefixes]: https://github.com/csslint/csslint/wiki/require-compatible-vendor-prefixes
 
 [w3schools__css3_browsersupport]: https://www.w3schools.com/cssref/css3_browsersupport.asp
+
+
+[badge__commits__vendor_prefixes__master]:
+  https://img.shields.io/github/last-commit/scss-utilities/vendor-prefixes/master.svg
+
+[commits__vendor_prefixes__master]:
+  https://github.com/scss-utilities/vendor-prefixes/commits/master
+  "&#x1F4DD; History of changes on this branch"
+
+
+[vendor_prefixes__community]:
+  https://github.com/scss-utilities/vendor-prefixes/community
+  "&#x1F331; Dedicated to functioning code"
+
+
+[badge__issues__vendor_prefixes]:
+  https://img.shields.io/github/issues/scss-utilities/vendor-prefixes.svg
+
+[issues__vendor_prefixes]:
+  https://github.com/scss-utilities/vendor-prefixes/issues
+  "&#x2622; Search for and _bump_ existing issues or open new issues for project maintainer to address."
+
+
+[badge__pull_requests__vendor_prefixes]:
+  https://img.shields.io/github/issues-pr/scss-utilities/vendor-prefixes.svg
+
+[pull_requests__vendor_prefixes]:
+  https://github.com/scss-utilities/vendor-prefixes/pulls
+  "&#x1F3D7; Pull Request friendly, though please check the Community guidelines"
+
+
+[badge__master__vendor_prefixes__source_code]:
+  https://img.shields.io/github/repo-size/scss-utilities/vendor-prefixes
+
+[vendor_prefixes__master__source_code]:
+  https://github.com/scss-utilities/vendor-prefixes
+  "&#x2328; Project source code!"
