@@ -1,31 +1,30 @@
-// ---
-// description: Returns map of values or mapped list of vendor prefixed properties or values
-// prefix: property or value
-// example_input: >-
-//   $mapped-vendors: map-vendor-prefixes(
-//     $property: text-stroke-color,
-//     $value: white,
-//     $vendor-list: (-webkit, -o),
-//     $prefix: property
-//   );
-// example_output: >-
-//   (
-//    -webkit-text-stroke-color: white,
-//    -o-text-stroke-color: white,
-//    text-stroke-color: white
-//   )
-// notes: >-
-//   Looping over resulting maps is easily accomplished via an `@each` loop
-//   ```scss
-//   @each $k, $v in $mapped-vendors {
-//     @debug "$k: $v -> #{$k}: #{$v}";
-//   }
-//   ```
-// ---
-// https://www.w3.org/TR/CSS21/syndata.html#vendor-keyword-history
-// https://stackoverflow.com/questions/5411026/list-of-css-vendor-prefixes
-
+/// Default list of supported vendor prefixes for `map-vendor-prefixes`
+/// @see {function} map-vendor-prefixes
 $vendor-id-list: (webkit, moz, ms, o);
+
+
+/// Generates SCSS map of prefixed `Property: Value` pares
+/// @returns {map} - Map of values or mapped list of vendor prefixed properties or values
+/// @param {string} $property  - The CSS property name
+/// @param {*} $value          - Number, string, even CSS _function_ calls
+/// @param {list} $vendor-list - List of vendor prefixes to pre-append
+/// @param {string} $prefix    - Weather `string` or `value` should be pre-append to
+/// @throws How did we get here?
+/// @example scss - Usage of map-vendor-prefixes
+///   $mapped-vendors: map-vendor-prefixes(
+///     $property: text-stroke-color,
+///     $value: white,
+///     $vendor-list: (-webkit, -o),
+///     $prefix: property
+///   );
+/// @example scss - Resutls of map-vendor-prefixes
+///   (
+///    -webkit-text-stroke-color: white,
+///         -o-text-stroke-color: white,
+///            text-stroke-color: white
+///   )
+/// @author S0AndS0
+/// @license AGPL-3.0
 @function map-vendor-prefixes(
   $property: false,
   $value: false,
