@@ -1,28 +1,30 @@
-// ---
-// example_input: >-
-//   .some-class {
-//     @include align-items($value: inherit);
-//   }
-//
-// example_output: >-
-//   .some-class {
-//     -webkit-align-items: inherit;
-//             align-items: inherit;
-//   }
-//
-// available_values:
-//  auto          - Default
-//  stretch       - Element is stretch to fit container
-//  center        - Element is _center-positioned_ within container
-//  flex-start    - Element is _start-positioned_ within container
-//  flex-end      - Element is _end-positioned_ within container
-//  baseline      - Element is positions at baseline within container
-//  inital
-//  inherit
-// ---
-@mixin align-items($value) {
+/// How this elment, class, or ID should be aligned
+/// @param {string} $value
+/// @returns {CSS} - `Property: Value` with prefixed properties
+/// @example - Available values
+///   - `auto`        Default
+///   - `stretch`     Element is stretch to fit container
+///   - `center`      Element is _center-positioned_ within container
+///   - `flex-start`: Element is _start-positioned_ within container
+///   - `flex-end`    Element is _end-positioned_ within container
+///   - `baseline`    Element is positions at baseline within container
+///   - `inital`
+///   - `inherit`
+/// @example scss - Usage of align-self
+///   .example-class {
+///     @include align-self($value: inherit);
+///   }
+/// @example css - Resutls of align-self
+///   .example-class {
+///     -webkit-align-self: inherit;
+///             align-self: inherit;
+///   }
+/// @requires {mixin} render-vendor-prefixes
+/// @author S0AndS0
+/// @license AGPL-3.0
+@mixin align-self($value) {
   @include render-vendor-prefixes(
-    $property: align-items,
+    $property: align-self,
     $value: $value,
     $vendor-list: (
       -webkit, // Safari 9.0/7.0

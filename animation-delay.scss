@@ -1,23 +1,25 @@
-// ---
-// example_input: >-
-//   .some-class {
-//     @include animation-delay($value: 3s);
-//   }
-//
-// example_output: >-
-//   .some-class {
-//     -webkit-animation-delay: 3s;
-//        -moz-animation-delay: 3s;
-//          -o-animation-delay: 3s;
-//             animation-delay: 3s;
-//   }
-//
-// available_values:
-//   - _time_
-//     initial
-//     inherit
-//     unset
-// ---
+/// How long to delay animation start for element, class, or ID
+/// @param {string|time} $value
+/// @returns {CSS} - `Property: Value` with prefixed properties
+/// @example - Available values
+///   - `_time_`: Interval of time to delay animation, eg. `2s` for two second delay
+///   - `initial`
+///   - `inherit`
+///   - `unset`
+/// @example scss - Usage of animation-delay
+///   .example-class {
+///     @include animation-delay($value: 3s);
+///   }
+/// @example css - Resutls of animation-delay
+///   .example-class {
+///     -webkit-animation-delay: 3s;
+///        -moz-animation-delay: 3s;
+///          -o-animation-delay: 3s;
+///             animation-delay: 3s;
+///   }
+/// @requires {mixin} render-vendor-prefixes
+/// @author S0AndS0
+/// @license AGPL-3.0
 @mixin animation-delay($value) {
   @include render-vendor-prefixes(
     $property: animation-delay,

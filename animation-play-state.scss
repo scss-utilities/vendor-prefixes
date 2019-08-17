@@ -1,24 +1,26 @@
-// ---
-// example_input: >-
-//   .some-class {
-//     @include animation-play-state($value: paused);
-//   }
-//
-// example_output: >-
-//   .some-class {
-//     -webkit-animation-play-state: paused;
-//        -moz-animation-play-state: paused;
-//          -o-animation-play-state: paused;
-//             animation-play-state: paused;
-//   }
-//
-// available_values:
-//   - paused
-//     running
-//     initial
-//     inherit
-//     unset
-// ---
+/// Play state of animation for element, class, or ID, may be toggled with JavaScript
+/// @param {string} $value
+/// @returns {CSS} - `Property: Value` with prefixed properties
+/// @example - Available values
+///   - `paused`
+///   - `running`
+///   - `initial`
+///   - `inherit`
+///   - `unset`
+/// @example scss - Usage of animation-play-state
+///   .example-class {
+///     @include animation-play-state($value: paused);
+///   }
+/// @example css - Resutls of animation-play-state
+///   .example-class {
+///     -webkit-animation-play-state: paused;
+///        -moz-animation-play-state: paused;
+///          -o-animation-play-state: paused;
+///             animation-play-state: paused;
+///   }
+/// @requires {mixin} render-vendor-prefixes
+/// @author S0AndS0
+/// @license AGPL-3.0
 @mixin animation-play-state($value) {
   @include render-vendor-prefixes(
     $property: animation-play-state,

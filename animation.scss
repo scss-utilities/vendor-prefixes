@@ -1,19 +1,21 @@
-// ---
-// example_input: >-
-//   .some-class {
-//     @include animation($value: animation-name 5s infinite);
-//   }
-//
-// example_output: >-
-//   .some-class {
-//     -webkit-animation: animation-name 5s infinite;
-//        -moz-animation: animation-name 5s infinite;
-//          -o-animation: animation-name 5s infinite;
-//             animation: animation-name 5s infinite;
-//   }
-//
-// available_values: See `animation-*.scss` files for $value options
-// ---
+/// Define animation for element, class, or ID
+/// @param {string} $value
+/// @see {files} - Check `animation-*.scss` for `$value` options
+/// @returns {CSS} - `Property: Value` with prefixed properties
+/// @example scss - Usage of animation
+///   .example-class {
+///     @include animation($value: animation-name 5s infinite);
+///   }
+/// @example css - Resutls of animation
+///   .example-class {
+///     -webkit-animation: animation-name 5s infinite;
+///        -moz-animation: animation-name 5s infinite;
+///          -o-animation: animation-name 5s infinite;
+///             animation: animation-name 5s infinite;
+///   }
+/// @requires {mixin} render-vendor-prefixes
+/// @author S0AndS0
+/// @license AGPL-3.0
 @mixin animation($value) {
   @include render-vendor-prefixes(
     $property: animation,

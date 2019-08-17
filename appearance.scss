@@ -1,21 +1,21 @@
-// ---
-// warnings: Experimental as of 2019
-//
-// example_input: >-
-//   .some-class {
-//     @include appearance($value: auto);
-//   }
-//
-// example_output: >-
-//   .some-class {
-//     -webkit-appearance: auto;
-//        -moz-appearance: auto;
-//          -o-appearance: auto;
-//             appearance: auto;
-//   }
-//
-// available_values: see https://developer.mozilla.org/en-US/docs/Web/CSS/appearance
-// ---
+/// May enable or disable platform-native theming on element, class or ID
+/// @param {string} $value
+/// @returns {CSS} - `Property: Value` with prefixed properties
+/// @see {link} - https://developer.mozilla.org/en-US/docs/Web/CSS/appearance
+/// @example scss - Usage of appearance
+///   .example-class {
+///     @include appearance($value: auto);
+///   }
+/// @example css - Resutls of appearance
+///   .example-class {
+///     -webkit-appearance: auto;
+///        -moz-appearance: auto;
+///          -o-appearance: auto;
+///             appearance: auto;
+///   }
+/// @requires {mixin} render-vendor-prefixes
+/// @author S0AndS0
+/// @license AGPL-3.0
 @mixin appearance($value) {
   @include render-vendor-prefixes(
     $property: appearance,

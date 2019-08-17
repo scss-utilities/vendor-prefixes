@@ -1,25 +1,27 @@
-// ---
-// example_input: >-
-//   .some-class {
-//     @include align-content($value: inherit);
-//   }
-//
-// example_output: >-
-//   .some-class {
-//     -webkit-align-content: inherit;
-//             align-content: inherit;
-//   }
-//
-// available_values:
-//   - stretch:       Default, lines stretch to take up space
-//     center:        Lines are _center-packed_ within flex container
-//     flex-start:    Lines are _start-packed_ within flex container
-//     flex-end:      Lines are _end-packed_ within flex container
-//     space-between: Even distribution of lines
-//     space-around:  Even spacing on either side within flex container
-//     inital
-//     inherit
-// ---
+/// How content should be aligned within elment, class, or ID
+/// @param {string} $value
+/// @returns {CSS} - `Property: Value` with prefixed properties
+/// @example - Available values
+///   - `stretch`:       Default, lines stretch to take up space
+///   - `center`:        Lines are _center-packed_ within flex container
+///   - `flex-start`:    Lines are _start-packed_ within flex container
+///   - `flex-end`:      Lines are _end-packed_ within flex container
+///   - `space-between`: Even distribution of lines
+///   - `space-around`:  Even spacing on either side within flex container
+///   - `inital`
+///   - `inherit`
+/// @example scss - Usage of align-content
+///   .example-class {
+///     @include align-content($value: inherit);
+///   }
+/// @example css - Resutls of align-content
+///   .example-class {
+///     -webkit-align-content: inherit;
+///             align-content: inherit;
+///   }
+/// @requires {mixin} render-vendor-prefixes
+/// @author S0AndS0
+/// @license AGPL-3.0
 @mixin align-content($value) {
   @include render-vendor-prefixes(
     $property: align-content,

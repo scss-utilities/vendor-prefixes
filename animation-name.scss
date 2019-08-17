@@ -1,24 +1,26 @@
-// ---
-// example_input: >-
-//   .some-class {
-//     @include animation-name($value: inherit);
-//   }
-//
-// example_output: >-
-//   .some-class {
-//     -webkit-animation-name: inherit;
-//        -moz-animation-name: inherit;
-//          -o-animation-name: inherit;
-//             animation-name: inherit;
-//   }
-//
-// available_values:
-//   - _keyframe-name_
-//     none
-//     initial
-//     inherit
-//     unset
-// ---
+/// What named keyframes to use for animation on element, class, or ID
+/// @param {string} $value
+/// @returns {CSS} - `Property: Value` with prefixed properties
+/// @example - Available values
+///   - `_keyframe-name_`
+///   - `none`
+///   - `initial`
+///   - `inherit`
+///   - `unset`
+/// @example scss - Usage of animation-name
+///   .example-class {
+///     @include animation-name($value: inherit);
+///   }
+/// @example css - Resutls of animation-name
+///   .example-class {
+///     -webkit-animation-name: inherit;
+///        -moz-animation-name: inherit;
+///          -o-animation-name: inherit;
+///             animation-name: inherit;
+///   }
+/// @requires {mixin} render-vendor-prefixes
+/// @author S0AndS0
+/// @license AGPL-3.0
 @mixin animation-name($value) {
   @include render-vendor-prefixes(
     $property: animation-name,

@@ -1,26 +1,28 @@
-// ---
-// example_input: >-
-//   .some-class {
-//     @include animation-fill-mode($value: forwards);
-//   }
-//
-// example_output: >-
-//   .some-class {
-//     -webkit-animation-fill-mode: forwards;
-//        -moz-animation-fill-mode: forwards;
-//          -o-animation-fill-mode: forwards;
-//             animation-fill-mode: forwards;
-//   }
-//
-// available_values:
-//   - none
-//     forwards
-//     backwards
-//     both
-//     initial
-//     inherit
-//     unset
-// ---
+/// How to style element, class, or ID before and after animation
+/// @param {string} $value
+/// @returns {CSS} - `Property: Value` with prefixed properties
+/// @example - Available values
+///   - `none`
+///   - `forwards`
+///   - `backwards`
+///   - `both`
+///   - `initial`
+///   - `inherit`
+///   - `unset`
+/// @example scss - Usage of animation-fill-mode
+///   .example-class {
+///     @include animation-fill-mode($value: forwards);
+///   }
+/// @example css - Resutls of animation-fill-mode
+///   .example-class {
+///     -webkit-animation-fill-mode: forwards;
+///        -moz-animation-fill-mode: forwards;
+///          -o-animation-fill-mode: forwards;
+///             animation-fill-mode: forwards;
+///   }
+/// @requires {mixin} render-vendor-prefixes
+/// @author S0AndS0
+/// @license AGPL-3.0
 @mixin animation-fill-mode($value) {
   @include render-vendor-prefixes(
     $property: animation-fill-mode,
