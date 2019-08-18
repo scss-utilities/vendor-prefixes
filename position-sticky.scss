@@ -10,7 +10,7 @@
 //     position: sticky;
 //   }
 // ---
-@mixin position-sticky() {
+@mixin position-sticky {
   @include render-vendor-prefixes(
     $property: position,
     $value: sticky,
