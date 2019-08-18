@@ -1,23 +1,25 @@
-// ---
-// notice: No MS support as of 2019
-// example_input: >-
-//   .some-class {
-//     @include box-decoration-break($value: slice);
-//   }
-//
-// example_output: >-
-//   .some-class {
-//     -webkit-box-decoration-break: slice;
-//             box-decoration-break: slice;
-//   }
-//
-// available_values:
-//   - slice
-//     clone
-//     initial
-//     inherit
-//     unset
-// ---
+/// Experimental! No MS support as of 2019; defines fragment rendering when element is broken over multiple lines
+/// @param {string} $value
+/// @returns {CSS} - `Property: Value` with prefixed properties
+/// @see {link} - https://developer.mozilla.org/en-US/docs/Web/CSS/box-decoration-break
+/// @example - Available values
+///    - `slice`
+///    - `clone`
+///    - `initial`
+///    - `inherit`
+///    - `unset`
+/// @example scss - Usage of box-decoration-break
+///   .example-class {
+///     @include box-decoration-break($value: slice);
+///   }
+/// @example css - Resutls of box-decoration-break
+///   .example-class {
+///     -webkit-box-decoration-break: slice;
+///             box-decoration-break: slice;
+///   }
+/// @requires {mixin} render-vendor-prefixes
+/// @author S0AndS0
+/// @license AGPL-3.0
 @mixin box-decoration-break($value) {
   @include render-vendor-prefixes(
     $property: box-decoration-break,

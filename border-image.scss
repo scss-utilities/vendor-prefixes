@@ -1,22 +1,26 @@
-// ---
-// example_input: >-
-//   .some-class {
-//     @include border-image($value: inherit);
-//   }
-//
-// example_output: >-
-//   .some-class {
-//     -webkit-border-image: inherit;
-//        -moz-border-image: inherit;
-//          -o-border-image: inherit;
-//             border-image: inherit;
-//   }
-//
-// available_values:
-//   - source slice width outset repeat
-//     initial
-//     inherit
-// ---
+/// Draws image in place of `border-style` for element
+/// @param {string} $value
+/// @returns {CSS} - `Property: Value` with prefixed properties
+/// @see {link} - https://developer.mozilla.org/en-US/docs/Web/CSS/border-image
+/// @example - Available values
+///   - `_source_ _slice_ _width_ _outset_ _repeat_`
+///   - `initial`
+///   - `inherit`
+/// @example scss - Usage of border-image
+///   .example-class {
+///     @include border-image($value: url(border.png) 30 round);
+///   }
+/// @example css - Resutls of border-image
+///   .example-class {
+///     -webkit-border-image: url(border.png) 30 round;
+///        -moz-border-image: url(border.png) 30 round;
+///          -o-border-image: url(border.png) 30 round;
+///             border-image: url(border.png) 30 round;
+///   }
+/// @requires {mixin} render-vendor-prefixes
+/// @author S0AndS0
+/// @license AGPL-3.0
+/// @todo Add `fallback` option setting `border-style` for browsers that do not support `border-image`
 @mixin border-image($value) {
   @include render-vendor-prefixes(
     $property: border-image,

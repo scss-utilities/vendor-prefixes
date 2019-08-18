@@ -1,26 +1,29 @@
-// ---
-// example_input: >-
-//   .some-class {
-//     @include background-size($value: auto);
-//   }
-//
-// example_output: >-
-//   .some-class {
-//     -webkit-background-size: auto;
-//        -moz-background-size: auto;
-//          -o-background-size: auto;
-//             background-size: auto;
-//   }
-//
-// available_values:
-//   - auto
-//     _length_
-//     cover
-//     contain
-//     initial
-//     inherit
-//     unset
-// ---
+/// Sets size of background image for element
+/// @param {string} $value
+/// @returns {CSS} - `Property: Value` with prefixed properties
+/// @see {link} - https://developer.mozilla.org/en-US/docs/Web/CSS/background-size
+/// @example - Available values
+///   - `auto`
+///   - `_length_`
+///   - `cover`
+///   - `contain`
+///   - `initial`
+///   - `inherit`
+///   - `unset`
+/// @example scss - Usage of background-size
+///   .example-class {
+///     @include background-size($value: auto);
+///   }
+/// @example css - Resutls of background-size
+///   .example-class {
+///     -webkit-background-size: auto;
+///        -moz-background-size: auto;
+///          -o-background-size: auto;
+///             background-size: auto;
+///   }
+/// @requires {mixin} render-vendor-prefixes
+/// @author S0AndS0
+/// @license AGPL-3.0
 @mixin background-size($value) {
   @include render-vendor-prefixes(
     $property: background-size,

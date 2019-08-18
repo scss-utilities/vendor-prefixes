@@ -1,22 +1,25 @@
-// ---
-// example_input: >-
-//   .some-class {
-//     @include border-top-left-radius($value: 42px);
-//   }
-//
-// example_output: >-
-//   .some-class {
-//     -webkit-border-top-left-radius: 42px;
-//        -moz-border-top-left-radius: 42px;
-//             border-top-left-radius: 42px;
-//   }
-//
-// available_values:
-//   - _length_
-//     _percentage_
-//     initial
-//     inherit
-// ---
+/// Rounds top left corner of element
+/// @param {string} $value
+/// @returns {CSS} - `Property: Value` with prefixed properties
+/// @see {link} - https://developer.mozilla.org/en-US/docs/Web/CSS/border-top-left-radius
+/// @example - Available values
+///   - `_length_`
+///   - `_percentage_`
+///   - `initial`
+///   - `inherit`
+/// @example scss - Usage of border-top-left-radius
+///   .example-class {
+///     @include border-top-left-radius($value: 50%);
+///   }
+/// @example css - Resutls of border-top-left-radius
+///   .example-class {
+///     -webkit-border-top-left-radius: 50%;
+///        -moz-border-top-left-radius: 50%;
+///             border-top-left-radius: 50%;
+///   }
+/// @requires {mixin} render-vendor-prefixes
+/// @author S0AndS0
+/// @license AGPL-3.0
 @mixin border-top-left-radius($value) {
   @include render-vendor-prefixes(
     $property: border-top-left-radius,

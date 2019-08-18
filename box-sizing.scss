@@ -1,22 +1,25 @@
-// ---
-// example_input: >-
-//   .some-class {
-//     @include box-sizing($value: content-box);
-//   }
-//
-// example_output: >-
-//   .some-class {
-//     -webkit-box-sizing: content-box;
-//        -moz-box-sizing: content-box;
-//             box-sizing: content-box;
-//   }
-//
-// available_values:
-//   - content-box
-//     border-box
-//     initial
-//     inherit
-// ---
+/// Defines how total width and height are calculated for element
+/// @param {string} $value
+/// @returns {CSS} - `Property: Value` with prefixed properties
+/// @see {link} - https://developer.mozilla.org/en-US/docs/Web/CSS/box-sizing
+/// @example - Available values
+///   - `content-box`
+///   - `border-box`
+///   - `initial`
+///   - `inherit`
+/// @example scss - Usage of box-sizing
+///   .example-class {
+///     @include box-sizing($value: content-box);
+///   }
+/// @example css - Resutls of box-sizing
+///   .example-class {
+///     -webkit-box-sizing: content-box;
+///        -moz-box-sizing: content-box;
+///             box-sizing: content-box;
+///   }
+/// @requires {mixin} render-vendor-prefixes
+/// @author S0AndS0
+/// @license AGPL-3.0
 @mixin box-sizing($value) {
   @include render-vendor-prefixes(
     $property: box-sizing,

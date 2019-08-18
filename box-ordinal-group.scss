@@ -1,24 +1,25 @@
-// ---
-// notice: Depricated, see https://developer.mozilla.org/en-US/docs/Web/CSS/-moz-box-ordinal-group
-//
-// example_input: >-
-//   .some-class {
-//     @include ordinal-group-order($value: 1);
-//   }
-//
-// example_output: >-
-//   .some-class {
-//     -webkit-box-ordinal-group: 1;
-//        -moz-box-ordinal-group: 1;
-//             box-ordinal-group: 1;
-//   }
-//
-// available_values:
-//   - _number_
-//     inherit
-//     initial
-//     unset
-// ---
+/// Depricated!
+/// @param {string} $value
+/// @returns {CSS} - `Property: Value` with prefixed properties
+/// @see {link} - https://developer.mozilla.org/en-US/docs/Web/CSS/-moz-box-ordinal-group
+/// @example - Available values
+///   - `_number_`
+///   - `inherit`
+///   - `initial`
+///   - `unset`
+/// @example scss - Usage of box-ordinal-group
+///   .example-class {
+///     @include box-ordinal-group($value: 1);
+///   }
+/// @example css - Resutls of box-ordinal-group
+///   .example-class {
+///     -webkit-box-ordinal-group: 1;
+///        -moz-box-ordinal-group: 1;
+///             box-ordinal-group: 1;
+///   }
+/// @requires {mixin} render-vendor-prefixes
+/// @author S0AndS0
+/// @license AGPL-3.0
 @mixin box-ordinal-group($value) {
   @include render-vendor-prefixes(
     $property: box-ordinal-group,

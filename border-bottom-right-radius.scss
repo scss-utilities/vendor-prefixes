@@ -1,22 +1,25 @@
-// ---
-// example_input: >-
-//   .some-class {
-//     @include border-bottom-right-radius($value: 50%);
-//   }
-//
-// example_output: >-
-//   .some-class {
-//     -webkit-border-bottom-right-radius: 50%;
-//        -moz-border-bottom-right-radius: 50%;
-//             border-bottom-right-radius: 50%;
-//   }
-//
-// available_values:
-//   - _length_
-//     _percentage_
-//     initial
-//     inherit
-// ---
+/// Rounds bottom right corner of element
+/// @param {string} $value
+/// @returns {CSS} - `Property: Value` with prefixed properties
+/// @see {link} - https://developer.mozilla.org/en-US/docs/Web/CSS/border-bottom-right-radius
+/// @example - Available values
+///   - `_length_`
+///   - `_percentage_`
+///   - `initial`
+///   - `inherit`
+/// @example scss - Usage of border-bottom-right-radius
+///   .example-class {
+///     @include border-bottom-right-radius($value: 50%);
+///   }
+/// @example css - Resutls of border-bottom-right-radius
+///   .example-class {
+///     -webkit-border-bottom-right-radius: 50%;
+///        -moz-border-bottom-right-radius: 50%;
+///             border-bottom-right-radius: 50%;
+///   }
+/// @requires {mixin} render-vendor-prefixes
+/// @author S0AndS0
+/// @license AGPL-3.0
 @mixin border-bottom-right-radius($value) {
   @include render-vendor-prefixes(
     $property: border-bottom-right-radius,

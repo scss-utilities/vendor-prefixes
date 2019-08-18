@@ -1,22 +1,25 @@
-// ---
-// example_input: >-
-//   .some-class {
-//     @include border-bottom-left-radius($value: 42px);
-//   }
-//
-// example_output: >-
-//   .some-class {
-//     -webkit-border-bottom-left-radius: 42px;
-//        -moz-border-bottom-left-radius: 42px;
-//             border-bottom-left-radius: 42px;
-//   }
-//
-// available_values:
-//   - _length_
-//     _percentage_
-//     initial
-//     inherit
-// ---
+/// Rounds bottom left corner of element
+/// @param {string} $value
+/// @returns {CSS} - `Property: Value` with prefixed properties
+/// @see {link} - https://developer.mozilla.org/en-US/docs/Web/CSS/border-bottom-left-radius
+/// @example - Available values
+///   - `_length_`
+///   - `_percentage_`
+///   - `initial`
+///   - `inherit`
+/// @example scss - Usage of border-bottom-left-radius
+///   .example-class {
+///     @include border-bottom-left-radius($value: 42px);
+///   }
+/// @example css - Resutls of border-bottom-left-radius
+///   .example-class {
+///     -webkit-border-bottom-left-radius: 42px;
+///        -moz-border-bottom-left-radius: 42px;
+///             border-bottom-left-radius: 42px;
+///   }
+/// @requires {mixin} render-vendor-prefixes
+/// @author S0AndS0
+/// @license AGPL-3.0
 @mixin border-bottom-left-radius($value) {
   @include render-vendor-prefixes(
     $property: border-bottom-left-radius,
