@@ -23,6 +23,10 @@ SCSS Mixins for CSS Vendor Prefixes is a `git submodule` that _should_ be compat
 
 - [:shell: Utilize Vendor Prefixes][heading__utilize]
 
+- [&#x1F5D2; Notes][notes]
+
+- [:card_index: Attribution][heading__attribution]
+
 - [:balance_scale: License][heading__license]
 
 
@@ -186,6 +190,58 @@ Some of the available vendor prefixes may have additional arguments that may be 
 ___
 
 
+## Notes
+[notes]:
+  #notes
+  "&#x1F5D2; Additional notes and links that may be worth clicking in the future"
+
+
+Following may be used to `@import` **all** vendor prefixes to a `main.scss` file...
+
+
+```Bash
+_module_path='_scss/modules/vendor-prefixes'
+_main_sass='assets/css/main.scss'
+_path_list=()
+
+
+while IFS= read -r -d '' _path; do
+    _path_list+=("${_path}")
+done < <(find "${_module_path}/lib" -type f -name '*.scss' -print0)
+
+while IFS= read -r -d '' _path; do
+    _path_list+=("${_path}")
+done < <(find "${_module_path}" -type f -name '*.scss' -not -path '*/lib/*' -print0)
+
+
+for _path in "${_path_list[@]}"; do
+    [[ grep -q -- "@import '${_path}';" "${_main_sass}" ]] && continue
+    tee -a "${_main_sass}" <<<"@import '${_path}';"
+done
+```
+
+
+... which _should_ allow any following imports or definitions to utilize any _`Sass`_ code from this repository.
+
+
+___
+
+
+## Attribution
+[heading__attribution]:
+  #attribution
+  "&#x1F4C7; Resources that where helpful in building this project so far."
+
+
+- [W3 -- Vendor Keyword History](https://www.w3.org/TR/CSS21/syndata.html#vendor-keyword-history)
+
+- [StackOverflow -- List of CSS Vendor Prefixes](https://stackoverflow.com/questions/5411026/list-of-css-vendor-prefixes)
+
+- [SassDoc -- annotations](http://sassdoc.com/annotations/)
+
+___
+
+
 ## License
 [heading__license]:
   #license
@@ -215,7 +271,9 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 
 [source_link__render-vendor-prefixes]: https://github.com/scss-utilities/vendor-prefixes/blob/master/lib/render-vendor-prefixes.scss
+
 [source_link__map-vendor-prefixes]: https://github.com/scss-utilities/vendor-prefixes/blob/master/lib/map-vendor-prefixes.scss
+
 [source_link__calc]: https://github.com/scss-utilities/vendor-prefixes/blob/master/calc.scss
 
 
