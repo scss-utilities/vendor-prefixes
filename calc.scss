@@ -1,22 +1,27 @@
-// ---
-// notice: set `$fallback` for unsuported browsers
-// example_input: >-
-//   .some-class {
-//     @include calc(
-//       $property: width,
-//       $value: 100% - 40px,
-//       $fallback: 85%
-//     );
-//   }
-//
-// example_output: >-
-//   .some-class {
-//     width: 85%;
-//     width: -webkit-calc(100% - 40px);
-//     width: -moz-calc(100% - 40px);
-//     width: calc(100% - 40px);
-//   }
-// ---
+/// Consider setting `$fallback` for unsuported browsers to silence warnings
+/// @param {string} $property
+/// @param {string} $value
+/// @param {string} $fallback
+/// @returns {CSS} - `Property: Value` with prefixed values
+/// @see {link} - https://developer.mozilla.org/en-US/docs/Web/CSS/calc
+/// @example scss - Usage of calc
+///   .example-class {
+///     @include calc(
+///       $property: width,
+///       $value: 100% - 40px,
+///       $fallback: 85%
+///     );
+///   }
+/// @example css - Resutls of calc
+///   .example-class {
+///     width: 85%;
+///     width: -webkit-calc(100% - 40px);
+///     width: -moz-calc(100% - 40px);
+///     width: calc(100% - 40px);
+///   }
+/// @requires {mixin} render-vendor-prefixes
+/// @author S0AndS0
+/// @license AGPL-3.0
 @mixin calc($property, $value, $fallback: false) {
   @if $fallback {
     #{$property}: #{$fallback};
@@ -27,8 +32,8 @@
     $property: $property,
     $value: calc(#{$value}),
     $vendor-list: (
-      -webkit, // Old - Chrome 19-25, Safari 6
-      -moz     // Old - Firefox 4-15
+      -webkit,    // Old - Chrome 19-25, Safari 6
+      -moz        // Old - Firefox 4-15
     ),
     $prefix: value,
   );

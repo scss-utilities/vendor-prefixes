@@ -1,21 +1,24 @@
-// ---
-// example_input: >-
-//   .some-class {
-//     @include column-rule-color($value: blue);
-//   }
-//
-// example_output: >-
-//   .some-class {
-//     -webkit-column-rule-color: blue;
-//        -moz-column-rule-color: blue;
-//             column-rule-color: blue;
-//   }
-//
-// available_values:
-//   - _color_
-//     initial
-//     inherit
-// ---
+/// Defines line color between columns
+/// @param {string} $value
+/// @returns {CSS} - `Property: Value` with prefixed properties
+/// @see {link} - https://developer.mozilla.org/en-US/docs/Web/CSS/column-rule-color
+/// @example - Available values
+///   - `_color_`
+///   - `initial`
+///   - `inherit`
+/// @example scss - Usage of column-rule-color
+///   .example-class {
+///     @include column-rule-color($value: blue);
+///   }
+/// @example css - Resutls of column-rule-color
+///   .example-class {
+///     -webkit-column-rule-color: blue;
+///        -moz-column-rule-color: blue;
+///             column-rule-color: blue;
+///   }
+/// @requires {mixin} render-vendor-prefixes
+/// @author S0AndS0
+/// @license AGPL-3.0
 @mixin column-rule-color($value) {
   @include render-vendor-prefixes(
     $property: column-rule-color,

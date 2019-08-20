@@ -1,22 +1,25 @@
-// ---
-// example_input: >-
-//   .some-class {
-//     @include column-count($value: 2);
-//   }
-//
-// example_output: >-
-//   .some-class {
-//     -webkit-column-count: 2;
-//        -moz-column-count: 2;
-//             column-count: 2;
-//   }
-//
-// available_values:
-//   - _number_
-//     auto
-//     initial
-//     inherit
-// ---
+/// Breaks element content into columns
+/// @param {string|number} $value
+/// @returns {CSS} - `Property: Value` with prefixed properties
+/// @see {link} - https://developer.mozilla.org/en-US/docs/Web/CSS/column-count
+/// @example - Available values
+///   - `_number_`
+///   - `auto`
+///   - `initial`
+///   - `inherit`
+/// @example scss - Usage of column-count
+///   .example-class {
+///     @include column-count($value: 2);
+///   }
+/// @example css - Resutls of column-count
+///   .example-class {
+///     -webkit-column-count: 2;
+///        -moz-column-count: 2;
+///             column-count: 2;
+///   }
+/// @requires {mixin} render-vendor-prefixes
+/// @author S0AndS0
+/// @license AGPL-3.0
 @mixin column-count($value) {
   @include render-vendor-prefixes(
     $property: column-count,

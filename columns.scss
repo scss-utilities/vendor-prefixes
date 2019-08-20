@@ -1,22 +1,25 @@
-// ---
-// example_input: >-
-//   .some-class {
-//     @include columns($value: inherit);
-//   }
-//
-// example_output: >-
-//   .some-class {
-//     -webkit-columns: inherit;
-//        -moz-columns: inherit;
-//             columns: inherit;
-//   }
-//
-// available_values:
-//   - auto
-//     column-width column-count
-//     initial
-//     inherit
-// ---
+/// Defines columns width and count for element
+/// @param {string} $value
+/// @returns {CSS} - `Property: Value` with prefixed properties
+/// @see {link} - https://developer.mozilla.org/en-US/docs/Web/CSS/columns
+/// @example - Available values
+///   - `auto`
+///   - `column-width column-count`
+///   - `initial`
+///   - `inherit`
+/// @example scss - Usage of columns
+///   .example-class {
+///     @include columns($value: 6rem auto);
+///   }
+/// @example css - Resutls of columns
+///   .example-class {
+///     -webkit-columns: 6rem auto;
+///        -moz-columns: 6rem auto;
+///             columns: 6rem auto;
+///   }
+/// @requires {mixin} render-vendor-prefixes
+/// @author S0AndS0
+/// @license AGPL-3.0
 @mixin columns($value) {
   @include render-vendor-prefixes(
     $property: columns,

@@ -1,22 +1,25 @@
-// ---
-// example_input: >-
-//   .some-class {
-//     @include column-width($value: inherit);
-//   }
-//
-// example_output: >-
-//   .some-class {
-//     -webkit-column-width: inherit;
-//        -moz-column-width: inherit;
-//             column-width: inherit;
-//   }
-//
-// available_values:
-//   - auto
-//     _length_
-//     initial
-//     inherit
-// ---
+/// Defines _ideal_ (minimum) width of columns
+/// @param {string} $value
+/// @returns {CSS} - `Property: Value` with prefixed properties
+/// @see {link} - https://developer.mozilla.org/en-US/docs/Web/CSS/column-width
+/// @example - Available values
+///   - `auto`
+///   - `_length_`
+///   - `initial`
+///   - `inherit`
+/// @example scss - Usage of column-width
+///   .example-class {
+///     @include column-width($value: inherit);
+///   }
+/// @example css - Resutls of column-width
+///   .example-class {
+///     -webkit-column-width: inherit;
+///        -moz-column-width: inherit;
+///             column-width: inherit;
+///   }
+/// @requires {mixin} render-vendor-prefixes
+/// @author S0AndS0
+/// @license AGPL-3.0
 @mixin column-width($value) {
   @include render-vendor-prefixes(
     $property: column-width,

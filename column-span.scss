@@ -1,21 +1,24 @@
-// ---
-// example_input: >-
-//   .some-class {
-//     @include column-span($value: inherit);
-//   }
-//
-// example_output: >-
-//   .some-class {
-//     -webkit-column-span: inherit;
-//             column-span: inherit;
-//   }
-//
-// available_values:
-//   - none
-//     all
-//     initial
-//     inherit
-// ---
+/// Defines if content may span (split) accross colunms
+/// @param {string} $value
+/// @returns {CSS} - `Property: Value` with prefixed properties
+/// @see {link} - https://developer.mozilla.org/en-US/docs/Web/CSS/column-span
+/// @example - Available values
+///   - `none`
+///   - `all`
+///   - `initial`
+///   - `inherit`
+/// @example scss - Usage of column-span
+///   .example-class {
+///     @include column-span($value: all);
+///   }
+/// @example css - Resutls of column-span
+///   .example-class {
+///     -webkit-column-span: all;
+///             column-span: all;
+///   }
+/// @requires {mixin} render-vendor-prefixes
+/// @author S0AndS0
+/// @license AGPL-3.0
 @mixin column-span($value) {
   @include render-vendor-prefixes(
     $property: column-span,

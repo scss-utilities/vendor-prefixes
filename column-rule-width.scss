@@ -1,24 +1,27 @@
-// ---
-// example_input: >-
-//   .some-class {
-//     @include column-rule-width($value: 5px);
-//   }
-//
-// example_output: >-
-//   .some-class {
-//     -webkit-column-rule-width: 5px;
-//        -moz-column-rule-width: 5px;
-//             column-rule-width: 5px;
-//   }
-//
-// available_values:
-//   - medium
-//     thin
-//     thick
-//     _length_
-//     initial
-//     inherit
-// ---
+/// Defines width of line between columns
+/// @param {string} $value
+/// @returns {CSS} - `Property: Value` with prefixed properties
+/// @see {link} - https://developer.mozilla.org/en-US/docs/Web/CSS/column-rule-width
+/// @example - Available values
+///   - `medium`
+///   - `thin`
+///   - `thick`
+///   - `_length_`
+///   - `initial`
+///   - `inherit`
+/// @example scss - Usage of column-rule-width
+///   .example-class {
+///     @include column-rule-width($value: 5px);
+///   }
+/// @example css - Resutls of column-rule-width
+///   .example-class {
+///     -webkit-column-rule-width: 5px;
+///        -moz-column-rule-width: 5px;
+///             column-rule-width: 5px;
+///   }
+/// @requires {mixin} render-vendor-prefixes
+/// @author S0AndS0
+/// @license AGPL-3.0
 @mixin column-rule-width($value) {
   @include render-vendor-prefixes(
     $property: column-rule-width,

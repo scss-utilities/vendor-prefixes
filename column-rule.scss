@@ -1,21 +1,20 @@
-// ---
-// example_input: >-
-//   .some-class {
-//     @include border-image($value: inherit);
-//   }
-//
-// example_output: >-
-//   .some-class {
-//     -webkit-border-image: inherit;
-//        -moz-border-image: inherit;
-//             border-image: inherit;
-//   }
-//
-// available_values:
-//   - column-rule-width column-rule-style column-rule-color
-//     initial
-//     inherit
-// ---
+/// Defines width, style, and color of line between columns
+/// @param {string} $value
+/// @returns {CSS} - `Property: Value` with prefixed properties
+/// @see {link} - https://developer.mozilla.org/en-US/docs/Web/CSS/column-rule
+/// @example scss - Usage of column-rule
+///   .example-class {
+///     @include column-rule($value: dotted);
+///   }
+/// @example css - Resutls of column-rule
+///   .example-class {
+///     -webkit-column-rule: dotted;
+///        -moz-column-rule: dotted;
+///             column-rule: dotted;
+///   }
+/// @requires {mixin} render-vendor-prefixes
+/// @author S0AndS0
+/// @license AGPL-3.0
 @mixin column-rule($value) {
   @include render-vendor-prefixes(
     $property: column-rule,

@@ -1,22 +1,23 @@
-// ---
-// example_input: >-
-//   .some-class {
-//     @include cursor($value: auto);
-//   }
-//
-// example_output: >-
-//   .some-class {
-//     -webkit-cursor: auto;
-//        -moz-cursor: auto;
-//          -o-cursor: auto;
-//             cursor: auto;
-//   }
-//
-// available_values: see https://developer.mozilla.org/en-US/docs/Web/CSS/cursor
-// info_links:
-//   - https://www.w3.org/TR/css-ui-3/#cursor
-//     https://www.w3schools.com/cssref/pr_class_cursor.asp
-// ---
+/// What cursor to show when mouse is over element
+/// @param {string} $value
+/// @returns {CSS} - `Property: Value` with prefixed properties
+/// @see {link} - https://developer.mozilla.org/en-US/docs/Web/CSS/cursor
+/// @see {link} - https://www.w3.org/TR/css-ui-3/#cursor
+/// @see {link} - https://www.w3schools.com/cssref/pr_class_cursor.asp
+/// @example scss - Usage of cursor
+///   .example-class {
+///     @include cursor($value: help);
+///   }
+/// @example css - Resutls of cursor
+///   .example-class {
+///     -webkit-cursor: help;
+///        -moz-cursor: help;
+///          -o-cursor: help;
+///             cursor: help;
+///   }
+/// @requires {mixin} render-vendor-prefixes
+/// @author S0AndS0
+/// @license AGPL-3.0
 @mixin cursor($value) {
   @include render-vendor-prefixes(
     $property: cursor,

@@ -1,22 +1,25 @@
-// ---
-// example_input: >-
-//   .some-class {
-//     @include column-gap($value: 42px);
-//   }
-//
-// example_output: >-
-//   .some-class {
-//     -webkit-column-gap: 42px;
-//        -moz-column-gap: 42px;
-//             column-gap: 42px;
-//   }
-//
-// available_values:
-//   - _length_
-//     normal
-//     initial
-//     inherit
-// ---
+/// Size of gap/gutter between columns
+/// @param {string} $value
+/// @returns {CSS} - `Property: Value` with prefixed properties
+/// @see {link} - https://developer.mozilla.org/en-US/docs/Web/CSS/column-gap
+/// @example - Available values
+///   - `_length_`
+///   - `normal`
+///   - `initial`
+///   - `inherit`
+/// @example scss - Usage of column-gap
+///   .example-class {
+///     @include column-gap($value: 42px);
+///   }
+/// @example css - Resutls of column-gap
+///   .example-class {
+///     -webkit-column-gap: 42px;
+///        -moz-column-gap: 42px;
+///             column-gap: 42px;
+///   }
+/// @requires {mixin} render-vendor-prefixes
+/// @author S0AndS0
+/// @license AGPL-3.0
 @mixin column-gap($value) {
   @include render-vendor-prefixes(
     $property: column-gap,
