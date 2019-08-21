@@ -1,22 +1,22 @@
-// ---
-// notice: `-moz-box-flex: 1` maybe needed on container
-//
-// example_input: >-
-//   .some-class {
-//     @include display-flexbox();
-//   }
-//
-// example_output: >-
-//   .some-class {
-//     display: -webkit-box;
-//     display: -webkit-flex;
-//     display: -moz-box;
-//     display: -ms-flexbox;
-//     display: flex;
-//   }
-//
-// available_values: https://css-tricks.com/using-flexbox/
-// ---
+/// Mixes old and new syntax
+/// @returns {CSS} - `Property: Value` with prefixed values
+/// @see {link} - https://css-tricks.com/using-flexbox/
+/// @example scss - Usage of display-flexbox
+///   .example-class {
+///     @include display-flexbox($value: help);
+///   }
+/// @example css - Resutls of display-flexbox
+///   .example-class {
+///     display: -webkit-box;
+///     display: -webkit-flex;
+///     display: -moz-box;
+///     display: -ms-flexbox;
+///     display: flex;
+///   }
+/// @requires {mixin} render-vendor-prefixes
+/// @author S0AndS0
+/// @license AGPL-3.0
+/// @todo Check if `-mox-box` neads a `1`
 @mixin display-flexbox() {
   display: -webkit-box;  // iOS 6, Safari 3.1-6
   display: -webkit-flex; // Chrome

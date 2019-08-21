@@ -1,18 +1,20 @@
-// ---
-// notice: No MS support before 10.0, current support is questionable too
-// example_input: >-
-//   .some-class {
-//     @include font-variant-ligatures($value: normal);
-//   }
-//
-// example_output: >-
-//   .some-class {
-//     -webkit-font-variant-ligatures: normal;
-//             font-variant-ligatures: normal;
-//   }
-//
-// available_values: see https://developer.mozilla.org/en-US/docs/Web/CSS/font-variant-ligatures
-// ---
+/// Defines if contectual forms are used within context of element
+/// Note, No MS support before 10.0, current support is questionable too
+/// @param {string} $value
+/// @returns {CSS} - `Property: Value` with prefixed properties
+/// @see {link} - https://developer.mozilla.org/en-US/docs/Web/CSS/font-variant-ligatures
+/// @example scss - Usage of font-variant-ligatures
+///   .example-class {
+///     @include font-variant-ligatures($value: normal);
+///   }
+/// @example css - Resutls of font-variant-ligatures
+///   .example-class {
+///     -webkit-font-variant-ligatures: normal;
+///             font-variant-ligatures: normal;
+///   }
+/// @requires {mixin} render-vendor-prefixes
+/// @author S0AndS0
+/// @license AGPL-3.0
 @mixin font-variant-ligatures($value) {
   @include render-vendor-prefixes(
     $property: font-variant-ligatures,

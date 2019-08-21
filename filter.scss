@@ -1,18 +1,20 @@
-// ---
-// example_input: >-
-//   .some-class {
-//     @include filter($value: none);
-//   }
-//
-// example_output: >-
-//   .some-class {
-//     -webkit-filter: none;
-//          -o-filter: none;
-//             filter: none;
-//   }
-//
-// available_values: see https://www.w3schools.com/cssref/css3_pr_filter.asp
-// ---
+/// Applies blur or color shift effects to element
+/// @param {string} $value
+/// @returns {CSS} - `Property: Value` with prefixed properties
+/// @see {link} - https://developer.mozilla.org/en-US/docs/Web/CSS/filter
+/// @example scss - Usage of filter
+///   .example-class {
+///     @include filter($value: none);
+///   }
+/// @example css - Resutls of filter
+///   .example-class {
+///     -webkit-filter: none;
+///          -o-filter: none;
+///             filter: none;
+///   }
+/// @requires {mixin} render-vendor-prefixes
+/// @author S0AndS0
+/// @license AGPL-3.0
 @mixin filter($value) {
   @include render-vendor-prefixes(
     $property: filter,

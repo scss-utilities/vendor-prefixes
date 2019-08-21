@@ -1,22 +1,25 @@
-// ---
-// example_input: >-
-//   .some-class {
-//     @include flex-basis($value: inherit);
-//   }
-//
-// example_output: >-
-//   .some-class {
-//     -webkit-flex-basis: inherit;
-//        -moz-flex-basis: inherit;
-//             flex-basis: inherit;
-//   }
-//
-// available_values:
-//   - _number_
-//     auto
-//     initial
-//     inherit
-// ---
+/// Initial size main of flex element, unless modified by `box-sizing`
+/// @param {string} $value
+/// @returns {CSS} - `Property: Value` with prefixed properties
+/// @see {link} - https://developer.mozilla.org/en-US/docs/Web/CSS/flex-basis
+/// @example - Available values
+///   - `_number_`
+///   - `auto`
+///   - `initial`
+///   - `inherit`
+/// @example scss - Usage of flex-basis
+///   .example-class {
+///     @include flex-basis($value: inherit);
+///   }
+/// @example css - Resutls of flex-basis
+///   .example-class {
+///     -webkit-flex-basis: inherit;
+///        -moz-flex-basis: inherit;
+///             flex-basis: inherit;
+///   }
+/// @requires {mixin} render-vendor-prefixes
+/// @author S0AndS0
+/// @license AGPL-3.0
 @mixin flex-basis($value) {
   @include render-vendor-prefixes(
     $property: flex-basis,

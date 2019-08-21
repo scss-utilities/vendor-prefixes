@@ -1,21 +1,24 @@
-// ---
-// example_input: >-
-//   .some-class {
-//     @include flex-grow($value: inherit);
-//   }
-//
-// example_output: >-
-//   .some-class {
-//     -webkit-flex-grow: inherit;
-//        -moz-flex-grow: inherit;
-//             flex-grow: inherit;
-//   }
-//
-// available_values:
-//   - _number_
-//     initial
-//     inherit
-// ---
+/// Defines growth factor of flex item
+/// @param {string} $value
+/// @returns {CSS} - `Property: Value` with prefixed properties
+/// @see {link} - https://developer.mozilla.org/en-US/docs/Web/CSS/flex-grow
+/// @example - Available values
+///   - `_number_`
+///   - `initial`
+///   - `inherit`
+/// @example scss - Usage of flex-grow
+///   .example-class {
+///     @include flex-grow($value: inherit);
+///   }
+/// @example css - Resutls of flex-grow
+///   .example-class {
+///     -webkit-flex-grow: inherit;
+///        -moz-flex-grow: inherit;
+///             flex-grow: inherit;
+///   }
+/// @requires {mixin} render-vendor-prefixes
+/// @author S0AndS0
+/// @license AGPL-3.0
 @mixin flex-grow($value) {
   @include render-vendor-prefixes(
     $property: flex-grow,

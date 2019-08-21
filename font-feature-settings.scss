@@ -1,22 +1,22 @@
-// ---
-// notice: This mixin takes a `SCSS` list of `$values...`
-//
-// example_input: >-
-//   .some-class {
-//     @include font-feature-settings("c2sc", "smcp");
-//   }
-//
-// example_output: >-
-//   .some-class {
-//     -webkit-font-feature-settings: "c2sc", "smcp";
-//        -moz-font-feature-settings: "c2sc", "smcp";
-//         -ms-font-feature-settings: "c2sc", "smcp";
-//          -o-font-feature-settings: "c2sc", "smcp";
-//             font-feature-settings: "c2sc", "smcp";
-//   }
-//
-// available_values: see https://developer.mozilla.org/en-US/docs/Web/CSS/font-feature-settings
-// ---
+/// Defines advanced typographic features in OpenType fonts
+/// @param {string} $value
+/// @returns {CSS} - `Property: Value` with prefixed properties
+/// @see {link} - https://developer.mozilla.org/en-US/docs/Web/CSS/font-feature-settings
+/// @example scss - Usage of font-feature-settings
+///   .example-class {
+///     @include font-feature-settings("c2sc", "smcp");
+///   }
+/// @example css - Resutls of font-feature-settings
+///   .example-class {
+///     -webkit-font-feature-settings: "c2sc", "smcp";
+///        -moz-font-feature-settings: "c2sc", "smcp";
+///         -ms-font-feature-settings: "c2sc", "smcp";
+///          -o-font-feature-settings: "c2sc", "smcp";
+///             font-feature-settings: "c2sc", "smcp";
+///   }
+/// @requires {mixin} render-vendor-prefixes
+/// @author S0AndS0
+/// @license AGPL-3.0
 @mixin font-feature-settings($values...) {
   @include render-vendor-prefixes(
     $property: font-feature-settings,

@@ -1,21 +1,23 @@
-// ---
-// notice: No Opera support as of 2019
-// example_input: >-
-//   .some-class {
-//     @include font-kerning($value: auto);
-//   }
-//
-// example_output: >-
-//   .some-class {
-//     -webkit-font-kerning: auto;
-//             font-kerning: auto;
-//   }
-//
-// available_values:
-//   - auto
-//     normal
-//     none
-// ---
+/// Defines use of kerning information stored within font
+/// @param {string} $value
+/// @returns {CSS} - `Property: Value` with prefixed properties
+/// @see {link} - https://developer.mozilla.org/en-US/docs/Web/CSS/font-kerning
+/// @example - Available values
+///   - `auto`
+///   - `normal`
+///   - `none`
+/// @example scss - Usage of font-kerning
+///   .example-class {
+///     @include font-kerning($value: auto);
+///   }
+/// @example css - Resutls of font-kerning
+///   .example-class {
+///     -webkit-font-kerning: auto;
+///             font-kerning: auto;
+///   }
+/// @requires {mixin} render-vendor-prefixes
+/// @author S0AndS0
+/// @license AGPL-3.0
 @mixin font-kerning($value) {
   @include render-vendor-prefixes(
     $property: font-kerning,

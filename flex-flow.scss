@@ -1,21 +1,24 @@
-// ---
-// example_input: >-
-//   .some-class {
-//     @include flex-flow($value: inherit);
-//   }
-//
-// example_output: >-
-//   .some-class {
-//     -webkit-flex-flow: inherit;
-//        -moz-flex-flow: inherit;
-//             flex-flow: inherit;
-//   }
-//
-// available_values:
-//   - flex-direction flex-wrap
-//     initial
-//     inherit
-// ---
+/// Shorthand for `flex-direction` and `flex-wrap`
+/// @param {string} $value
+/// @returns {CSS} - `Property: Value` with prefixed properties
+/// @see {link} - https://developer.mozilla.org/en-US/docs/Web/CSS/flex-flow
+/// @example - Available values
+///   - `_flex-direction_ _flex-wrap_`
+///   - `initial`
+///   - `inherit`
+/// @example scss - Usage of flex-flow
+///   .example-class {
+///     @include flex-flow($value: row wrap);
+///   }
+/// @example css - Resutls of flex-flow
+///   .example-class {
+///     -webkit-flex-flow: row wrap;
+///        -moz-flex-flow: row wrap;
+///             flex-flow: row wrap;
+///   }
+/// @requires {mixin} render-vendor-prefixes
+/// @author S0AndS0
+/// @license AGPL-3.0
 @mixin flex-flow($value) {
   @include render-vendor-prefixes(
     $property: flex-flow,

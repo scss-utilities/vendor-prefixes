@@ -1,24 +1,27 @@
-// ---
-// example_input: >-
-//   .some-class {
-//     @include hyphens($value: inherit);
-//   }
-//
-// example_output: >-
-//   .some-class {
-//     -webkit-hyphens: inherit;
-//        -moz-hyphens: inherit;
-//         -ms-hyphens: inherit;
-//             hyphens: inherit;
-//   }
-//
-// available_values:
-//   - none
-//     manual
-//     auto
-//     initial
-//     inherit
-// ---
+/// Sets if hyphens are used when spliting words accross multiple lines
+/// @param {string} $value
+/// @returns {CSS} - `Property: Value` with prefixed properties
+/// @see {link} - https://developer.mozilla.org/en-US/docs/Web/CSS/hyphens
+/// @example - Available values
+///   - `none`
+///   - `manual`
+///   - `auto`
+///   - `initial`
+///   - `inherit`
+/// @example scss - Usage of hyphens
+///   .example-class {
+///     @include hyphens($value: none);
+///   }
+/// @example css - Resutls of hyphens
+///   .example-class {
+///     -webkit-hyphens: inherit;
+///        -moz-hyphens: inherit;
+///         -ms-hyphens: inherit;
+///             hyphens: inherit;
+///   }
+/// @requires {mixin} render-vendor-prefixes
+/// @author S0AndS0
+/// @license AGPL-3.0
 @mixin hyphens($value) {
   @include render-vendor-prefixes(
     $property: hyphens,

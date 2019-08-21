@@ -1,24 +1,27 @@
-// ---
-// example_input: >-
-//   .some-class {
-//     @include flex-direction($value: row);
-//   }
-//
-// example_output: >-
-//   .some-class {
-//     -webkit-flex-direction: row;
-//        -moz-flex-direction: row;
-//             flex-direction: row;
-//   }
-//
-// available_values:
-//   - row
-//     row-reverse
-//     column
-//     column-reverse
-//     initial
-//     inherit
-// ---
+/// Defines how flex items are placed within flex container
+/// @param {string} $value
+/// @returns {CSS} - `Property: Value` with prefixed properties
+/// @see {link} - https://developer.mozilla.org/en-US/docs/Web/CSS/flex-direction
+/// @example - Available values
+///   - `row`
+///   - `row-reverse`
+///   - `column`
+///   - `column-reverse`
+///   - `initial`
+///   - `inherit`
+/// @example scss - Usage of flex-direction
+///   .example-class {
+///     @include flex-direction($value: row);
+///   }
+/// @example css - Resutls of flex-direction
+///   .example-class {
+///     -webkit-flex-direction: row;
+///        -moz-flex-direction: row;
+///             flex-direction: row;
+///   }
+/// @requires {mixin} render-vendor-prefixes
+/// @author S0AndS0
+/// @license AGPL-3.0
 @mixin flex-direction($value) {
   @include render-vendor-prefixes(
     $property: flex-direction,
