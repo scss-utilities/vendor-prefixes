@@ -1,36 +1,35 @@
-// ---
-// notice: Experimental and no MS support as of 2019
-//
-// example_input: >-
-//   .some-class {
-//     @include image-rendering($value: crisp-edges);
-//   }
-//
-// example_output: >-
-//   .some-class {
-//     image-rendering: -webkit-optimize-contrast;
-//     -ms-interpolation-mode: bicubic;
-//     image-rendering: -moz-crisp-edges;
-//     image-rendering: -o-crisp-edges;
-//     image-rendering: crisp-edges;
-//   }
-//
-// available_values:
-//   - auto:            UA dependent
-//     smooth:          scale image with algorithm similar to bilinear interpolation
-//     high-quality:    prioritized when resources are constrained, otherwise identical to smooth
-//     crisp-edges:     preserve contrast during image scaling
-//     pixelated:       scale using nearest neighbor algorithm
-//     optimizeQuality: use smooth
-//     optimizeSpeed:   use pixelated
-//
-// info_links:
-//   - https://drafts.csswg.org/css-images-3/#the-image-rendering
-//     https://developer.mozilla.org/en-US/docs/Web/CSS/image-rendering
-//     https://drafts.csswg.org/css-images-3/#the-image-rendering
-//     https://github.com/postcss/autoprefixer/issues/449
-//     https://stackoverflow.com/questions/3900436/image-scaling-by-css-is-there-a-webkit-alternative-for-moz-crisp-edges
-// ---
+/// Experimental and no MS support as of 2019
+/// @param {string} $value
+/// @returns {CSS} - `Property: Value` with prefixed values and properties
+/// @see {link} - https://developer.mozilla.org/en-US/docs/Web/CSS/image-rendering
+/// @see {link} - https://drafts.csswg.org/css-images-3/#the-image-rendering
+/// @see {link} - https://developer.mozilla.org/en-US/docs/Web/CSS/image-rendering
+/// @see {link} - https://drafts.csswg.org/css-images-3/#the-image-rendering
+/// @see {link} - https://github.com/postcss/autoprefixer/issues/449
+/// @see {link} - https://stackoverflow.com/questions/3900436/image-scaling-by-css-is-there-a-webkit-alternative-for-moz-crisp-edges
+/// @example - Available values
+///   - `auto`:            UA dependent
+///   - `smooth`:          scale image with algorithm similar to bilinear interpolation
+///   - `high-quality`:    prioritized when resources are constrained, otherwise identical to smooth
+///   - `crisp-edges`:     preserve contrast during image scaling
+///   - `pixelated`:       scale using nearest neighbor algorithm
+///   - `optimizeQuality`: use smooth
+///   - `optimizeSpeed`:   use pixelated
+/// @example scss - Usage of image-rendering
+///   .example-class {
+///     @include image-rendering($value: crisp-edges);
+///   }
+/// @example css - Resutls of image-rendering
+///   .example-class {
+///     image-rendering: -webkit-optimize-contrast;
+///     -ms-interpolation-mode: bicubic;
+///     image-rendering: -moz-crisp-edges;
+///     image-rendering: -o-crisp-edges;
+///     image-rendering: crisp-edges;
+///   }
+/// @requires {mixin} render-vendor-prefixes
+/// @author S0AndS0
+/// @license AGPL-3.0
 @mixin image-rendering($value) {
   @if $value == crisp-edges {
     image-rendering: -webkit-optimize-contrast;  // Android, Chrome, Safari

@@ -1,25 +1,25 @@
-// ---
-// notice: This mixin takes a `SCSS` list of `($values)`
-//
-// example_input: >-
-//   .some-class {
-//     @include image-set(
-//       $property: background-image,
-//       $values: ("cat.png" 1px, "cat-2x.png" 2x, "cat-print.png" 600dpi),
-//     );
-//   }
-//
-// example_output: >-
-//   .some-class {
-//     background-image: -webkit-image-set("cat.png" 1px, "cat-2x.png" 2x, "cat-print.png" 600dpi);
-//     background-image: -moz-image-set("cat.png" 1px, "cat-2x.png" 2x, "cat-print.png" 600dpi);
-//     background-image: -ms-image-set("cat.png" 1px, "cat-2x.png" 2x, "cat-print.png" 600dpi);
-//     background-image: -o-image-set("cat.png" 1px, "cat-2x.png" 2x, "cat-print.png" 600dpi);
-//     background-image: image-set("cat.png" 1px, "cat-2x.png" 2x, "cat-print.png" 600dpi);
-//   }
-//
-// available_values: see https://developer.mozilla.org/en-US/docs/Web/CSS/image-set
-// ---
+/// This mixin takes a `SCSS` list of `($values)`
+/// @param {string} $value
+/// @returns {CSS} - `Property: Value` with prefixed properties
+/// @see {link} - https://developer.mozilla.org/en-US/docs/Web/CSS/image-set
+/// @example scss - Usage of image-set
+///   .example-class {
+///     @include image-set(
+///       $property: background-image,
+///       $values: ("cat.png" 1px, "cat-2x.png" 2x, "cat-print.png" 600dpi),
+///     );
+///   }
+/// @example css - Resutls of image-set
+///   .example-class {
+///     background-image: -webkit-image-set("cat.png" 1px, "cat-2x.png" 2x, "cat-print.png" 600dpi);
+///     background-image: -moz-image-set("cat.png" 1px, "cat-2x.png" 2x, "cat-print.png" 600dpi);
+///     background-image: -ms-image-set("cat.png" 1px, "cat-2x.png" 2x, "cat-print.png" 600dpi);
+///     background-image: -o-image-set("cat.png" 1px, "cat-2x.png" 2x, "cat-print.png" 600dpi);
+///     background-image: image-set("cat.png" 1px, "cat-2x.png" 2x, "cat-print.png" 600dpi);
+///   }
+/// @requires {mixin} render-vendor-prefixes
+/// @author S0AndS0
+/// @license AGPL-3.0
 @mixin image-set($property, $values) {
   @include render-vendor-prefixes(
     $property: $property,

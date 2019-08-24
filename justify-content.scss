@@ -1,25 +1,28 @@
-// ---
-// example_input: >-
-//   .some-class {
-//     @include justify-content($value: inherit);
-//   }
-//
-// example_output: >-
-//   .some-class {
-//     -webkit-justify-content: inherit;
-//        -moz-justify-content: inherit;
-//             justify-content: inherit;
-//   }
-//
-// available_values:
-//   - flex-start
-//     flex-end
-//     center
-//     space-between
-//     space-around
-//     initial
-//     inherit
-// ---
+/// 
+/// @param {string} $value
+/// @returns {CSS} - `Property: Value` with prefixed properties
+/// @see {link} - https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content
+/// @example - Available values
+///    - `flex-start`
+///    - `flex-end`
+///    - `center`
+///    - `space-between`
+///    - `space-around`
+///    - `initial`
+///    - `inherit`
+/// @example scss - Usage of justify-content
+///   .example-class {
+///     @include justify-content($value: inherit);
+///   }
+/// @example css - Resutls of justify-content
+///   .example-class {
+///     -webkit-justify-content: inherit;
+///        -moz-justify-content: inherit;
+///             justify-content: inherit;
+///   }
+/// @requires {mixin} render-vendor-prefixes
+/// @author S0AndS0
+/// @license AGPL-3.0
 @mixin justify-content($value) {
   @include render-vendor-prefixes(
     $property: justify-content,

@@ -1,36 +1,37 @@
-// ---
-// example_input: >-
-//   @include keyframes(fade-out) {
-//       0% { opacity: 1; }
-//     100% { opacity: 0; }
-//   }
-//
-// example_output: >-
-//   @-webkit-keyframes fade-out {
-//       0% { opacity: 1; }
-//     100% { opacity: 0; }
-//   }
-//   @-moz-keyframes fade-out {
-//       0% { opacity: 1; }
-//     100% { opacity: 0; }
-//   }
-//   @-ms-keyframes fade-out {
-//       0% { opacity: 1; }
-//     100% { opacity: 0; }
-//   }
-//   @-o-keyframes fade-out {
-//       0% { opacity: 1; }
-//     100% { opacity: 0; }
-//   }
-//   @keyframes fade-out {
-//       0% { opacity: 1; }
-//     100% { opacity: 0; }
-//   }
-//
-// available_values: see https://developer.mozilla.org/en-US/docs/Web/CSS/@keyframes
-//
-// info_links: https://medium.com/@justinbrazeau/10-useful-sass-mixins-for-automation-833cdee9d69b
-// ---
+/// Code was reposted by Justin Brazeau of medium
+/// @param {string} $value
+/// @returns {CSS} - `Property: Value` with prefixed properties
+/// @see {link} - https://developer.mozilla.org/en-US/docs/Web/CSS/@keyframes
+/// @see {link} - https://medium.com/@justinbrazeau/10-useful-sass-mixins-for-automation-833cdee9d69b
+/// @see {link} - https://medium.com/policy/medium-terms-of-service-9db0094a1e0f
+/// @example scss - Usage of hyphens
+///   @include keyframes(fade-out) {
+///       0% { opacity: 1; }
+///     100% { opacity: 0; }
+///   }
+/// @example css - Resutls of hyphens
+///   @-webkit-keyframes fade-out {
+///       0% { opacity: 1; }
+///     100% { opacity: 0; }
+///   }
+///   @-moz-keyframes fade-out {
+///       0% { opacity: 1; }
+///     100% { opacity: 0; }
+///   }
+///   @-ms-keyframes fade-out {
+///       0% { opacity: 1; }
+///     100% { opacity: 0; }
+///   }
+///   @-o-keyframes fade-out {
+///       0% { opacity: 1; }
+///     100% { opacity: 0; }
+///   }
+///   @keyframes fade-out {
+///       0% { opacity: 1; }
+///     100% { opacity: 0; }
+///   }
+/// @author S0AndS0
+/// @license AGPL-3.0
 @mixin keyframes($animation-name) {
   @-webkit-keyframes #{$animation-name} {   // Chrome 43.0/4.0, Opera 30.0/15.0, Safari 9.0/4.0
     @content;
