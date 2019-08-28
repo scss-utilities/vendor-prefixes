@@ -1,20 +1,21 @@
-// ---
-// notice: Firefox and MS support as of 2019 is questionable
-// example_input: >-
-//   .some-class {
-//     @include mask-mode($value: none);
-//   }
-//
-// example_output: >-
-//   .some-class {
-//     -webkit-mask-mode: none;
-//        -moz-mask-mode: none;
-//         -ms-mask-mode: none;
-//             mask-mode: none;
-//   }
-//
-// available_values: see https://developer.mozilla.org/en-US/docs/Web/CSS/mask-mode
-// ---
+/// This mixin takes a `SCSS` list of `($values)`
+/// @param {string} $value
+/// @returns {CSS} - `Property: Value` with prefixed properties
+/// @see {link} - https://developer.mozilla.org/en-US/docs/Web/CSS/mask-mode
+/// @example scss - Usage of image-set
+///   .example-class {
+///     @include mask-mode($value: none);
+///   }
+/// @example css - Resutls of image-set
+///   .example-class {
+///     -webkit-mask-mode: none;
+///        -moz-mask-mode: none;
+///         -ms-mask-mode: none;
+///             mask-mode: none;
+///   }
+/// @requires {mixin} render-vendor-prefixes
+/// @author S0AndS0
+/// @license AGPL-3.0
 @mixin mask-mode($value) {
   @include render-vendor-prefixes(
     $property: mask-mode,

@@ -1,18 +1,19 @@
-// ---
-// notice: No MS support as of 2019
-// example_input: >-
-//   .some-class {
-//     @include mask-clip($value: content-box);
-//   }
-//
-// example_output: >-
-//   .some-class {
-//     -webkit-mask-clip: content-box;
-//             mask-clip: content-box;
-//   }
-//
-// available_values: see https://developer.mozilla.org/en-US/docs/Web/CSS/mask-clip
-// ---
+/// No MS support as of 2019
+/// @param {string} $value
+/// @returns {CSS} - `Property: Value` with prefixed properties
+/// @see {link} - https://developer.mozilla.org/en-US/docs/Web/CSS/mask-clip
+/// @example scss - Usage of image-set
+///   .example-class {
+///     @include mask-clip($value: content-box);
+///   }
+/// @example css - Resutls of image-set
+///   .example-class {
+///     -webkit-mask-clip: content-box;
+///             mask-clip: content-box;
+///   }
+/// @requires {mixin} render-vendor-prefixes
+/// @author S0AndS0
+/// @license AGPL-3.0
 @mixin mask-clip($value) {
   @include render-vendor-prefixes(
     $property: mask-clip,

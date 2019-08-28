@@ -1,20 +1,21 @@
-// ---
-// notice: Firefox and MS support as of 2019 is questionable
-// example_input: >-
-//   .some-class {
-//     @include mask-image($value: alpha);
-//   }
-//
-// example_output: >-
-//   .some-class {
-//     -webkit-mask-image: alpha;
-//        -moz-mask-image: alpha;
-//         -ms-mask-image: alpha;
-//             mask-image: alpha;
-//   }
-//
-// available_values: see https://developer.mozilla.org/en-US/docs/Web/CSS/mask-image
-// ---
+/// Firefox and MS support as of 2019 is questionable
+/// @param {string} $value
+/// @returns {CSS} - `Property: Value` with prefixed properties
+/// @see {link} - https://developer.mozilla.org/en-US/docs/Web/CSS/mask-image
+/// @example scss - Usage of image-set
+///   .example-class {
+///     @include mask-image($value: alpha);
+///   }
+/// @example css - Resutls of image-set
+///   .example-class {
+///     -webkit-mask-image: alpha;
+///        -moz-mask-image: alpha;
+///         -ms-mask-image: alpha;
+///             mask-image: alpha;
+///   }
+/// @requires {mixin} render-vendor-prefixes
+/// @author S0AndS0
+/// @license AGPL-3.0
 @mixin mask-image($value) {
   @include render-vendor-prefixes(
     $property: mask-image,

@@ -1,19 +1,21 @@
-// ---
-// notice: for compatibilaty see https://caniuse.com/#search=max-content
-// example_input: >-
-//   .some-class {
-//     @import max-content($property: width);
-//   }
-//
-// example_output: >-
-//   .some-class {
-//     width: -webkit-max-content;
-//     width: -moz-max-content;
-//     width: max-content;
-//   }
-//
-// available_values: see https://www.w3.org/TR/css-sizing-3/#max-content
-// ---
+///
+/// @param {string} $value
+/// @returns {CSS} - `Property: Value` with prefixed properties
+/// @see {link} - https://www.w3.org/TR/css-sizing-3/#max-content
+/// @see {link} - https://caniuse.com/#search=max-content
+/// @example scss - Usage of image-set
+///   .example-class {
+///     @import max-content($property: width);
+///   }
+/// @example css - Resutls of image-set
+///   .example-class {
+///     width: -webkit-max-content;
+///     width: -moz-max-content;
+///     width: max-content;
+///   }
+/// @requires {mixin} render-vendor-prefixes
+/// @author S0AndS0
+/// @license AGPL-3.0
 @mixin max-content($property) {
   @include render-vendor-prefixes(
     $property: $property,

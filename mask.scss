@@ -1,20 +1,21 @@
-// ---
-// notice: Firefox and MS support as of 2019 is questionable
-// example_input: >-
-//   .some-class {
-//     @include mask($value: none);
-//   }
-//
-// example_output: >-
-//   .some-class {
-//     -webkit-mask: none;
-//        -moz-mask: none;
-//         -ms-mask: none;
-//             mask: none;
-//   }
-//
-// available_values: see https://developer.mozilla.org/en-US/docs/Web/CSS/mask
-// ---
+/// Firefox and MS support as of 2019 is questionable
+/// @param {string} $value
+/// @returns {CSS} - `Property: Value` with prefixed properties
+/// @see {link} - https://developer.mozilla.org/en-US/docs/Web/CSS/mask
+/// @example scss - Usage of image-set
+///   .example-class {
+///     @include mask($value: none);
+///   }
+/// @example css - Resutls of image-set
+///   .example-class {
+///     -webkit-mask: none;
+///        -moz-mask: none;
+///         -ms-mask: none;
+///             mask: none;
+///   }
+/// @requires {mixin} render-vendor-prefixes
+/// @author S0AndS0
+/// @license AGPL-3.0
 @mixin mask($value) {
   @include render-vendor-prefixes(
     $property: mask,

@@ -1,18 +1,19 @@
-// ---
-// notice: No IE support
-// example_input: >-
-//   .some-class {
-//     @include mask-position($value: top right);
-//   }
-//
-// example_output: >-
-//   .some-class {
-//     -webkit-mask-position: top right;
-//             mask-position: top right;
-//   }
-//
-// available_values: see https://developer.mozilla.org/en-US/docs/Web/CSS/mask-position
-// ---
+/// This mixin takes a `SCSS` list of `($values)`
+/// @param {string} $value
+/// @returns {CSS} - `Property: Value` with prefixed properties
+/// @see {link} - https://developer.mozilla.org/en-US/docs/Web/CSS/image-set
+/// @example scss - Usage of image-set
+///   .example-class {
+///     @include mask-position($value: top right);
+///   }
+/// @example css - Resutls of image-set
+///   .example-class {
+///     -webkit-mask-position: top right;
+///             mask-position: top right;
+///   }
+/// @requires {mixin} render-vendor-prefixes
+/// @author S0AndS0
+/// @license AGPL-3.0
 @mixin mask-position($value) {
   @include render-vendor-prefixes(
     $property: mask-position,
