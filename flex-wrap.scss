@@ -15,7 +15,7 @@
 /// @example css - Resutls of flex-wrap
 ///   .example-class {
 ///     -webkit-flex-wrap: wrap-reverse;
-///          -o-flex-wrap: wrap-reverse;
+///        -moz-flex-wrap: wrap-reverse;
 ///             flex-wrap: wrap-reverse;
 ///   }
 /// @requires {mixin} render-vendor-prefixes

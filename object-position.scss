@@ -1,17 +1,22 @@
-// ---
-// example_input: >-
-//   .some-class {
-//     @include object-position($value: contain);
-//   }
-//
-// example_output: >-
-//   .some-class {
-//     -o-object-position: contains;
-//        object-position: contains;
-//   }
-//
-// available_values: see https://developer.mozilla.org/en-US/docs/Web/CSS/object-position
-// ---
+/// Sets alignment of replaced element contents, eg. image and video elements
+/// @param {string} $value
+/// @returns {CSS} - `Property: Value` with prefixed properties
+/// @see {link} - https://developer.mozilla.org/en-US/docs/Web/CSS/object-position
+/// @example - Available values
+///   - `_number_ _number_`, eg. `50% 50%` or `250px 175px`
+///   - `_direction_ _direction_`, eg. `right top`
+/// @example scss - Usage of image-set
+///   .example-class {
+///     @include object-position($value: 50% 50%);
+///   }
+/// @example css - Resutls of image-set
+///   .example-class {
+///     -o-object-position: 50% 50%;
+///        object-position: 50% 50%;
+///   }
+/// @requires {mixin} render-vendor-prefixes
+/// @author S0AndS0
+/// @license AGPL-3.0
 @mixin object-position($value) {
   @include render-vendor-prefixes(
     $property: object-position,

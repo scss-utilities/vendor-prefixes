@@ -1,17 +1,25 @@
-// ---
-// example_input: >-
-//   .some-class {
-//     @include object-fit($value: contain);
-//   }
-//
-// example_output: >-
-//   .some-class {
-//     -o-object-fit: contains;
-//        object-fit: contains;
-//   }
-//
-// available_values: see https://developer.mozilla.org/en-US/docs/Web/CSS/object-fit
-// ---
+/// Set resizing of image, video and other elements that have content replaced
+/// @param {string} $value
+/// @returns {CSS} - `Property: Value` with prefixed properties
+/// @see {link} - https://developer.mozilla.org/en-US/docs/Web/CSS/object-fit
+/// @example - Available values
+///   - `fill`
+///   - `contain`
+///   - `cover`
+///   - `none`
+///   - `scale-down`
+/// @example scss - Usage of image-set
+///   .example-class {
+///     @include object-fit($value: contain);
+///   }
+/// @example css - Resutls of image-set
+///   .example-class {
+///     -o-object-fit: contain;
+///        object-fit: contain;
+///   }
+/// @requires {mixin} render-vendor-prefixes
+/// @author S0AndS0
+/// @license AGPL-3.0
 @mixin object-fit($value) {
   @include render-vendor-prefixes(
     $property: object-fit,
