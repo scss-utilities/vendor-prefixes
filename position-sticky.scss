@@ -1,15 +1,20 @@
-// ---
-// example_input: >-
-//   .some-class {
-//     @include position-sticky();
-//   }
-//
-// example_output: >-
-//   .some-class {
-//     position: -webkit-sticky;
-//     position: sticky;
-//   }
-// ---
+/// Sets how an element is positioned within document
+/// @param {string} $value
+/// @returns {CSS} - `Property: Value` with prefixed values
+/// @see {link} - https://developer.mozilla.org/en-US/docs/Web/CSS/position
+/// @example scss - Usage of image-set
+///   .example-class {
+///     @include position-sticky();
+///   }
+/// @example css - Resutls of image-set
+///   .example-class {
+///     position: -webkit-sticky;
+///     position: sticky;
+///   }
+/// @requires {mixin} render-vendor-prefixes
+/// @author S0AndS0
+/// @license AGPL-3.0
+/// @todo Rename to `position` after adding conditions for `sticky` and other values that require prefixing
 @mixin position-sticky {
   @include render-vendor-prefixes(
     $property: position,

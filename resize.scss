@@ -1,24 +1,26 @@
-// ---
-// notice: No MS support as of 2019
-// example_input: >-
-//   .some-class {
-//     @include resize($value: both);
-//   }
-//
-// example_output: >-
-//   .some-class {
-//     -moz-resize: both;
-//          resize: both;
-//   }
-//
-// available_values:
-//   - none
-//     both
-//     horizontal
-//     vertical
-//     initial
-//     inherit
-// ---
+/// No MS support as of 2019, sets if an element is resizable and how
+/// @param {string} $value
+/// @returns {CSS} - `Property: Value` with prefixed properties
+/// @see {link} - https://developer.mozilla.org/en-US/docs/Web/CSS/resize
+/// @example - Available values
+///   - `none`
+///   - `both`
+///   - `horizontal`
+///   - `vertical`
+///   - `initial`
+///   - `inherit`
+/// @example scss - Usage of image-set
+///   .example-class {
+///     @include resize($value: both);
+///   }
+/// @example css - Resutls of image-set
+///   .example-class {
+///     -moz-resize: both;
+///          resize: both;
+///   }
+/// @requires {mixin} render-vendor-prefixes
+/// @author S0AndS0
+/// @license AGPL-3.0
 @mixin resize($value) {
   @include render-vendor-prefixes(
     $property: resize,

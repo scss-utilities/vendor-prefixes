@@ -1,19 +1,23 @@
-// ---
-// notice: no MS support as of 2019
-// example_input: >-
-//   .some-class {
-//     @include shape-image-threshold($value: 0.5);
-//   }
-//
-// example_output: >-
-//   .some-class {
-//     -webkit-shape-image-threshold: 0.5;
-//             shape-image-threshold: 0.5;
-//   }
-//
-// available_values:
-//   - _float_ 0-1
-// ---
+/// Combined with `shape-outside`, sets alpha channel threshold for extracting shape-mask
+/// @param {string} $value
+/// @returns {CSS} - `Property: Value` with prefixed properties
+/// @see {link} - https://developer.mozilla.org/en-US/docs/Web/CSS/shape-image-threshold
+/// @example - Available values
+///   - `_float_`, `0.0` to `1.0`
+///   - `initial`
+///   - `inherit`
+/// @example scss - Usage of image-set
+///   .example-class {
+///     @include shape-image-threshold($value: 0.5);
+///   }
+/// @example css - Resutls of image-set
+///   .example-class {
+///     -webkit-shape-image-threshold: 0.5;
+///             shape-image-threshold: 0.5;
+///   }
+/// @requires {mixin} render-vendor-prefixes
+/// @author S0AndS0
+/// @license AGPL-3.0
 @mixin shape-image-threshold($value) {
   @include render-vendor-prefixes(
     $property: shape-image-threshold,

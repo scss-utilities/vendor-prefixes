@@ -1,23 +1,22 @@
-// ---
-// example_input: >-
-//   .some-class {
-//     @include perspective-origin($value: initial);
-//   }
-//
-// example_output: >-
-//   .some-class {
-//     -webkit-perspective-origin: initial;
-//        -moz-perspective-origin: initial;
-//         -ms-perspective-origin: initial;
-//             perspective-origin: initial;
-//   }
-//
-// available_values:
-//   - x-axis y-axis
-//     initial
-//     inherit
-// info_links: https://www.w3schools.com/cssref/css3_pr_perspective-origin.asp
-// ---
+/// Used as vanishing point by perspective and sets where viewer is looking
+/// @param {string} $value
+/// @returns {CSS} - `Property: Value` with prefixed properties
+/// @see {link} - https://developer.mozilla.org/en-US/docs/Web/CSS/perspective-origin
+/// @see {link} - https://www.w3schools.com/cssref/css3_pr_perspective-origin.asp
+/// @example scss - Usage of image-set
+///   .example-class {
+///     @include perspective-origin($value: initial);
+///   }
+/// @example css - Resutls of image-set
+///   .example-class {
+///     -webkit-perspective-origin: initial;
+///        -moz-perspective-origin: initial;
+///         -ms-perspective-origin: initial;
+///             perspective-origin: initial;
+///   }
+/// @requires {mixin} render-vendor-prefixes
+/// @author S0AndS0
+/// @license AGPL-3.0
 @mixin perspective-origin($value) {
   @include render-vendor-prefixes(
     $property: perspective-origin,

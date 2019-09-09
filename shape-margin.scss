@@ -1,22 +1,24 @@
-// ---
-// notice: no MS support as of 2019
-// example_input: >-
-//   .some-class {
-//     @include shape-margin($value: 42px);
-//   }
-//
-// example_output: >-
-//   .some-class {
-//     -webkit-shape-margin: 42px;
-//             shape-margin: 42px;
-//   }
-//
-// available_values:
-//   - _length-percentage_
-//     unset
-//     initial
-//     inherit
-// ---
+/// No MS support as of 2019
+/// @param {string} $value
+/// @returns {CSS} - `Property: Value` with prefixed properties
+/// @see {link} - https://developer.mozilla.org/en-US/docs/Web/CSS/shape-margin
+/// @example - Available values
+///   - `_length-percentage_`
+///   - `unset`
+///   - `initial`
+///   - `inherit`
+/// @example scss - Usage of image-set
+///   .example-class {
+///     @include shape-margin($value: 42px);
+///   }
+/// @example css - Resutls of image-set
+///   .example-class {
+///     -webkit-shape-margin: 42px;
+///             shape-margin: 42px;
+///   }
+/// @requires {mixin} render-vendor-prefixes
+/// @author S0AndS0
+/// @license AGPL-3.0
 @mixin shape-margin($value) {
   @include render-vendor-prefixes(
     $property: shape-margin,
