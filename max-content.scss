@@ -3,11 +3,11 @@
 /// @returns {CSS} - `Property: Value` with prefixed properties
 /// @see {link} - https://www.w3.org/TR/css-sizing-3/#max-content
 /// @see {link} - https://caniuse.com/#search=max-content
-/// @example scss - Usage of image-set
+/// @example scss - Usage of max-content
 ///   .example-class {
 ///     @import max-content($property: width);
 ///   }
-/// @example css - Resutls of image-set
+/// @example css - Results of max-content
 ///   .example-class {
 ///     width: -webkit-max-content;
 ///     width: -moz-max-content;

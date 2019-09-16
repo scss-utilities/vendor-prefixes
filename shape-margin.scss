@@ -7,11 +7,11 @@
 ///   - `unset`
 ///   - `initial`
 ///   - `inherit`
-/// @example scss - Usage of image-set
+/// @example scss - Usage of shape-margin
 ///   .example-class {
 ///     @include shape-margin($value: 42px);
 ///   }
-/// @example css - Resutls of image-set
+/// @example css - Results of shape-margin
 ///   .example-class {
 ///     -webkit-shape-margin: 42px;
 ///             shape-margin: 42px;

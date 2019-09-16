@@ -2,11 +2,11 @@
 /// @param {string} $value
 /// @returns {CSS} - `Property: Value` with prefixed properties
 /// @see {link} - https://developer.mozilla.org/en-US/docs/Web/CSS/mask-size
-/// @example scss - Usage of image-set
+/// @example scss - Usage of mask-size
 ///   .example-class {
 ///     @include mask-size($values: conver);
 ///   }
-/// @example css - Resutls of image-set
+/// @example css - Results of mask-size
 ///   .example-class {
 ///     -webkit-mask-size: conver;
 ///             mask-size: conver;

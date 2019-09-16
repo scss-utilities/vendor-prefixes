@@ -3,11 +3,11 @@
 /// @returns {CSS} - `Property: Value` with prefixed properties
 /// @see {link} - https://developer.mozilla.org/en-US/docs/Web/CSS/perspective-origin
 /// @see {link} - https://www.w3schools.com/cssref/css3_pr_perspective-origin.asp
-/// @example scss - Usage of image-set
+/// @example scss - Usage of perspective-origin
 ///   .example-class {
 ///     @include perspective-origin($value: initial);
 ///   }
-/// @example css - Resutls of image-set
+/// @example css - Results of perspective-origin
 ///   .example-class {
 ///     -webkit-perspective-origin: initial;
 ///        -moz-perspective-origin: initial;

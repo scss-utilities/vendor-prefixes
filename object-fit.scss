@@ -8,11 +8,11 @@
 ///   - `cover`
 ///   - `none`
 ///   - `scale-down`
-/// @example scss - Usage of image-set
+/// @example scss - Usage of object-fit
 ///   .example-class {
 ///     @include object-fit($value: contain);
 ///   }
-/// @example css - Resutls of image-set
+/// @example css - Results of object-fit
 ///   .example-class {
 ///     -o-object-fit: contain;
 ///        object-fit: contain;

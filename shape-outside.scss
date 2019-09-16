@@ -2,11 +2,11 @@
 /// @param {string} $value
 /// @returns {CSS} - `Property: Value` with prefixed properties
 /// @see {link} - https://developer.mozilla.org/en-US/docs/Web/CSS/shape-outside
-/// @example scss - Usage of image-set
+/// @example scss - Usage of shape-outside
 ///   .example-class {
 ///     @include shape-outside($value: circle(50%));
 ///   }
-/// @example css - Resutls of image-set
+/// @example css - Results of shape-outside
 ///   .example-class {
 ///     -webkit-shape-outside: circle(50%);
 ///             shape-outside: circle(50%);

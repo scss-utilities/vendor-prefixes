@@ -2,11 +2,11 @@
 /// @param {string} $value
 /// @returns {CSS} - `Property: Value` with prefixed values
 /// @see {link} - https://developer.mozilla.org/en-US/docs/Web/CSS/position
-/// @example scss - Usage of image-set
+/// @example scss - Usage of position-sticky
 ///   .example-class {
 ///     @include position-sticky();
 ///   }
-/// @example css - Resutls of image-set
+/// @example css - Results of position-sticky
 ///   .example-class {
 ///     position: -webkit-sticky;
 ///     position: sticky;

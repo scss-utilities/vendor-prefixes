@@ -2,11 +2,11 @@
 /// @param {string} $value
 /// @returns {CSS} - `Property: Value` with prefixed properties
 /// @see {link} - https://developer.mozilla.org/en-US/docs/Web/CSS/mask-origin
-/// @example scss - Usage of image-set
+/// @example scss - Usage of mask-origin
 ///   .example-class {
 ///     @include mask-origin($value: border-box);
 ///   }
-/// @example css - Resutls of image-set
+/// @example css - Results of mask-origin
 ///   .example-class {
 ///     -webkit-mask-origin: border-box;
 ///             mask-origin: border-box;

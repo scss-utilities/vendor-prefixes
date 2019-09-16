@@ -2,11 +2,11 @@
 /// @param {string} $value
 /// @returns {CSS} - `Property: Value` with prefixed properties
 /// @see {link} - https://developer.mozilla.org/en-US/docs/Web/CSS/mask-clip
-/// @example scss - Usage of image-set
+/// @example scss - Usage of mask-clip
 ///   .example-class {
 ///     @include mask-clip($value: content-box);
 ///   }
-/// @example css - Resutls of image-set
+/// @example css - Results of mask-clip
 ///   .example-class {
 ///     -webkit-mask-clip: content-box;
 ///             mask-clip: content-box;

@@ -2,11 +2,11 @@
 /// @param {string} $value
 /// @returns {CSS} - `Property: Value` with prefixed properties
 /// @see {link} - https://www.w3.org/TR/css-sizing-3/#min-content
-/// @example scss - Usage of image-set
+/// @example scss - Usage of min-content
 ///   .example-class {
 ///     @import min-content($property: width);
 ///   }
-/// @example css - Resutls of image-set
+/// @example css - Results of min-content
 ///   .example-class {
 ///     width: -webkit-min-content;
 ///     width: -moz-min-content;

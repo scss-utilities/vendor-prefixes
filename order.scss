@@ -6,11 +6,11 @@
 ///   - `_number_`
 ///   - `initial`
 ///   - `inherit`
-/// @example scss - Usage of image-set
+/// @example scss - Usage of order
 ///   .example-class {
 ///     @include order($value: initial);
 ///   }
-/// @example css - Resutls of image-set
+/// @example css - Results of order
 ///   .example-class {
 ///     -webkit-order: initial;
 ///        -moz-order: initial;

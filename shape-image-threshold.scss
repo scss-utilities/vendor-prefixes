@@ -6,11 +6,11 @@
 ///   - `_float_`, `0.0` to `1.0`
 ///   - `initial`
 ///   - `inherit`
-/// @example scss - Usage of image-set
+/// @example scss - Usage of shape-image-threshold
 ///   .example-class {
 ///     @include shape-image-threshold($value: 0.5);
 ///   }
-/// @example css - Resutls of image-set
+/// @example css - Results of shape-image-threshold
 ///   .example-class {
 ///     -webkit-shape-image-threshold: 0.5;
 ///             shape-image-threshold: 0.5;

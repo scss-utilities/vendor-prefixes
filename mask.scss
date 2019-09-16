@@ -2,11 +2,11 @@
 /// @param {string} $value
 /// @returns {CSS} - `Property: Value` with prefixed properties
 /// @see {link} - https://developer.mozilla.org/en-US/docs/Web/CSS/mask
-/// @example scss - Usage of image-set
+/// @example scss - Usage of mask
 ///   .example-class {
 ///     @include mask($value: none);
 ///   }
-/// @example css - Resutls of image-set
+/// @example css - Results of mask
 ///   .example-class {
 ///     -webkit-mask: none;
 ///        -moz-mask: none;

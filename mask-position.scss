@@ -1,12 +1,12 @@
 /// This mixin takes a `SCSS` list of `($values)`
 /// @param {string} $value
 /// @returns {CSS} - `Property: Value` with prefixed properties
-/// @see {link} - https://developer.mozilla.org/en-US/docs/Web/CSS/image-set
-/// @example scss - Usage of image-set
+/// @see {link} - https://developer.mozilla.org/en-US/docs/Web/CSS/mask-position
+/// @example scss - Usage of mask-position
 ///   .example-class {
 ///     @include mask-position($value: top right);
 ///   }
-/// @example css - Resutls of image-set
+/// @example css - Results of mask-position
 ///   .example-class {
 ///     -webkit-mask-position: top right;
 ///             mask-position: top right;

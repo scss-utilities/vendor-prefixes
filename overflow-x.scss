@@ -9,11 +9,11 @@
 ///   - `auto`
 ///   - `initial`
 ///   - `inherit`
-/// @example scss - Usage of image-set
+/// @example scss - Usage of overflow-x
 ///   .example-class {
 ///     @include overflow-x($value: scroll);
 ///   }
-/// @example css - Resutls of image-set
+/// @example css - Results of overflow-x
 ///   .example-class {
 ///     -ms-overflow-x: scroll;
 ///         overflow-x: scroll;

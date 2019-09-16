@@ -14,11 +14,11 @@
 ///   - `ultra-expanded`
 ///   - `initial`
 ///   - `inherit`
-/// @example scss - Usage of image-set
+/// @example scss - Usage of stretch
 ///   .example-class {
 ///     @include stretch($value: stretch);
 ///   }
-/// @example css - Resutls of image-set
+/// @example css - Results of stretch
 ///   .example-class {
 ///     width: -webkit-stretch;
 ///     width: -moz-stretch;

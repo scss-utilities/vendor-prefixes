@@ -9,11 +9,11 @@
 ///   - `vertical`
 ///   - `initial`
 ///   - `inherit`
-/// @example scss - Usage of image-set
+/// @example scss - Usage of resize
 ///   .example-class {
 ///     @include resize($value: both);
 ///   }
-/// @example css - Resutls of image-set
+/// @example css - Results of resize
 ///   .example-class {
 ///     -moz-resize: both;
 ///          resize: both;

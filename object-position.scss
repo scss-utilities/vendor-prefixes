@@ -5,11 +5,11 @@
 /// @example - Available values
 ///   - `_number_ _number_`, eg. `50% 50%` or `250px 175px`
 ///   - `_direction_ _direction_`, eg. `right top`
-/// @example scss - Usage of image-set
+/// @example scss - Usage of object-position
 ///   .example-class {
 ///     @include object-position($value: 50% 50%);
 ///   }
-/// @example css - Resutls of image-set
+/// @example css - Results of object-position
 ///   .example-class {
 ///     -o-object-position: 50% 50%;
 ///        object-position: 50% 50%;

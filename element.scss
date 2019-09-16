@@ -14,7 +14,7 @@
 ///   .example-class {
 ///     @include element($property: background, $value: #some-id);
 ///   }
-/// @example css - Resutls of flex-direction
+/// @example css - Results of flex-direction
 ///   .example-class {
 ///     background: -moz-element(#some-id);
 ///     background:      element(#some-id);

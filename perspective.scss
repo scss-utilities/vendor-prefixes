@@ -7,11 +7,11 @@
 ///   - `none`
 ///   - `initial`
 ///   - `inherit`
-/// @example scss - Usage of image-set
+/// @example scss - Usage of perspective
 ///   .example-class {
 ///     @include perspective($value: 100px);
 ///   }
-/// @example css - Resutls of image-set
+/// @example css - Results of perspective
 ///   .example-class {
 ///     -webkit-perspective: 100px;
 ///        -moz-perspective: 100px;

@@ -2,11 +2,11 @@
 /// @param {string} $value
 /// @returns {CSS} - `Property: Value` with prefixed properties
 /// @see {link} - https://developer.mozilla.org/en-US/docs/Web/CSS/mask-repeat
-/// @example scss - Usage of image-set
+/// @example scss - Usage of mask-repeat
 ///   .example-class {
 ///     @include mask-repeat($values: repeat-x, repeat-y);
 ///   }
-/// @example css - Resutls of image-set
+/// @example css - Results of mask-repeat
 ///   .example-class {
 ///     -webkit-mask-repeat: repeat-x, repeat-y;
 ///        -moz-mask-repeat: repeat-x, repeat-y;
