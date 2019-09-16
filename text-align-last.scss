@@ -1,30 +1,31 @@
-// ---
-// notice: Setting a fallback is a good idea because of limited support.
-//
-// example_input: >-
-//   .some-class {
-//     @include text-align-last($value: auto);
-//   }
-//
-// example_output: >-
-//   .some-class {
-//     -webkit-text-align-last: auto;
-//        -moz-text-align-last: auto;
-//         -ms-text-align-last: auto;
-//             text-align-last: auto;
-//   }
-//
-// available_values:
-//   - auto
-//     left
-//     right
-//     center
-//     justify
-//     start
-//     end
-//     initial
-//     inherit
-// ---
+/// Setting a fallback is a good idea because of limited support.
+/// @param {string} $value
+/// @returns {CSS} - `Property: Value` with prefixed properties
+/// @see {link} - https://developer.mozilla.org/en-US/docs/Web/CSS/text-align-last
+/// @example - Available values
+///   - `auto`
+///   - `left`
+///   - `right`
+///   - `center`
+///   - `justify`
+///   - `start`
+///   - `end`
+///   - `initial`
+///   - `inherit`
+/// @example scss - Usage of text-align-last
+///   .example-class {
+///     @include text-align-last($value: auto);
+///   }
+/// @example css - Resutls of text-align-last
+///   .example-class {
+///     -webkit-text-align-last: auto;
+///        -moz-text-align-last: auto;
+///         -ms-text-align-last: auto;
+///             text-align-last: auto;
+///   }
+/// @requires {mixin} render-vendor-prefixes
+/// @author S0AndS0
+/// @license AGPL-3.0
 @mixin text-align-last($value) {
   @include render-vendor-prefixes(
     $property: text-align-last,

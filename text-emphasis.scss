@@ -1,19 +1,22 @@
-// ---
-// notice: No MS support as of 2019
-//
-// example_input: >-
-//   .some-class {
-//     @include text-emphasis($value: 100px);
-//   }
-//
-// example_output: >-
-//   .some-class {
-//     -webkit-text-emphasis: 100px;
-//             text-emphasis: 100px;
-//   }
-//
-// available_values: see https://developer.mozilla.org/en-US/docs/Web/CSS/text-emphasis
-// ---
+/// No MS support as of 2019
+/// @param {string} $value
+/// @returns {CSS} - `Property: Value` with prefixed properties
+/// @see {link} - https://developer.mozilla.org/en-US/docs/Web/CSS/text-emphasis
+/// @example - Available values
+///   - `initial`
+///   - `inherit`
+/// @example scss - Usage of text-emphasis
+///   .example-class {
+///     @include text-emphasis($value: 100px);
+///   }
+/// @example css - Resutls of text-emphasis
+///   .example-class {
+///     -webkit-text-emphasis: 100px;
+///             text-emphasis: 100px;
+///   }
+/// @requires {mixin} render-vendor-prefixes
+/// @author S0AndS0
+/// @license AGPL-3.0
 @mixin text-emphasis($value) {
   @include render-vendor-prefixes(
     $property: text-emphasis,

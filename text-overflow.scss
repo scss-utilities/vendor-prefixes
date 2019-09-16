@@ -1,22 +1,25 @@
-// ---
-// example_input: >-
-//   .some-class {
-//     @include text-overflow($value: ellipse);
-//   }
-//
-// example_output: >-
-//   .some-class {
-//     -o-text-overflow: ellipse;
-//        text-overflow: ellipse;
-//   }
-//
-// available_values:
-//   - clip
-//     ellipsis
-//     string
-//     initial
-//     inherit
-// ---
+///
+/// @param {string} $value
+/// @returns {CSS} - `Property: Value` with prefixed properties
+/// @see {link} - https://developer.mozilla.org/en-US/docs/Web/CSS/text-overflow
+/// @example - Available values
+///   - `clip`
+///   - `ellipsis`
+///   - `string`
+///   - `initial`
+///   - `inherit`
+/// @example scss - Usage of text-overflow
+///   .example-class {
+///     @include text-overflow($value: ellipse);
+///   }
+/// @example css - Resutls of text-overflow
+///   .example-class {
+///     -o-text-overflow: ellipse;
+///        text-overflow: ellipse;
+///   }
+/// @requires {mixin} render-vendor-prefixes
+/// @author S0AndS0
+/// @license AGPL-3.0
 @mixin text-overflow($value) {
   @include render-vendor-prefixes(
     $property: text-overflow,

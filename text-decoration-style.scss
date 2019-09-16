@@ -1,26 +1,27 @@
-// ---
-// notice: MS and Safari not supported as of 2019
-//
-// example_input: >-
-//   .some-class {
-//     @include text-decoration-style($value: wavy);
-//   }
-//
-// example_output: >-
-//   .some-class {
-//     -webkit-text-decoration-style: wavy;
-//        -moz-text-decoration-style: wavy;
-//             text-decoration-style: wavy;
-//   }
-//
-// available_values:
-//   - solid
-//     double
-//     dashed
-//     wavy
-//     initial
-//     inherit
-// ---
+/// MS and Safari not supported as of 2019
+/// @param {string} $value
+/// @returns {CSS} - `Property: Value` with prefixed properties
+/// @see {link} - https://developer.mozilla.org/en-US/docs/Web/CSS/text-decoration-style
+/// @example - Available values
+///   - `solid`
+///   - `double`
+///   - `dashed`
+///   - `wavy`
+///   - `initial`
+///   - `inherit`
+/// @example scss - Usage of text-decoration-style
+///   .example-class {
+///     @include text-decoration-style($value: wavy);
+///   }
+/// @example css - Resutls of text-decoration-style
+///   .example-class {
+///     -webkit-text-decoration-style: wavy;
+///        -moz-text-decoration-style: wavy;
+///             text-decoration-style: wavy;
+///   }
+/// @requires {mixin} render-vendor-prefixes
+/// @author S0AndS0
+/// @license AGPL-3.0
 @mixin text-decoration-style($value) {
   @include render-vendor-prefixes(
     $property: text-decoration-style,

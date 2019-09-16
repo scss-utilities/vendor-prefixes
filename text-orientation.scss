@@ -1,27 +1,28 @@
-// ---
-// notice: No MS support as of 2019
-//
-// example_input: >-
-//   .some-class {
-//     @include text-orientation($value: use-glyph-orientation);
-//   }
-//
-// example_output: >-
-//   .some-class {
-//     -webkit-text-orientation: use-glyph-orientation;
-//             text-orientation: use-glyph-orientation;
-//   }
-//
-// available_values:
-//   - mixed
-//     upright
-//     sideways-right
-//     sideways
-//     use-glyph-orientation
-//     initial
-//     inherit
-//     unset
-// ---
+/// No MS support as of 2019
+/// @param {string} $value
+/// @returns {CSS} - `Property: Value` with prefixed properties
+/// @see {link} - https://developer.mozilla.org/en-US/docs/Web/CSS/text-orientation
+/// @example - Available values
+///   - `mixed`
+///   - `upright`
+///   - `sideways-right`
+///   - `sideways`
+///   - `use-glyph-orientation`
+///   - `initial`
+///   - `initial`
+///   - `inherit`
+/// @example scss - Usage of text-orientation
+///   .example-class {
+///     @include text-orientation($value: use-glyph-orientation);
+///   }
+/// @example css - Resutls of text-orientation
+///   .example-class {
+///     -webkit-text-orientation: use-glyph-orientation;
+///             text-orientation: use-glyph-orientation;
+///   }
+/// @requires {mixin} render-vendor-prefixes
+/// @author S0AndS0
+/// @license AGPL-3.0
 @mixin text-orientation($value) {
   @include render-vendor-prefixes(
     $property: text-orientation,

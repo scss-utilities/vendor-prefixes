@@ -1,23 +1,24 @@
-// ---
-// notice: Not standered
-//
-// example_input: >-
-//   .some-class {
-//     @include text-stroke(4px blue);
-//   }
-//
-// example_output: >-
-//   .some-class {
-//     -webkit-text-stroke: 4px blue;
-//          -o-text-stroke: 4px blue;
-//             text-stroke: 4px blue;
-//   }
-//
-// available_values:
-//     inital
-//     inherit
-//     unset
-// ---
+/// Not standered
+/// @param {string} $value
+/// @returns {CSS} - `Property: Value` with prefixed properties
+/// @see {link} - https://developer.mozilla.org/en-US/docs/Web/CSS/text-stroke
+/// @example - Available values
+///   - `initial`
+///   - `inherit`
+///   - `unset`
+/// @example scss - Usage of text-stroke
+///   .example-class {
+///     @include text-stroke(4px blue);
+///   }
+/// @example css - Resutls of text-stroke
+///   .example-class {
+///     -webkit-text-stroke: 4px blue;
+///          -o-text-stroke: 4px blue;
+///             text-stroke: 4px blue;
+///   }
+/// @requires {mixin} render-vendor-prefixes
+/// @author S0AndS0
+/// @license AGPL-3.0
 @mixin text-stroke($values...) {
   @include render-vendor-prefixes(
     $property: text-stroke,

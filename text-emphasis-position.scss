@@ -1,24 +1,25 @@
-// ---
-// notice: No MS support as of 2019
-//
-// example_input: >-
-//   .some-class {
-//     @include text-emphasis-position($value: over right);
-//   }
-//
-// example_output: >-
-//   .some-class {
-//     -webkit-text-emphasis-position: over right;
-//             text-emphasis-position: over right;
-//   }
-//
-// available_values:
-//   - over  [ left | right ]
-//     under [ left | right ]
-//     unset
-//     initial
-//     inherit
-// ---
+/// No MS support as of 2019
+/// @param {string} $value
+/// @returns {CSS} - `Property: Value` with prefixed properties
+/// @see {link} - https://developer.mozilla.org/en-US/docs/Web/CSS/text-emphasis-position
+/// @example - Available values
+///   - `_over_`  [ left | right ]
+///   - `_under_` [ left | right ]
+///   - `unset`
+///   - `initial`
+///   - `inherit`
+/// @example scss - Usage of text-emphasis-position
+///   .example-class {
+///     @include text-emphasis-position($value: over right);
+///   }
+/// @example css - Resutls of text-emphasis-position
+///   .example-class {
+///     -webkit-text-emphasis-position: over right;
+///             text-emphasis-position: over right;
+///   }
+/// @requires {mixin} render-vendor-prefixes
+/// @author S0AndS0
+/// @license AGPL-3.0
 @mixin text-emphasis-position($value) {
   @include render-vendor-prefixes(
     $property: text-emphasis-position,

@@ -1,26 +1,27 @@
-// ---
-// notice: MS not supported as of 2019
-//
-// example_input: >-
-//   .some-class {
-//     @include text-decoration-style($value: underline overline);
-//   }
-//
-// example_output: >-
-//   .some-class {
-//     -webkit-text-decoration-style: underline overline;
-//        -moz-text-decoration-style: underline overline;
-//             text-decoration-style: underline overline;
-//   }
-//
-// available_values:
-//   - none
-//     underline
-//     overline
-//     line-through
-//     initial
-//     inherit
-// ---
+/// MS not supported as of 2019
+/// @param {string} $value
+/// @returns {CSS} - `Property: Value` with prefixed properties
+/// @see {link} - https://developer.mozilla.org/en-US/docs/Web/CSS/text-decoration-line
+/// @example - Available values
+///   - `none`
+///   - `underline`
+///   - `overline`
+///   - `line-through`
+///   - `initial`
+///   - `inherit`
+/// @example scss - Usage of text-decoration-line
+///   .example-class {
+///     @include text-decoration-line($value: underline overline);
+///   }
+/// @example css - Resutls of text-decoration-line
+///   .example-class {
+///     -webkit-text-decoration-line: underline overline;
+///        -moz-text-decoration-line: underline overline;
+///             text-decoration-line: underline overline;
+///   }
+/// @requires {mixin} render-vendor-prefixes
+/// @author S0AndS0
+/// @license AGPL-3.0
 @mixin text-decoration-line($value) {
   @include render-vendor-prefixes(
     $property: text-decoration-line,

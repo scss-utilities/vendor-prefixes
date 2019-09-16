@@ -1,25 +1,24 @@
-// ---
-// notice: Support for `digits` as of 2019 is very limited
-// example_input: >-
-//   .some-class {
-//     @include text-combine-upright($value: digits 4);
-//   }
-//
-// example_output: >-
-//   .some-class {
-//     -webkit-text-combine-upright: digits 4;
-//         -ms-text-combine-upright: digits 4;
-//             text-combine-upright: digits 4;
-//   }
-//
-// available_values:
-//   - none
-//     all
-//     _number_
-//
-// info_links:
-//   - https://developer.mozilla.org/en-US/docs/Web/CSS/text-combine-upright
-// ---
+/// Support for `digits` as of 2019 is very limited
+/// @param {string} $value
+/// @returns {CSS} - `Property: Value` with prefixed properties
+/// @see {link} - https://developer.mozilla.org/en-US/docs/Web/CSS/text-combine-upright
+/// @example - Available values
+///   - `none`
+///   - `all`
+///   - `_number_`
+/// @example scss - Usage of text-combine-upright
+///   .example-class {
+///     @include text-combine-upright($value: digits 4);
+///   }
+/// @example css - Resutls of text-combine-upright
+///   .example-class {
+///     -webkit-text-combine-upright: digits 4;
+///         -ms-text-combine-upright: digits 4;
+///             text-combine-upright: digits 4;
+///   }
+/// @requires {mixin} render-vendor-prefixes
+/// @author S0AndS0
+/// @license AGPL-3.0
 @mixin text-combine-upright($value) {
   @include render-vendor-prefixes(
     $property: text-combine-upright,

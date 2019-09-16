@@ -1,18 +1,23 @@
-// ---
-// example_input: >-
-//   .some-class {
-//     @include text-decoration($value: underline overline dotted blue);
-//   }
-//
-// example_output: >-
-//   .some-class {
-//     -webkit-text-decoration: underline overline dotted blue;
-//        -moz-text-decoration: underline overline dotted blue;
-//             text-decoration: underline overline dotted blue;
-//   }
-//
-// available_values: see https://www.w3schools.com/cssref/pr_text_text-decoration.asp
-// ---
+///
+/// @param {string} $value
+/// @returns {CSS} - `Property: Value` with prefixed properties
+/// @see {link} - https://www.w3schools.com/cssref/pr_text_text-decoration.asp
+/// @example - Available values
+///   - `initial`
+///   - `inherit`
+/// @example scss - Usage of text-decoration
+///   .example-class {
+///     @include text-decoration($value: underline overline dotted blue);
+///   }
+/// @example css - Resutls of text-decoration
+///   .example-class {
+///     -webkit-text-decoration: underline overline dotted blue;
+///        -moz-text-decoration: underline overline dotted blue;
+///             text-decoration: underline overline dotted blue;
+///   }
+/// @requires {mixin} render-vendor-prefixes
+/// @author S0AndS0
+/// @license AGPL-3.0
 @mixin text-decoration($value) {
   @include render-vendor-prefixes(
     $property: text-decoration,

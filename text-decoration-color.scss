@@ -1,23 +1,24 @@
-// ---
-// notice: MS not supported as of 2019
-//
-// example_input: >-
-//   .some-class {
-//     @include text-decoration-style($value: blue);
-//   }
-//
-// example_output: >-
-//   .some-class {
-//     -webkit-text-decoration-style: blue;
-//        -moz-text-decoration-style: blue;
-//             text-decoration-style: blue;
-//   }
-//
-// available_values:
-//   - _color_
-//     initial
-//     inherit
-// ---
+/// MS not supported as of 2019
+/// @param {string} $value
+/// @returns {CSS} - `Property: Value` with prefixed properties
+/// @see {link} - https://developer.mozilla.org/en-US/docs/Web/CSS/text-decoration-color
+/// @example - Available values
+///   - `_color_`
+///   - `initial`
+///   - `inherit`
+/// @example scss - Usage of text-decoration-color
+///   .example-class {
+///     @include text-decoration-color($value: blue);
+///   }
+/// @example css - Resutls of text-decoration-color
+///   .example-class {
+///     -webkit-text-decoration-color: blue;
+///        -moz-text-decoration-color: blue;
+///             text-decoration-color: blue;
+///   }
+/// @requires {mixin} render-vendor-prefixes
+/// @author S0AndS0
+/// @license AGPL-3.0
 @mixin text-decoration-color($value) {
   @include render-vendor-prefixes(
     $property: text-decoration-color,

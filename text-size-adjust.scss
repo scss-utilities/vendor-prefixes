@@ -1,25 +1,28 @@
-// ---
-// example_input: >-
-//   .some-class {
-//     @include text-size-adjust($value: 80%);
-//   }
-//
-// example_output: >-
-//   .some-class {
-//     -webkit-text-size-adjust: 80%;
-//        -moz-text-size-adjust: 80%;
-//         -ms-text-size-adjust: 80%;
-//             text-size-adjust: 80%;
-//   }
-//
-// available_values:
-//   - none
-//     auto
-//     _percentage_
-//     initial
-//     inherit
-//     unset
-// ---
+///
+/// @param {string} $value
+/// @returns {CSS} - `Property: Value` with prefixed properties
+/// @see {link} - https://developer.mozilla.org/en-US/docs/Web/CSS/text-size-adjust
+/// @example - Available values
+///   - `none`
+///   - `auto`
+///   - `_percentage_`
+///   - `initial`
+///   - `inherit`
+///   - `unset`
+/// @example scss - Usage of text-size-adjust
+///   .example-class {
+///     @include text-size-adjust($value: 80%);
+///   }
+/// @example css - Resutls of text-size-adjust
+///   .example-class {
+///     -webkit-text-size-adjust: 80%;
+///        -moz-text-size-adjust: 80%;
+///         -ms-text-size-adjust: 80%;
+///             text-size-adjust: 80%;
+///   }
+/// @requires {mixin} render-vendor-prefixes
+/// @author S0AndS0
+/// @license AGPL-3.0
 @mixin text-size-adjust($value) {
   @include render-vendor-prefixes(
     $property: text-size-adjust,

@@ -1,23 +1,25 @@
-// ---
-// notice: No MS support as of 2019
-// example_input: >-
-//   .some-class {
-//     @include tab-size($value: 16);
-//   }
-//
-// example_output: >-
-//   .some-class {
-//     -moz-tab-size: 16;
-//       -o-tab-size: 16;
-//          tab-size: 16;
-//   }
-//
-// available_values:
-//   - _number_
-//     _length_
-//     initial
-//     inherit
-// ---
+/// No MS support as of 2019
+/// @param {string} $value
+/// @returns {CSS} - `Property: Value` with prefixed properties
+/// @see {link} - https://developer.mozilla.org/en-US/docs/Web/CSS/tab-size
+/// @example - Available values
+///   - `_number_`
+///   - `_length_`
+///   - `initial`
+///   - `inherit`
+/// @example scss - Usage of tab-size
+///   .example-class {
+///     @include tab-size($value: 16);
+///   }
+/// @example css - Resutls of tab-size
+///   .example-class {
+///     -moz-tab-size: 16;
+///       -o-tab-size: 16;
+///          tab-size: 16;
+///   }
+/// @requires {mixin} render-vendor-prefixes
+/// @author S0AndS0
+/// @license AGPL-3.0
 @mixin tab-size($value) {
   @include render-vendor-prefixes(
     $property: tab-size,
