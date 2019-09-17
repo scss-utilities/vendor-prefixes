@@ -1,21 +1,22 @@
-// ---
-// example_input: >-
-//   .some-class {
-//     @include text-stroke-width($value: thin);
-//   }
-//
-// example_output: >-
-//   .some-class {
-//     -webkit-text-stroke-width: thin;
-//          -o-text-stroke-width: thin;
-//             text-stroke-width: thin;
-//   }
-//
-// available_values:
-//     x-axis y-axis z-axis
-//     inital
-//     inherit
-// ---
+///
+/// @param {string} $value
+/// @returns {CSS} - `Property: Value` with prefixed properties
+/// @see {link} - https://developer.mozilla.org/en-US/docs/Web/CSS/transform-origin
+/// @example scss - Usage of transform-origin
+///   .example-class {
+///     @include transform-origin($value: center);
+///   }
+/// @example css - Results of transform-origin
+///   .example-class {
+///     -webkit-transform-origin: center;
+///        -moz-transform-origin: center;
+///         -ms-transform-origin: center;
+///          -o-transform-origin: center;
+///             transform-origin: center;
+///   }
+/// @requires {mixin} render-vendor-prefixes
+/// @author S0AndS0
+/// @license AGPL-3.0
 @mixin transform-origin($value) {
   @if length($values) <=2 {
     @include render-vendor-prefixes(

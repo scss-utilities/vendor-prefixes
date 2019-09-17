@@ -1,24 +1,27 @@
-// ---
-// example_input: >-
-//   .some-class {
-//     @include transform-box($value: flat);
-//   }
-//
-// example_output: >-
-//   .some-class {
-//     -webkit-transform-box: flat;
-//        -moz-transform-box: flat;
-//             transform-box: flat;
-//   }
-//
-// available_values:
-//   - border-box
-//     fill-box
-//     view-box
-//     initial
-//     inherit
-//     unset
-// ---
+/// Experimental!
+/// @param {string} $value
+/// @returns {CSS} - `Property: Value` with prefixed properties
+/// @see {link} - https://developer.mozilla.org/en-US/docs/Web/CSS/transform-box
+/// @example - Available values
+///   - `border-box`
+///   - `fill-box`
+///   - `view-box`
+///   - `initial`
+///   - `inherit`
+///   - `unset`
+/// @example scss - Usage of transform-box
+///   .example-class {
+///     @include transform-box($value: border-box);
+///   }
+/// @example css - Results of transform-box
+///   .example-class {
+///     -webkit-transform-box: border-box;
+///        -moz-transform-box: border-box;
+///             transform-box: border-box;
+///   }
+/// @requires {mixin} render-vendor-prefixes
+/// @author S0AndS0
+/// @license AGPL-3.0
 @mixin transform-box($value) {
   @include render-vendor-prefixes(
     $property: transform-box,

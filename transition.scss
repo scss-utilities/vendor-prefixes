@@ -1,22 +1,25 @@
-// ---
-// example_input: >-
-//   .some-class {
-//     @include transition($value: width 5s initial 2s);
-//   }
-//
-// example_output: >-
-//   .some-class {
-//     -webkit-transition: width 5s initial 2s;
-//        -moz-transition: width 5s initial 2s;
-//          -o-transition: width 5s initial 2s;
-//             transition: width 5s initial 2s;
-//   }
-//
-// available_values:
-//   - property duration timing-function delay
-//     initial
-//     inherit
-// ---
+///
+/// @param {string} $value
+/// @returns {CSS} - `Property: Value` with prefixed properties
+/// @see {link} - https://developer.mozilla.org/en-US/docs/Web/CSS/transition
+/// @example - Available values
+///   - Order interpreted; property duration timing-function delay
+///   - `initial`
+///   - `inherit`
+/// @example scss - Usage of transition
+///   .example-class {
+///     @include transition($value: width 5s initial 2s);
+///   }
+/// @example css - Results of transition
+///   .example-class {
+///     -webkit-transition: width 5s initial 2s;
+///        -moz-transition: width 5s initial 2s;
+///          -o-transition: width 5s initial 2s;
+///             transition: width 5s initial 2s;
+///   }
+/// @requires {mixin} render-vendor-prefixes
+/// @author S0AndS0
+/// @license AGPL-3.0
 @mixin transition($value) {
   @include render-vendor-prefixes(
     $property: transition,

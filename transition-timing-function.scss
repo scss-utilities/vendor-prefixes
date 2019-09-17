@@ -1,18 +1,22 @@
-// ---
-// example_input: >-
-//   .some-class {
-//     @include transition-timing-function($value: inherit);
-//   }
-//
-// example_output: >-
-//   .some-class {
-//     -webkit-transition-timing-function: inherit;
-//        -moz-transition-timing-function: inherit;
-//          -o-transition-timing-function: inherit;
-//             transition-timing-function: inherit;
-//   }
-//
-// available_values: - see https://www.w3schools.com/cssref/css3_pr_transition-timing-function.asp
+///
+/// @param {string} $value
+/// @returns {CSS} - `Property: Value` with prefixed properties
+/// @see {link} - https://developer.mozilla.org/en-US/docs/Web/CSS/transition-timing-function
+/// @see {link} - https://www.w3schools.com/cssref/css3_pr_transition-timing-function.asp
+/// @example scss - Usage of transition-timing-function
+///   .example-class {
+///     @include transition-timing-function($value: inherit);
+///   }
+/// @example css - Results of transition-timing-function
+///   .example-class {
+///     -webkit-transition-timing-function: inherit;
+///        -moz-transition-timing-function: inherit;
+///          -o-transition-timing-function: inherit;
+///             transition-timing-function: inherit;
+///   }
+/// @requires {mixin} render-vendor-prefixes
+/// @author S0AndS0
+/// @license AGPL-3.0
 @mixin transition-timing-function($value) {
   @include render-vendor-prefixes(
     $property: transition-timing-function,

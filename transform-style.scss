@@ -1,22 +1,25 @@
-// ---
-// example_input: >-
-//   .some-class {
-//     @include transform-style($value: flat);
-//   }
-//
-// example_output: >-
-//   .some-class {
-//     -webkit-transform-style: flat;
-//        -moz-transform-style: flat;
-//             transform-style: flat;
-//   }
-//
-// available_values:
-//   - flat
-//     perspective-3d
-//     initial
-//     inherit
-// ---
+/// Experimental
+/// @param {string} $value
+/// @returns {CSS} - `Property: Value` with prefixed properties
+/// @see {link} - https://developer.mozilla.org/en-US/docs/Web/CSS/transform-style
+/// @example - Available values
+///   - `flat`
+///   - `perspective-3d`
+///   - `initial`
+///   - `inherit`
+/// @example scss - Usage of transform-style
+///   .example-class {
+///     @include transform-style($value: flat);
+///   }
+/// @example css - Results of transform-style
+///   .example-class {
+///     -webkit-transform-style: flat;
+///        -moz-transform-style: flat;
+///             transform-style: flat;
+///   }
+/// @requires {mixin} render-vendor-prefixes
+/// @author S0AndS0
+/// @license AGPL-3.0
 @mixin transform-style($value) {
   @include render-vendor-prefixes(
     $property: transform-style,

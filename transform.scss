@@ -1,19 +1,20 @@
-// ---
-// notice: Old MS can **not** mix 2D and 3D transforms
-// example_input: >-
-//   .some-class {
-//     @include transform($value: rotate(20deg));
-//   }
-//
-// example_output: >-
-//   .some-class {
-//     -webkit-transform: rotate(20deg);
-//         -ms-transform: rotate(20deg);
-//             transform: rotate(20deg);
-//   }
-//
-// available_values: see https://developer.mozilla.org/en-US/docs/Web/CSS/transform
-// ---
+/// Old MS can **not** mix 2D and 3D transforms
+/// @param {string} $value
+/// @returns {CSS} - `Property: Value` with prefixed properties
+/// @see {link} - https://developer.mozilla.org/en-US/docs/Web/CSS/transform
+/// @example scss - Usage of transform
+///   .example-class {
+///     @include transform($value: rotate(20deg));
+///   }
+/// @example css - Results of transform
+///   .example-class {
+///     -webkit-transform: rotate(20deg);
+///         -ms-transform: rotate(20deg);
+///             transform: rotate(20deg);
+///   }
+/// @requires {mixin} render-vendor-prefixes
+/// @author S0AndS0
+/// @license AGPL-3.0
 @mixin transform($value) {
   @include render-vendor-prefixes(
     $property: transform,

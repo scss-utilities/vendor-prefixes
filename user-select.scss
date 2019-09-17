@@ -1,24 +1,27 @@
-// ---
-// example_input: >-
-//   .some-class {
-//     @include user-select($value: auto);
-//   }
-//
-// example_output: >-
-//   .some-class {
-//     -webkit-user-select: auto;
-//        -moz-user-select: auto;
-//         -ms-user-select: auto;
-//          -o-user-select: auto;
-//             user-select: auto;
-//   }
-//
-// available_values:
-//   - auto
-//     none
-//     text
-//     all
-// ---
+///
+/// @param {string} $value
+/// @returns {CSS} - `Property: Value` with prefixed properties
+/// @see {link} - https://developer.mozilla.org/en-US/docs/Web/CSS/user-select
+/// @example - Available values
+///   - `auto`
+///   - `none`
+///   - `text`
+///   - `all`
+/// @example scss - Usage of user-select
+///   .example-class {
+///     @include user-select($value: auto);
+///   }
+/// @example css - Results of user-select
+///   .example-class {
+///     -webkit-user-select: auto;
+///        -moz-user-select: auto;
+///         -ms-user-select: auto;
+///          -o-user-select: auto;
+///             user-select: auto;
+///   }
+/// @requires {mixin} render-vendor-prefixes
+/// @author S0AndS0
+/// @license AGPL-3.0
 @mixin user-select($value) {
   @include render-vendor-prefixes(
     $property: user-select,

@@ -1,24 +1,27 @@
-// ---
-// example_input: >-
-//   .some-class {
-//     @include transition-property($value: width);
-//   }
-//
-// example_output: >-
-//   .some-class {
-//     -webkit-transition-property: width;
-//        -moz-transition-property: width;
-//          -o-transition-property: width;
-//             transition-property: width;
-//   }
-//
-// available_values:
-//   - none
-//     all
-//     property
-//     initial
-//     inherit
-// ---
+///
+/// @param {string} $value
+/// @returns {CSS} - `Property: Value` with prefixed properties
+/// @see {link} - https://developer.mozilla.org/en-US/docs/Web/CSS/transition-property
+/// @example - Available values
+///   - `none`
+///   - `all`
+///   - `_property_`
+///   - `initial`
+///   - `inherit`
+/// @example scss - Usage of transition-property
+///   .example-class {
+///     @include transition-property($value: width);
+///   }
+/// @example css - Results of transition-property
+///   .example-class {
+///     -webkit-transition-property: width;
+///        -moz-transition-property: width;
+///          -o-transition-property: width;
+///             transition-property: width;
+///   }
+/// @requires {mixin} render-vendor-prefixes
+/// @author S0AndS0
+/// @license AGPL-3.0
 @mixin transition-property($value) {
   @include render-vendor-prefixes(
     $property: transition-property,

@@ -1,22 +1,25 @@
-// ---
-// example_input: >-
-//   .some-class {
-//     @include transition-duration($value: rotate(5s));
-//   }
-//
-// example_output: >-
-//   .some-class {
-//     -webkit-transition-duration: rotate(5s);
-//        -moz-transition-duration: rotate(5s);
-//          -o-transition-duration: rotate(5s);
-//             transition-duration: rotate(5s);
-//   }
-//
-// available_values:
-//   - time
-//     initial
-//     inherit
-// ---
+///
+/// @param {string} $value
+/// @returns {CSS} - `Property: Value` with prefixed properties
+/// @see {link} - https://developer.mozilla.org/en-US/docs/Web/CSS/transition-duration
+/// @example - Available values
+///   - `_time_`
+///   - `initial`
+///   - `inherit`
+/// @example scss - Usage of transition-duration
+///   .example-class {
+///     @include transition-duration($value: 5s);
+///   }
+/// @example css - Results of transition-duration
+///   .example-class {
+///     -webkit-transition-duration: 5s;
+///        -moz-transition-duration: 5s;
+///          -o-transition-duration: 5s;
+///             transition-duration: 5s;
+///   }
+/// @requires {mixin} render-vendor-prefixes
+/// @author S0AndS0
+/// @license AGPL-3.0
 @mixin transition-duration($value) {
   @include render-vendor-prefixes(
     $property: transition-duration,
