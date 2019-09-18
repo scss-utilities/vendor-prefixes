@@ -215,8 +215,8 @@ done < <(find "${_module_path}" -type f -name '*.scss' -not -path '*/lib/*' -pri
 
 
 for _path in "${_path_list[@]}"; do
-    [[ grep -q -- "@import '${_path}';" "${_main_sass}" ]] && continue
-    tee -a "${_main_sass}" <<<"@import '${_path}';"
+    [[ $(grep -q -- "@import '${_path}';" "${_main_sass}") ]] && continue
+    tee -a "${_main_sass}" <<<"$(printf "@import '%s';" "${_path}")"
 done
 ```
 
