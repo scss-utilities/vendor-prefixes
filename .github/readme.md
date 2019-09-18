@@ -201,27 +201,60 @@ Following may be used to `@import` **all** vendor prefixes to a `main.scss` file
 
 ```Bash
 _module_path='_scss/modules/vendor-prefixes'
-_main_sass='assets/css/main.scss'
+_imports_path='_scss/modules/vendor-prefixes.scss'
 _path_list=()
 
 
 while IFS= read -r -d '' _path; do
     _path_list+=("${_path}")
-done < <(find "${_module_path}/lib" -type f -name '*.scss' -print0)
+done < <(find "${_module_path}/lib" -type f -name '*.scss' -print0 | sort)
 
 while IFS= read -r -d '' _path; do
     _path_list+=("${_path}")
-done < <(find "${_module_path}" -type f -name '*.scss' -not -path '*/lib/*' -print0)
+done < <(find "${_module_path}" -type f -name '*.scss' -not -path '*/lib/*' -print0 | sort)
 
 
 for _path in "${_path_list[@]}"; do
-    [[ $(grep -q -- "@import '${_path}';" "${_main_sass}") ]] && continue
-    tee -a "${_main_sass}" <<<"$(printf "@import '%s';" "${_path}")"
+    [[ $(grep -q -- "@import '${_path}';" "${_imports_path}") ]] && continue
+    tee -a "${_imports_path}" <<<"$(printf "@import '%s';" "${_path:6:-5}")"
 done
+
+## Note the ':6:-5' portion of '${_path:6:-5}' _should_
+##  strip '_scss/' or '_sass/' from beginning
+##  and '.scss' from end of file paths
 ```
 
 
-... which _should_ allow any following imports or definitions to utilize any _`Sass`_ code from this repository.
+Import the `_imports_path` file into your main styles file, eg. `assets/main.scss` for Minima....
+
+```Liquid
+---
+# Only the main Sass file needs front matter (the dashes are enough)
+---
+
+@import "minima";
+
+
+@import "modules/vendor-prefixes";
+```
+
+... then declare any include-able vendor prefixes...
+
+
+```SCSS
+.example-class {
+  @include text-stroke(4px blue);
+}
+```
+
+
+```CSS
+.example-class {
+  -webkit-text-stroke: 4px blue;
+       -o-text-stroke: 4px blue;
+          text-stroke: 4px blue;
+}
+```
 
 
 ___
