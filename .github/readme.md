@@ -196,7 +196,7 @@ ___
   "&#x1F5D2; Additional notes and links that may be worth clicking in the future"
 
 
-Following may be used to `@import` **all** vendor prefixes to a `main.scss` file...
+Following Bash code may be used to `@import` **all** vendor prefixes to a `main.scss` file...
 
 
 ```Bash
@@ -238,14 +238,18 @@ Import the `_imports_path` file into your main styles file, eg. `assets/main.scs
 @import "modules/vendor-prefixes";
 ```
 
-... then declare any include-able vendor prefixes...
+... then declare any desired Sass vendor prefixes...
 
 
 ```SCSS
 .example-class {
   @include text-stroke(4px blue);
+  @include min-content(width);
 }
 ```
+
+
+... to build CSS similar to...
 
 
 ```CSS
@@ -253,6 +257,9 @@ Import the `_imports_path` file into your main styles file, eg. `assets/main.scs
   -webkit-text-stroke: 4px blue;
        -o-text-stroke: 4px blue;
           text-stroke: 4px blue;
+  width: -webkit-min-content;
+  width: -moz-min-content;
+  width: min-content;
 }
 ```
 
