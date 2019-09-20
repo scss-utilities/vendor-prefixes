@@ -5,7 +5,7 @@
 /// @see {link} - https://caniuse.com/#search=max-content
 /// @example scss - Usage of max-content
 ///   .example-class {
-///     @import max-content($property: width);
+///     @include max-content($property: width);
 ///   }
 /// @example css - Results of max-content
 ///   .example-class {

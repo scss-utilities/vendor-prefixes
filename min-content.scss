@@ -1,10 +1,10 @@
-/// This mixin takes a `SCSS` list of `($values)`
+/// Note the `$property` argument for this mixin may be a list
 /// @param {string} $value
 /// @returns {CSS} - `Property: Value` with prefixed properties
 /// @see {link} - https://www.w3.org/TR/css-sizing-3/#min-content
 /// @example scss - Usage of min-content
 ///   .example-class {
-///     @import min-content($property: width);
+///     @include min-content($property: width);
 ///   }
 /// @example css - Results of min-content
 ///   .example-class {
