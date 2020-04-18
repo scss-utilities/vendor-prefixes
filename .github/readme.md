@@ -201,22 +201,23 @@ Following Bash code may be used to `@import` **all** vendor prefixes to a `main.
 
 ```Bash
 _module_path='_scss/modules/vendor-prefixes'
-_imports_path='_scss/modules/vendor-prefixes.scss'
+_imports_path='_scss/vendor-prefixes.scss'
 _path_list=()
 
 
 while IFS= read -r -d '' _path; do
     _path_list+=("${_path}")
-done < <(find "${_module_path}/lib" -type f -name '*.scss' -print0 | sort)
+done < <(find "${_module_path}/lib" -type f -name '*.scss' -print0 | sort -z)
 
 while IFS= read -r -d '' _path; do
     _path_list+=("${_path}")
-done < <(find "${_module_path}" -type f -name '*.scss' -not -path '*/lib/*' -print0 | sort)
+done < <(find "${_module_path}" -type f -name '*.scss' -not -path '*/lib/*' -print0 | sort -z)
 
 
 for _path in "${_path_list[@]}"; do
-    [[ $(grep -q -- "@import '${_path}';" "${_imports_path}") ]] && continue
-    tee -a "${_imports_path}" <<<"$(printf "@import '%s';" "${_path:6:-5}")"
+    [[ $(grep -q -- "@import '${_path}';" "${_imports_path}") ]] || {
+      tee -a "${_imports_path}" <<<"$(printf "@import '%s';" "${_path:6:-5}")"
+    }
 done
 
 ## Note the ':6:-5' portion of '${_path:6:-5}' _should_
@@ -226,6 +227,7 @@ done
 
 
 Import the `_imports_path` file into your main styles file, eg. `assets/main.scss` for Minima....
+
 
 ```Liquid
 ---
@@ -237,6 +239,7 @@ Import the `_imports_path` file into your main styles file, eg. `assets/main.scs
 
 @import "modules/vendor-prefixes";
 ```
+
 
 ... then declare any desired Sass vendor prefixes...
 
