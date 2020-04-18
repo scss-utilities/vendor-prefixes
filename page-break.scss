@@ -1,0 +1,61 @@
+///
+/// @param {string} $suffix
+/// @param {string} $value
+/// @returns {CSS} - `Property: Value` with prefixed properties
+/// @see {link} - https://developer.mozilla.org/en-US/docs/Web/CSS/break-after
+/// @see {link} - https://css-tricks.com/almanac/properties/p/page-break/
+/// @see {link} - https://drafts.csswg.org/css2/page.html#page-breaks
+/// @example - Available suffixes
+///   - before
+///   - after
+///   - inside
+/// @example - Available `page-break-{after,before}` values
+///   - `auto`, inital value
+///   - `always`, force page breaks after/before element
+///   - `avoid`, avoid page break after/before element
+///   - `left`, if `after` following element forced to left page, if `before` current element is forced to left page
+///   - `right`, if `after` following element forced to right page, if `before` current element is forced to right page
+///   - `recto`, if pages progress left-to-right then act like `right` if pages pregress right-to-left then act like `left`
+///   - `verso`, if pages progress left to right act like `left` if pages pregress right-to-left then act like `right`
+/// @example - Available `page-break-inside` values
+///   - `auto`, inital value
+///   - `avoid`, avoid page breaks within element
+/// @example scss - Usage of page-break-after
+///   .example-class {
+///     @include page-break(after, avoid);
+///   }
+/// @example css - Results of page-break-after
+///   .example-class {
+///     page-break-after: avoid;
+///          break-after: avoid;
+///   }
+/// @author S0AndS0
+/// @license AGPL-3.0
+@mixin page-break($suffix, $value) {
+  @if $suffix != 'after' and $suffix != 'before' and $suffix != 'inside' {
+    @warn 'Unknown property suffix: #{$suffix}';
+  }
+
+  @if $suffix == 'after' or $suffix == 'before' {
+
+    @if $value != 'auto'
+    and $value != 'always'
+    and $value != 'avoid'
+    and $value != 'left'
+    and $value != 'right'
+    and $value != 'recto'
+    and $value != 'verso' {
+      @warn 'Value "#{$value}" may not be present for some browsers';
+    }
+
+  } @else if $suffix == 'inside' {
+
+    @if $value != 'auto' and $value != 'avoid' {
+      @warn 'Value "#{$value}" may not be present for some browsers';
+    }
+
+  }
+
+  page-break-#{$suffix}: $value;
+  break-#{$suffix}: $value;
+}
