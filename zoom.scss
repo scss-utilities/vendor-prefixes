@@ -1,0 +1,35 @@
+/// How content should be aligned within elment, class, or ID
+/// @param {string} $value
+/// @see {link} - https://caniuse.com/#search=zoom
+/// @see {link} - https://developer.mozilla.org/en-US/docs/Web/CSS/zoom
+/// @returns {CSS} - `Property: Value` with prefixed properties
+/// @example - Available values
+///   - `normal`
+///   - `reset`
+///   - _percent_
+///   - _number_
+///   - `inital`
+///   - `inherit`
+///   - `unset`
+/// @example scss - Usage of zoom
+///   .example-class {
+///     @include zoom($value: 150%);
+///   }
+/// @example css - Results of zoom
+///   .example-class {
+///     -ms-zoom: 150%;
+///         zoom: 150%;
+///   }
+/// @requires {mixin} render-vendor-prefixes
+/// @author S0AndS0
+/// @license AGPL-3.0
+@mixin zoom($value) {
+  @include render-vendor-prefixes(
+    $property: zoom,
+    $value: $value,
+    $vendor-list: (
+      -ms, // Internet Explorer
+    ),
+    $prefix: property
+  );
+}
