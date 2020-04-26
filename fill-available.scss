@@ -1,0 +1,24 @@
+/// Mitigate iOS Safari viewport bugs regarding `min-height: 100vh`
+/// @param {string} $property
+/// @returns {CSS} - `Property: Value` with prefixed properties
+/// @see {link} - https://twitter.com/AllThingsSmitty/status/1254151507412496384
+/// @example scss - Usage of fill-available
+///   .example-class {
+///     min-height: 100vh;
+///     @include fill-available($property: min-height);
+///   }
+/// @example css - Results of fill-available
+///   .example-class {
+///     min-height: 100vh;
+///     min-height: -moz-fill-available;
+///     min-height: -webkit-fill-available;
+///     min-height: fill-available;
+///   }
+/// @requires {mixin} render-vendor-prefixes
+/// @author S0AndS0
+/// @license AGPL-3.0
+@mixin fill-available($property) {
+  #{$property}: -moz-fill-available;
+  #{$property}: -webkit-fill-available;
+  #{$property}: fill-available;
+}
