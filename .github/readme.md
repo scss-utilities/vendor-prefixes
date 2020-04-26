@@ -282,6 +282,13 @@ ___
 
 - [SassDoc -- annotations](http://sassdoc.com/annotations/)
 
+- [Mozilla Developer -- CSS Reference](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference)
+
+- [Wikipedia -- Browser Prefixes](https://en.wikipedia.org/wiki/CSS_hack#Browser_prefixes)
+
+- [Wikipedia -- Browser Engines CSS Support](https://en.wikipedia.org/wiki/Comparison_of_browser_engines_(CSS_support))
+
+
 ___
 
 
